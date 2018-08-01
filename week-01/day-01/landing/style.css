@@ -1,0 +1,76 @@
+
+@import url("button.css");
+
+body {
+	background: rgb(240, 240,240);
+	color: rgb(20, 20, 20);
+	font-family:'Shadows Into Light', cursive;
+	margin: 0;
+}
+h1 {
+	font-family:'Pacifico', cursive;
+	font-size: 50px;
+	letter-spacing: 4px;
+	text-align: center;
+	color: red;
+}
+h2 {
+	font-size: 40px;
+	font-family: 'Pacifico', cursive;
+	letter-spacing: 3px;
+    text-align: center;
+	color: red;
+
+}
+h3 {
+	font-family: 'Shadows Into Light', cursive;
+	font-size:20px;
+	text-decoration: underline;
+	font-weight: 95px;
+}
+a {
+	text-decoration: none;
+	color:;
+}
+a:hover {
+	text-decoration: none;
+	color: purple;
+
+}
+ #banner {
+	background-image: url(images/container.jpg);
+	background-size: cover;
+	padding-top: 10px;
+	padding-bottom: 250px;
+	text-align: center;
+	color: white;
+	
+}
+
+#banner h1{
+	color: white;
+	font-size: 80px;
+}
+
+#banner h2{
+	color:white;
+}
+
+#banner p{
+	color: white;
+	font-size: 30px;
+	padding-top: 100px;
+	font-weight: lighter;
+	opacity: 0.8;
+}
+
+.card {
+	padding: 55px;
+	text-align: center;
+}
+#footer {
+	background: black;
+	color: white;
+	font-size: 20px;
+	padding: 20px;
+}
