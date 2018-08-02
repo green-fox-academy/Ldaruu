@@ -10,7 +10,7 @@ public class Cuboid {
     int d = 4;
   double surfaceArea = 2 * ((h * w) + (h * d) + (d * w));
   double volume = h * w * d;
-  System.out.println("The cuboid surface area is: " + surfaceArea);
-    System.out.println("The cuboid volume is: " + volume);
+  System.out.println("Surface Area: " + surfaceArea);
+  System.out.println("Volume: " + volume);
 }
   }
