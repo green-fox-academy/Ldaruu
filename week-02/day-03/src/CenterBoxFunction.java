@@ -19,12 +19,13 @@ public class CenterBoxFunction {
 
     }
   }
-    public static void squareMid(Graphics graphics, int size){
 
-      graphics.setColor(new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() *255)));
-      graphics.drawRect((WIDTH / 2) - (size/2), (HEIGHT /2) - (size / 2),size,size);
+  public static void squareMid(Graphics graphics, int size) {
 
-    }
+    graphics.setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255)));
+    graphics.drawRect((WIDTH / 2) - (size / 2), (HEIGHT / 2) - (size / 2), size, size);
+
+  }
 
 
   //    Don't touch the code below

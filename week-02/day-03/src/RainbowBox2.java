@@ -1,9 +1,10 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import static javax.swing.JFrame.isDefaultLookAndFeelDecorated;
 
 public class RainbowBox2 {
   public static void mainDraw(Graphics graphics) {
@@ -12,20 +13,26 @@ public class RainbowBox2 {
     // and draws a square of that size and color to the center of the canvas.
     // Create a loop that fills the canvas with rainbow colored squares.
     int size = WIDTH;
-    boxDrawer(size, graphics, color);
+    String boxColor;
+
+    ArrayList<String> colors = new ArrayList<>(Arrays.asList("#4d79ff","#248f24","#ff00bf","#0055ff","#b30000","#ff33cc","#8000ff","#ffff4d"));
     do {
-      size -= (int) (Math.random() * (size) + 1);
-      Color color = new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255));
+      int i =  (int) (Math.random() * colors.size());
+      boxColor = colors.get(i);
 
-
+      boxDrawer(graphics,size,boxColor);
+      size -= 2;
     } while (size > 0);
   }
 
-  public static void boxDrawer(Graphics graphics, int size) {
+  public static void boxDrawer(Graphics graphics, int size, String boxColor) {
+
+    Color current = (Color.decode(boxColor));
+    graphics.setColor(current);
     int x = (WIDTH / 2) - (size / 2);
     int y = (HEIGHT / 2) - (size / 2);
     graphics.fillRect(x, y, size, size);
-    graphics.setColor(color);
+
 
 
   }
