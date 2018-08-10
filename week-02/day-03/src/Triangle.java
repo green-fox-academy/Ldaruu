@@ -3,36 +3,14 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class Triangels {
+public class Triangle {
   public static void mainDraw(Graphics graphics) {
-    for (int x = 0; x <WIDTH; x+=20 ) {
-        graphics.drawLine(x / 2, WIDTH - x, WIDTH - x / 2, WIDTH - x);
-
-      }
-
-
-
-//      for (int k = 0; k < WIDTH; k += 11) {
-//        graphics.drawLine(WIDTH/2 -i/2, k, WIDTH-i, WIDTH );
-      }
-//    }
-
-//    triangleDrawer(graphics, x, y);
-//      }
-
-//    public static void triangleDrawer (Graphics graphics){
-//      int x[] = {WIDTH/2, WIDTH - 10, WIDTH +10};
-//      int y[] = {};
-//      int endpoint = 3;
-//      graphics.setColor(Color.BLACK);
-//      graphics.drawPolygon(x, y, endpoint);
-//
-//
-
-//
-//
-
-
+    for (int x = 0; x < WIDTH; x += 20) {
+      graphics.drawLine(x / 2, WIDTH - x, WIDTH - x / 2, WIDTH - x);
+      graphics.drawLine(WIDTH / 2 - x / 2, x, WIDTH - x, WIDTH);
+      graphics.drawLine(x, WIDTH, WIDTH / 2 + x / 2, x);
+    }
+  }
 
   // Don't touch the code below
   static int WIDTH = 400;
