@@ -13,17 +13,11 @@ public class FunctionToCenter {
     for (int x = 0; x <= HEIGHT; x += 20) {
       for (int y = 0; y <= WIDTH; y += 20) {
         if (x == 0 || y == 0 || x == HEIGHT || y == WIDTH) {
-
-//      int xCordinate = (int) (Math.random() * WIDTH);  // first u multiple the random num which is between 0 and 0.9
-//      int yCordinate = (int) (Math.random() * HEIGHT); // and after  turn it to Int
-
           lineDrawer(x, y, graphics);
         }
       }
     }
-
   }
-
   public static void lineDrawer( int x, int y, Graphics graphics) {
 
     graphics.setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255)));
@@ -32,8 +26,8 @@ public class FunctionToCenter {
   }
 
   // Don't touch the code below
-  static int WIDTH = 320;
-  static int HEIGHT = 320;
+  static int WIDTH = 400;
+  static int HEIGHT = 400;
 
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
