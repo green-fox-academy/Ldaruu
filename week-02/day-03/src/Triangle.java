@@ -6,7 +6,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Triangle {
   public static void mainDraw(Graphics graphics) {
     for (int x = 0; x < WIDTH; x += 20) {
-      graphics.drawLine(x / 2, WIDTH - x, WIDTH - x / 2, WIDTH - x);
+      graphics.drawLine(x / 2, HEIGHT - x, WIDTH - x / 2, WIDTH - x);
       graphics.drawLine(WIDTH / 2 - x / 2, x, WIDTH - x, WIDTH);
       graphics.drawLine(x, WIDTH, WIDTH / 2 + x / 2, x);
     }
