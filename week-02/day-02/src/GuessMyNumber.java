@@ -9,7 +9,7 @@ public class GuessMyNumber {
     int maxnum = 100;
     int thenum = minnumb + (int) (Math.random() * ((maxnum - minnumb) + 1));
 
-    while (userguess != thenum) {
+    while (userguess != thenum && numtries !=0) {
       System.out.println("I've the number between " + minnumb + " and " + maxnum + " . You have 5 lives.");
       userguess = input.nextInt();
       numtries--;
@@ -21,6 +21,9 @@ public class GuessMyNumber {
         System.out.println("Too high, you have " + numtries + " lives left!");
       } else if (userguess == thenum) {
         System.out.println("Congratulations. You won!");
+      }
+       if (numtries ==0 ) {
+        System.out.println("Looser!");
       }
 
     }
