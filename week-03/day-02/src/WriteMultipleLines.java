@@ -1,13 +1,31 @@
-import java.util.AbstractList;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WriteMultipleLines {
-  public static void main(String[]args){
-    List<String> list = new ArrayList();
-    list.add("Second Line in the File");
-    list.a
+  public static void main(String[] args) {
+    String word = "Second Line in the File";
+    int numb = 10;
     String myFile = "my_file.txt";
+
+    write(myFile, word, numb);
+  }
+
+  public static void write(String myFile, String word, int numb) {
+    List<String> lines = new ArrayList();
+    for (int i = 0; i < numb; i++) {
+      lines.add(word);
+    }
+    try {
+      Path path = Paths.get(myFile);
+      Files.write(path, lines);
+    } catch (IOException e) {
+
+    }
+
   }
   // Create a function that takes 3 parameters: a path, a word and a number,
 // than it should write to a file.
