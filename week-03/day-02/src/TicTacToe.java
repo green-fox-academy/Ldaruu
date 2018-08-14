@@ -29,19 +29,21 @@ public class TicTacToe {
             return "X";
             if (row.equals("OOO") || column.equals("OOO")) {
               return "O";
+              diagonal
+                  diagonal1
             }
           }
         }
       }
 
 
-      System.out.println(ticTacResult("win-o.txt"))
+      System.out.println(ticTacResult("win-o.txt"));
       // should print O
 
-      System.out.println(ticTacResult("win-x.txt"))
+      System.out.println(ticTacResult("win-x.txt"));
       // should print X
 
-      System.out.println(ticTacResult("draw.txt"))
+      System.out.println(ticTacResult("draw.txt"));
       // should print draw
     }
   }
