@@ -12,12 +12,13 @@ public class ElementFinder {
   }
 
   public static String containsSeven(ArrayList arrayList) {
+    String answear;
     if (arrayList.contains(7)) {
-
-      return "Hooray";
+      answear="Hurraay";
     } else {
-      return "Nooooo";
+      answear="Nooo!";
     }
+    return answear;
   }
 
 
