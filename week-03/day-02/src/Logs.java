@@ -14,6 +14,7 @@ public class Logs {
 // Write a function that returns the GET / POST request ratio.
     Path path = Paths.get("log.txt");
     System.out.println(unigue(path));
+    System.out.println(ratio(path));
   }
 
   public static ArrayList<String> unigue(Path path) {
@@ -30,5 +31,24 @@ public class Logs {
     }
 //    System.out.println(uniquelist.size());
     return uniquelist;
+  }
+
+  public static double ratio(Path path) {
+    ArrayList<String> getlist = new ArrayList<>();
+    ArrayList<String> postlist = new ArrayList<>();
+    try {
+      List<String> inputList = Files.readAllLines(path);
+      for (int i = 0; i < inputList.size(); i++) {
+        String IPlist = inputList.get(i).split("   ")[2];
+        if (inputList.contains("GET/")) {
+          getlist.add(IPlist);
+        }
+        else if (inputList.contains("POST ?")) {
+          postlist.add(IPlist);
+        }
+      }
+    }catch (IOException c ){
+    }
+    return getlist,postlist;
   }
 }
