@@ -29,7 +29,7 @@ public class Logs {
       }
     } catch (IOException c) {
     }
-//    System.out.println(uniquelist.size());
+    System.out.println(uniquelist.size());
     return uniquelist;
   }
 
@@ -40,15 +40,16 @@ public class Logs {
       List<String> inputList = Files.readAllLines(path);
       for (int i = 0; i < inputList.size(); i++) {
         String IPlist = inputList.get(i).split("   ")[2];
-        if (inputList.contains("GET/")) {
+
+        if (IPlist.equals("GET /")) {
           getlist.add(IPlist);
-        }
-        else if (inputList.contains("POST ?")) {
+        } else if (IPlist.equals("POST /")) {
           postlist.add(IPlist);
         }
       }
     }catch (IOException c ){
     }
-    return getlist,postlist;
+    double getPost = (double)getlist.size() /(double)postlist.size();
+    return getPost;
   }
 }
