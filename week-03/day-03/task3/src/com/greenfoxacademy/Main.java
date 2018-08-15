@@ -9,7 +9,7 @@ public class Main {
     // You have the list of Dominoes
     // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
     // eg: [2, 4], [4, 3], [3, 5] ...
-    dominoes =orderDominoes(dominoes);
+    dominoes = orderDominoes(dominoes);
 
     System.out.println(dominoes);
 
@@ -30,9 +30,11 @@ public class Main {
     List<Dominoes> orderedDominoes = new ArrayList<>();
     orderedDominoes.add(dominoesToOrder.get(0));
     int valueToLookFor = dominoesToOrder.get(0).getValues()[1];
+
     for (int i = 1; i < dominoesToOrder.size(); i++) {
       for (int j = 0; j < dominoesToOrder.size(); j++) {
         int currentValue = dominoesToOrder.get(j).getValues()[0];
+
         if (valueToLookFor == currentValue) {
           orderedDominoes.add(dominoesToOrder.get(j));
           valueToLookFor = dominoesToOrder.get(j).getValues()[1];
