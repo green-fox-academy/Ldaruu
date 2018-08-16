@@ -2,7 +2,7 @@ package com.greenfoxacademy;
 
 public class Bunny1 {
   public static void main(String[] args) {
-    System.out.println(countEars(2));
+    System.out.println(countEars(30));
 
   }
 
