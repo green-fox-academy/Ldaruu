@@ -1,18 +1,21 @@
 public class Car {
   private int capacity;
-  private  int gasAmount;
+  private int gasAmount;
 
-  Car(){
+  Car() {
     capacity = 100;
     gasAmount = 0;
   }
-  public int getCapacity(){
+
+  public int getCapacity() {
     return capacity;
   }
-  public int getGasAmount(){
+
+  public int getGasAmount() {
     return gasAmount;
   }
-  public void setGasAmount(int gasAmount){
+
+  public void setGasAmount(int gasAmount) {
     this.gasAmount = gasAmount;
   }
 

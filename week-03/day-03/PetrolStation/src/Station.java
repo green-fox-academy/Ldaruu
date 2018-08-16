@@ -1,9 +1,9 @@
 public class Station {
 
- private int gasAmount;
+  private int gasAmount;
 
- Station (int gasAmount){
-   this.gasAmount =gasAmount;
+  Station(int gasAmount) {
+    this.gasAmount = gasAmount;
   }
 
   public void refill(Car car) {
