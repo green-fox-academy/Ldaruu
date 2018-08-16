@@ -9,11 +9,12 @@ public class NumberAdder {
     int numb = input.nextInt();
     System.out.println(addNum(numb));
   }
-  public static int addNum(int n){
-    if (n ==0){
+
+  public static int addNum(int n) {
+    if (n == 0) {
       return n;
-    }else {
-      return addNum(n-1)+n;
+    } else {
+      return addNum(n - 1) + n;
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.greenfoxacademy;
 
-public class Bunny2 {
+public class  Bunny2 {
   public static void main(String[] args) {
     System.out.println(countEars(3));
 
