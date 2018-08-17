@@ -9,8 +9,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class FractalRect {
   public static void mainDraw(Graphics graphics) {
-    int size = HEIGHT/3;
-    int startingPositionX = WIDTH/3;
+    int size = 600 / 3;
+    int startingPositionX = 600 / 3;
     int startingPositionY = 0;
 
     drawFractal(startingPositionX, startingPositionY, size, graphics);
@@ -27,10 +27,10 @@ public class FractalRect {
   public static void drawFractal(int x, int y, int size, Graphics graphics) {
     drawCircle(x, y, size, graphics);
     if (size > 10) {
-//      drawFractal(x + size / 3, y + size / 2, size / 2, graphics);
-//      drawFractal(x + size * 3 /4, y + size / 4, size /2, graphics);
-//      drawFractal(x + size / 4, y - size / 4, size / 2, graphics);
-//      drawFractal(x + size / 4, y + size * 3 / 4, size / 2,graphics);
+      drawFractal(x + size / 3, y, size / 3, graphics);
+      drawFractal(x, y + size / 3, size / 3, graphics);
+//      drawFractal(x + size / 3, y + size*2 / 3, size / 3, graphics);
+//      drawFractal(x + size*2 / 3, y + size * 3, size / 3,graphics);
     }
 
 
