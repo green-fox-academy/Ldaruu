@@ -13,6 +13,9 @@ public class Main {
         box.addSharpie(orange);
         box.addSharpie(blue);
         box.printSharies();
+        blue.use();
+        blue.use();
+        box.printSharies();
 
 	// write your code here
     }
