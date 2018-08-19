@@ -6,7 +6,7 @@ public class Pirate {
   boolean isDead;
   boolean hasParrot;
 
-  public Pirate(String name) {
+  public Pirate() {
     drunkness = 0;
     health = 100;
     passedOut = false;
@@ -26,7 +26,7 @@ public class Pirate {
 
   public void howIsItGoingMate() {
     if (isDead) {
-      System.out.println(name + " he does not need any more drink he is dead!");
+      System.out.println(name + " Dead people don't drink!");
     } else if (passedOut) {
       System.out.println(name + "pirate is passed out!");
       hasParrot = false;
