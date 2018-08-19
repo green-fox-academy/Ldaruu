@@ -1,14 +1,13 @@
 public class Battle {
   public static void main(String[] args) {
-    Ship rozi =new Ship();
-    Ship fortune = new Ship();
+    Ship first =new Ship();
+    Ship second =new Ship();
+    first.fillShip();
+    second.fillShip();
+    first.captainStatus();
+    first.battle(second);
+    second.crewStatus();
 
-   fortune.fillShip();
-   rozi.fillShip();
-   rozi.battle(fortune);
-   rozi.crewStatus();
-    System.out.println();
-   fortune.crewStatus();
 
 
   }

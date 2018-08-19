@@ -1,70 +1,114 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Ship {
-  ArrayList<Pirate> blackPearl = new ArrayList<>();
-  Pirate captain = new Pirate();
-  Pirate seaman = new Pirate();
+  ArrayList<Pirate> shipCrew = new ArrayList<>();
+  int captainIndex = 0;
 
-  public Ship() {
-    captain.health = 100;
-
-  }
-
-  public ArrayList fillShip() {
+  public void fillShip() {
     Random random = new Random();
     int crew = random.nextInt(50);
-    blackPearl.add(0, captain);
-    for (int i = 1; i < crew; i++) {
-      blackPearl.add(i, seaman);
+    for (int i = 0; i < crew; i++) {
+      shipCrew.add(new Pirate());
     }
-    return blackPearl;
+    setCaptain();
+  }
+
+  private void setCaptain() {
+    int indexofCaptain = (int) (Math.random() * shipCrew.size());
+    shipCrew.get(indexofCaptain).setAsCaptain();
+    captainIndex = indexofCaptain;
   }
 
   public int aliveCrew() {
     int alive = 0;
-    for (int i = 0; i < blackPearl.size(); i++) {
-      if (blackPearl.get(i).health > 0) {
+    for (int i = 0; i < shipCrew.size(); i++) {
+      if (shipCrew.get(i).health > 0) {
         alive++;
       }
     }
     return alive;
   }
 
-  public int captainDrinking() {
-    int rum = 100 - blackPearl.get(0).drunkness;
-    int hedrank =100-rum;
+  public int captainStatus() {
+    int rum = 100 - shipCrew.get(0).drunkness;
+    int hedrank = 100 - rum;
     return hedrank;
+  }
+
+  private int getCaptainIndex() {
+    return captainIndex;
+  }
+
+  private List<Pirate> getShipcrew() {
+    return shipCrew;
   }
 
   public void crewStatus() {
     System.out.println("We have: " + aliveCrew() + " pirates alive!");
-    System.out.println("The captain has drank " + captainDrinking() + "rums.");
+    System.out.println("The captain has drank " + captainStatus() + "rums.");
   }
 
-  public boolean battle(Ship otherSip) {
-    boolean result;
-    Random luck = new Random();
-    int blackPLoose = luck.nextInt(blackPearl.size() - 1);
-    int theyLoose = luck.nextInt(otherSip.blackPearl.size() - 1);
-    int rum = luck.nextInt(10);
-    if (aliveCrew() - captainDrinking() > otherSip.aliveCrew() - otherSip.captainDrinking()) {
-      for (int i = 0; i < otherSip.blackPearl.size(); i++) {
-        otherSip.blackPearl.remove(i);
+  public boolean battle(Ship otherShip) {
+    int[] shipScore = calculateScore(this, otherShip);
+    if (shipScore[0] > shipScore[1]) {
+      this.party();
+      otherShip.addDeaths();
+      return true;
+    }else {
+      this.addDeaths();
+      otherShip.party();
+      return false;
+    }
+  }
+
+  private int[] calculateScore(Ship thisShip, Ship otherShip) {
+    List<Pirate> thisShipCrew = thisShip.getShipcrew();
+    List<Pirate> otherShipCrew = otherShip.getShipcrew();
+
+    int[] shipScore = new int[2];
+    shipScore[0] = aliveCrew() - thisShipCrew.get(thisShip.getCaptainIndex()).getDrunkness();
+    shipScore[1] = aliveCrew() - otherShipCrew.get(thisShip.getCaptainIndex()).getDrunkness();
+    return shipScore;
+  }
+
+  private int alivecounter(List<Pirate> shipCew) {
+    int counter = 0;
+    for (Pirate countPirates : shipCew) {
+      if (!countPirates.isDead) {
+        counter++;
       }
-      for (int i = 0; i < rum; i++) {
-        captain.drunkness++;
-        seaman.drunkness++;
-      }
-    } else {
-      for (int i = 0; i < blackPearl.size(); i++) {
-        blackPearl.remove(i);
+    }
+    return counter;
+  }
+
+  private void addDeaths() {
+    int aliveCrew = alivecounter(shipCrew);
+    int deaths = (int) (1 + Math.random() * aliveCrew);
+    System.out.println("Deaths from the looser ship:" + deaths);
+    if (aliveCrew > 0) {
+      for (int i = 0; i < shipCrew.size(); i++) {
+        if (!shipCrew.get(i).isDead()) {
+          shipCrew.get(i).die();
+          deaths--;
         }
-        for (int i = 0; i < blackPearl.size(); i++) {
-          otherSip.captain.drunkness++;
-          otherSip.seaman.drunkness++;
+        if (deaths <= 0) {
+          break;
         }
       }
-    return (aliveCrew() - captainDrinking() < otherSip.aliveCrew() - otherSip.captainDrinking());
+
+    }
+  }
+  public void party(){
+    Random random = new Random();
+    int rumsToDrink = random.nextInt(20);
+    System.out.println("The winner ship gets:"+ rumsToDrink +"bottles of Rum!");
+    while (rumsToDrink>0){
+      int piratesIndex = (int)((Math.random()* shipCrew.size()));
+      shipCrew.get(piratesIndex).getDrunkness();
+      rumsToDrink--;
+    }
+
   }
 }

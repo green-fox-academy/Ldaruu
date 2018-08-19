@@ -5,6 +5,7 @@ public class Pirate {
   boolean passedOut;
   boolean isDead;
   boolean hasParrot;
+  boolean isCaptain;
 
   public Pirate() {
     drunkness = 0;
@@ -13,6 +14,7 @@ public class Pirate {
     isDead = false;
     this.name = name;
     hasParrot = true;
+    isCaptain = false;
   }
 
   public void drinkSomeRum() {
@@ -72,6 +74,9 @@ public class Pirate {
 
   public boolean passedOut() {
     return passedOut;
+  }
+  public void setAsCaptain(){
+    isCaptain =true;
   }
 
   public int getDrunkness() {
