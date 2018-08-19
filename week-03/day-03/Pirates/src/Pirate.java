@@ -1,19 +1,18 @@
-import java.util.Random;
-
 public class Pirate {
-
   int drunkness;
   String name;
   int health;
   boolean passedOut;
   boolean isDead;
+  boolean hasParrot;
 
   public Pirate(String name) {
     drunkness = 0;
     health = 100;
-    this.passedOut = false;
-    this.isDead = false;
+    passedOut = false;
+    isDead = false;
     this.name = name;
+    hasParrot = true;
   }
 
   public void drinkSomeRum() {
@@ -22,6 +21,7 @@ public class Pirate {
 
   public void die() {
     isDead = true;
+    hasParrot = false;
   }
 
   public void howIsItGoingMate() {
@@ -29,46 +29,51 @@ public class Pirate {
       System.out.println(name + " he does not need any more drink he is dead!");
     } else if (passedOut) {
       System.out.println(name + "pirate is passed out!");
+      hasParrot = false;
     } else if (drunkness <= 4) {
-      System.out.println("Pour me anudder!");
+      System.out.println("Pour me anudder!" + hasParrot);
     } else {
       System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
       System.out.println(name + " is passed out");
       passedOut = true;
+      hasParrot = false;
     }
   }
 
-  public void brawl(Pirate pirateBrawl) {
+  public void brawl(Pirate pirateCall, Pirate pirateBrawl) {
     int chance = (int) (1 + Math.random() * 3);
-    if (isDead || pirateBrawl.isDead) {
+    if (pirateCall.isDead || pirateBrawl.isDead) {
       System.out.println("No fight one of them is dead already!");
     }
-    if (passedOut || pirateBrawl.passedOut) {
+    if (pirateCall.passedOut || pirateBrawl.passedOut) {
       System.out.println("No fight one of them is passed out!");
     } else {
-      conditions(chance, this, pirateBrawl);
+      conditions(chance, pirateCall, pirateBrawl);
     }
   }
 
-  public void conditions(int chnce, Pirate pirate1, Pirate pirate2) {
-    if (chnce == 1) {
+  public void conditions(int chance, Pirate pirateCall, Pirate pirateBrawl) {
+    if (chance == 1) {
       System.out.println("Pirate1 is the winner");
-      pirate2.die();
+      pirateBrawl.die();
     }
-    if (chnce == 2) {
+    if (chance == 2) {
       System.out.println("Pirate2 is the winner!");
-      pirate1.die();
-    } else {
-      System.out.println("They passed out!");
-      pirate1.passedOut = true;
-      pirate2.passedOut = true;
+      pirateCall.die();
     }
-
+    if (chance == 3) {
+      System.out.println("They passed out!");
+      pirateCall.passedOut = true;
+      pirateBrawl.passedOut = true;
+      hasParrot = false;
+    }
   }
+
 
   public boolean passedOut() {
     return passedOut;
   }
+
   public int getDrunkness() {
     return drunkness;
   }
@@ -76,4 +81,7 @@ public class Pirate {
   public boolean isDead() {
     return isDead;
   }
+  public void getStatus(){
+    System.out.println("Pirate name: "+name+",\t Rum level:"+drunkness+ ",\tPassed out: "+passedOut+",\tHas Parrot: "+hasParrot+",\tIs he dead: "+isDead );
+    }
 }
