@@ -1,8 +1,13 @@
 package com.greenfoxacademy;
 
+import java.util.Scanner;
+
 public class  Bunny2 {
   public static void main(String[] args) {
-    System.out.println(countEars(3));
+    Scanner input = new Scanner(System.in);
+    System.out.println("Please tell me how many Bunnies do you have?");
+    int bunny = input.nextInt();
+    System.out.println(countEars(bunny));
 
   }
 
