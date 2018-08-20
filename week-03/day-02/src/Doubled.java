@@ -24,7 +24,7 @@ public class Doubled {
         newText.add(oneLine);
         System.out.println(oneLine);
       }
-      Files.write(decryp,newText);
+      Files.write(decryp, newText);
     } catch (IOException e) {
     }
   }
