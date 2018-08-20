@@ -21,20 +21,14 @@ public class Ship {
     captainIndex = indexofCaptain;
   }
 
-  public int aliveCrew() {
+  private int aliveCrew() {
     int alive = 0;
-    for (int i = 0; i < shipCrew.size(); i++) {
-      if (shipCrew.get(i).health > 0) {
+    for (Pirate currentPirate : shipCrew) {
+      if (!currentPirate.isDead()) {
         alive++;
       }
     }
     return alive;
-  }
-
-  public int captainStatus() {
-    int rum = 100 - shipCrew.get(0).drunkness;
-    int hedrank = 100 - rum;
-    return hedrank;
   }
 
   private int getCaptainIndex() {
@@ -45,9 +39,33 @@ public class Ship {
     return shipCrew;
   }
 
-  public void crewStatus() {
-    System.out.println("We have: " + aliveCrew() + " pirates alive!");
-    System.out.println("The captain has drank " + captainStatus() + "rums.");
+  private List<Object> captainStatus(int captainIndex, List<Pirate> shipCrew) {
+    Pirate captain = shipCrew.get(captainIndex);
+
+    List<Object> statuses = new ArrayList<>();
+    statuses.add(captain.getDrunkness());
+    statuses.add(captain.isDeadText());
+    statuses.add(captain.passedOutText());
+
+    return statuses;
+  }
+
+  public String crewStatus() {
+    List<Object> status = captainStatus(captainIndex, shipCrew);
+    int counter = alivecounter(shipCrew);
+
+    return "Ship:\n" + "Captain's Rum level" + status.get(0) + "\n" + "Captain state: " + status.get(1) + "\t" + status.get(2) + "\n" +
+        "Number of alive crew member: " + counter;
+  }
+
+  private int alivecounter(List<Pirate> shipCew) {
+    int counter = 0;
+    for (Pirate countPirates : shipCew) {
+      if (countPirates.isDead()) {
+        counter++;
+      }
+    }
+    return counter;
   }
 
   public boolean battle(Ship otherShip) {
@@ -56,7 +74,7 @@ public class Ship {
       this.party();
       otherShip.addDeaths();
       return true;
-    }else {
+    } else {
       this.addDeaths();
       otherShip.party();
       return false;
@@ -71,16 +89,6 @@ public class Ship {
     shipScore[0] = aliveCrew() - thisShipCrew.get(thisShip.getCaptainIndex()).getDrunkness();
     shipScore[1] = aliveCrew() - otherShipCrew.get(thisShip.getCaptainIndex()).getDrunkness();
     return shipScore;
-  }
-
-  private int alivecounter(List<Pirate> shipCew) {
-    int counter = 0;
-    for (Pirate countPirates : shipCew) {
-      if (!countPirates.isDead) {
-        counter++;
-      }
-    }
-    return counter;
   }
 
   private void addDeaths() {
@@ -100,13 +108,15 @@ public class Ship {
 
     }
   }
-  public void party(){
+
+  public void party() {
     Random random = new Random();
     int rumsToDrink = random.nextInt(20);
-    System.out.println("The winner ship gets:"+ rumsToDrink +"bottles of Rum!");
-    while (rumsToDrink>0){
-      int piratesIndex = (int)((Math.random()* shipCrew.size()));
-      shipCrew.get(piratesIndex).getDrunkness();
+    System.out.println("The winner ship gets:" + rumsToDrink + "bottles of Rum!");
+    while (rumsToDrink > 0) {
+      int piratesIndex = (int) ((Math.random() * shipCrew.size()));
+      shipCrew.get(piratesIndex).drinkSomeRum();
+      shipCrew.get(captainIndex).drinkSomeRum();
       rumsToDrink--;
     }
 
