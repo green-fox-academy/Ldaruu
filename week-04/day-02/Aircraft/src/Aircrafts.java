@@ -36,6 +36,9 @@ public class Aircrafts {
   public void getStatus() {
     System.out.println("Type: " + type + " Ammo: " + ammo + " Base Damage: " + baseDamage + " All Damage: " + damage);
   }
+  int allDamage(){
+    return baseDamage*ammo;
+  }
 
   public boolean isPriority() {
     return this.getType() == "F35";
