@@ -8,7 +8,7 @@ public class Plant {
     waterlevel = 0;
   }
 
-  public boolean isWaterAble() {
+  public boolean isWaterAble() {       // Checking if the plant is water able
     if (this instanceof Tree) {
       return (this.getWaterlevel() < 10);
     } else {

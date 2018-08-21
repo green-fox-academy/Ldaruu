@@ -10,18 +10,18 @@ public class Garden {
 
   }
 
-  public void addPlant(Plant plant) {
+  public void addPlant(Plant plant) {        // Adding plants to my garden
     plantsInGarden.add(plant);
   }
 
-  public void water(double waterAmount) {
+  public void water(double waterAmount) {                     // Watering the plants in the garden with a double amount
     System.out.println("Watering with " + waterAmount);
     double divider = countWaterable(this);
     double waterPerPlants = waterAmount / divider;
     this.waterPlants(waterPerPlants);
   }
 
-  public void waterPlants(double waterbyPlants) {
+  public void waterPlants(double waterbyPlants) {            //Checking if the current pant is thirsty and watering it wit a double amount
     for (Plant currentPlant : plantsInGarden) {
       if (currentPlant.isWaterAble()) {
         currentPlant.waterPlant(waterbyPlants);
@@ -29,7 +29,7 @@ public class Garden {
     }
   }
 
-  public double countWaterable(Garden waterbyPlants) {
+  public double countWaterable(Garden waterbyPlants) {      // Checking the garden which plants are thirsty
     int counter = 0;
 
     for (Plant currentPlant : this.plantsInGarden) {
@@ -40,7 +40,7 @@ public class Garden {
     return counter;
   }
 
-  public void getInfo() {
+  public void getInfo() {                               // Getting info of the Garden plants
     String needsWater;
     for (Plant currentPlant : plantsInGarden) {
       if (currentPlant.isWaterAble()) {
