@@ -15,7 +15,8 @@ public class Carrier {
   public void addAircraft(Aircrafts aircrafts) {
     aircraftsList.add(aircrafts);
   }
-//  Re/Filling up the Aircraft ammo
+
+  //  Re/Filling up the Aircraft ammo
   public void fill() {
     if (ammoStorage == 0) {
       System.out.println("We are out of Ammo!");
@@ -36,7 +37,8 @@ public class Carrier {
       }
     }
   }
-//   Calculating the full Damage of the Carrier
+
+  //   Calculating the full Damage of the Carrier
   int fullDamage() {
     int allDamage = 0;
     for (int i = 0; i < this.aircraftsList.size(); i++) {
@@ -46,9 +48,20 @@ public class Carrier {
   }
 
   void fight(Carrier otherCarrier) {
+    if (this.fullDamage() <= otherCarrier.HP) {
+      otherCarrier.HP -= this.fullDamage();
+    } else {
+      otherCarrier.HP = 0;
+    }
+    if (otherCarrier.fullDamage() <= this.HP) {
+      this.HP -= otherCarrier.fullDamage();
+    } else {
+      this.HP = 0;
+    }
 
   }
-//  Status of the Aircraft Carrier
+
+  //  Status of the Aircraft Carrier
   void getStatus() {
     if (HP == 0) {
       System.out.println("It's dead Jimbooo it's dead :(");
