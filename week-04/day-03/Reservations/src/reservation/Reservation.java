@@ -1,9 +1,10 @@
 import reservation.Reservationy;
 
 public class Reservation implements Reservationy {
+  String reservation;
 
   public Reservation(){
-    
+
   }
 
 
