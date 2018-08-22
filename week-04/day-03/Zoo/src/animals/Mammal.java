@@ -17,6 +17,6 @@ public class Mammal extends Animal {
 
   @Override
   public String move() {
-    return null;
+    return"I can run or swim and jump.";
   }
 }

@@ -16,6 +16,6 @@ public class Reptile  extends Animal{
 
   @Override
   public String move() {
-    return "Running quickly and shacking my butty";
+    return "running quickly and shacking the tail.";
   }
 }

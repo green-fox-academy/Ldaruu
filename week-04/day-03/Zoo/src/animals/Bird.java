@@ -16,6 +16,6 @@ public class Bird extends Animal {
 
   @Override
   public String move() {
-    return "Flying high";
+    return "flying high on the sky.";
   }
 }
