@@ -1,12 +1,13 @@
 public class Aircrafts {
   private int ammo;
-  private int maxammo;
-  private int baseDamage;
-  private String type;
+  int maxammo;
+  int baseDamage;
+  String type;
   private int damage;
 
   public Aircrafts() {
     ammo = 0;
+    this.type = type;
   }
 
   public int fight() {
@@ -16,12 +17,15 @@ public class Aircrafts {
   }
 
   public int refil(int ammoAmount) {
-    int remindAmmo = maxammo - ammo;
-    if (maxammo - ammo < maxammo) {
-      ammo += remindAmmo;
+    int remindAmmo = this.maxammo - this.ammo;
+    if (remindAmmo < ammoAmount) {
+      this.ammo += remindAmmo;
       System.out.println("Refilling the flight with " + ammoAmount);
+      return ammoAmount - remindAmmo;
+    } else {
+      this.ammo += ammoAmount;
+      return 0;
     }
-    return ammoAmount - remindAmmo;
   }
 
   public String getType() {
@@ -33,11 +37,13 @@ public class Aircrafts {
       return "This is something else";
     }
   }
+
   public void getStatus() {
-    System.out.println("Type: " + type + " Ammo: " + ammo + " Base Damage: " + baseDamage + " All Damage: " + damage);
+    System.out.println("Type: " + type + " Ammo: " + ammo + " Base Damage: " + baseDamage + " All Damage: " + allDamage());
   }
-  int allDamage(){
-    return baseDamage*ammo;
+
+  int allDamage() {
+    return baseDamage * ammo;
   }
 
   public boolean isPriority() {

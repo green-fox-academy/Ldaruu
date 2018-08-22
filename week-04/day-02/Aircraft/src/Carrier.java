@@ -21,9 +21,12 @@ public class Carrier {
     if (ammoStorage == 0) {
       System.out.println("We are out of Ammo!");
     } else {
-      for (Aircrafts currentflight : aircraftsList) {
-        if (currentflight.isPriority()) {
-          this.ammoStorage = currentflight.refil(this.ammoStorage);
+      for (int i = 0; i < aircraftsList.size(); i++) {
+        if (aircraftsList.get(i).isPriority()) {
+          this.ammoStorage = this.aircraftsList.get(i).refil(this.ammoStorage);
+//      for (Aircrafts currentflight : aircraftsList) {
+//        if (currentflight.isPriority()) {
+//          this.ammoStorage = currentflight.refil(this.ammoStorage);
           if (this.ammoStorage == 0)
             break;
         }
