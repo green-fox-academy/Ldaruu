@@ -28,6 +28,7 @@ public class Main {
 
     myCarrier.fill();
     otherCarrier.fill();
+
     myCarrier.getStatus();
     otherCarrier.getStatus();
   }
