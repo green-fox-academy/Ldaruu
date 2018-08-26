@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ReversedLines {
   public static void main(String[] args) {
-    Path path = Paths.get("reserved-lines.txt");
+    Path path = Paths.get("reversed-lines.txt");
     Path path1 = Paths.get("reversed.txt");
     List<String> fixed = new ArrayList<>();
     try {
