@@ -16,7 +16,7 @@ public class Main {
 
         // Which pokemon should Ash use?
 
-        System.out.print("I choose you, "+ pokemonOfAsh.get(i).name);
+        System.out.print("I choose you, "+ pokemonOfAsh.get(i).name+ " you are my "+ pokemonOfAsh.get(i).type+" Pokemon!");
       }
     }
   }
