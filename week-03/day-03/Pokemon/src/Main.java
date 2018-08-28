@@ -10,6 +10,7 @@ public class Main {
 
     // Ash has a few pokemon.
     // A wild pokemon appeared!
+//    Pokemon mypokemon = new Pokemon("Belus","fire","water");
     Pokemon wildPokemon = new Pokemon("Oddish", "leaf", "water");
     for (int i = 0; i < pokemonOfAsh.size(); i++) {
       if (pokemonOfAsh.get(i).isEffectiveAgainst(wildPokemon)) {
