@@ -16,12 +16,12 @@ public class Hero extends BaseHero implements Punchable {
 
   @Override
   public void punch(Punchable other) {
-//    if (motivation >= 1) {
-//      double damage = motivation / 1.5;
-//      bePunched(damage);
-//    } else {
-//      System.out.println("Im not motivated!");
-//    }
+    if (motivation >= 1) {
+      double damage = motivation / 1.5;
+      bePunched(damage);
+    } else {
+      System.out.println("Im not motivated!");
+    }
 
   }
 

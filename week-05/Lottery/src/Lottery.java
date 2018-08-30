@@ -55,10 +55,10 @@ public class Lottery {
     while (bestFiveNum.size() < 5) {
       int temp = 0;
       String key = "";
-      for (String num : countNumbs.keySet()) {
-        if (countNumbs.get(num) > temp) {
-          key = num;
-          temp = countNumbs.get(num);
+      for (String numkey : countNumbs.keySet()) {
+        if (countNumbs.get(numkey) > temp) {
+          key = numkey;
+          temp = countNumbs.get(numkey);
         }
       }
       bestFiveNum.add(key);
