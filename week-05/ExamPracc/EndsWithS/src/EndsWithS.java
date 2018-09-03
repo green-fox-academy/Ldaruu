@@ -1,4 +1,3 @@
-import java.lang.reflect.Parameter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -58,7 +57,7 @@ public class EndsWithS {
     for (String line : allLines) {
       Matcher matcher = parameter.matcher(line);
       while (matcher.find()) {
-        wordswithS.add(matcher.group());   
+        wordswithS.add(matcher.group());
       }
     }
     return wordswithS;
