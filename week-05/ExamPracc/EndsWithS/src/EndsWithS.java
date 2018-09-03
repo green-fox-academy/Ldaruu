@@ -1,3 +1,4 @@
+import java.lang.reflect.Parameter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,17 +20,18 @@ public class EndsWithS {
      */
     String filename = "doc/myfile.txt";
     System.out.println(endsWithS(filename));
+    System.out.println(allEndsWithS(filename));
   }
 
   public static List<String> readAllLines(String filename) {
-    List<String> alllines = new ArrayList<>();
+    List<String> allLines = new ArrayList<>();
     try {
       Path path = Paths.get(filename);
-      alllines = Files.readAllLines(path);
+      allLines = Files.readAllLines(path);
     } catch (Exception e) {
       System.out.println("Uups something went wrong while reading the file" + e);
     }
-    return alllines;
+    return allLines;
   }
 
   public static int endsWithS(String filename) {
@@ -37,7 +39,7 @@ public class EndsWithS {
     Pattern pattern = Pattern.compile("\\b[A-Za-z]*s\\b"); // The \b matches the beginning and end of a word i.e. space,
     // tab or newline, or the beginning or end of a string. The [A-Za-z] will match any letter, and the * means that 0+ get matched.
     //Finally there is the s.
-    
+
     int sum = 0;
     for (String line : allLines) {
       Matcher matcher = pattern.matcher(line);
@@ -46,5 +48,19 @@ public class EndsWithS {
       }
     }
     return sum;
+  }
+
+  public static List<String> allEndsWithS(String filename) {
+    List<String> allLines = readAllLines(filename);
+    List<String> wordswithS = new ArrayList<>();
+    Pattern parameter = Pattern.compile("\\b[A-Za-z]*s\\b");
+
+    for (String line : allLines) {
+      Matcher matcher = parameter.matcher(line);
+      while (matcher.find()) {
+        wordswithS.add(matcher.group());   
+      }
+    }
+    return wordswithS;
   }
 }
