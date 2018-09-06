@@ -11,4 +11,17 @@ public class Fox {
     this.type = type;
     this.color = color;
   }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public String getColor() {
+    return color;
+
+  }
 }
