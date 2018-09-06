@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Person extends Shelter {
   private String name;
-  public List<Animal> myanimals;
+  private List<Animal> myanimals;
 
   public Person(String name) {
     this.name = name;
@@ -11,11 +11,15 @@ public class Person extends Shelter {
   }
 
   public void adoptAnimal(Animal animal) {
-    shelter.remove(animal);
-    myanimals.add(animal);
-    animal.setOwner(this.name);
+    if (!animal.getOwner().equals("Shelter")) {
+      System.out.println("The animal has owner already!");
+    } else {
+      shelter.remove(animal);
+      myanimals.add(animal);
+      animal.setOwner(this.name);
+    }
   }
-  
+
   public String getName() {
     return name;
   }

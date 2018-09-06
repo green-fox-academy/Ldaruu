@@ -11,12 +11,15 @@ public class Main {
     home.acceptAnimal(dog3);
     home.acceptAnimal(dog4);
     home.acceptAnimal(dog5);
-    home.getShelter();
+//    home.getShelter();
 
-    Person tom= new Person("Tom");
+    Person tom = new Person("Tom");
+    Person petra = new Person("Petra");
     tom.adoptAnimal(dog1);
+    petra.adoptAnimal(dog1);
     tom.getMyAnimals();
-
-
+    petra.getMyAnimals();
+    System.out.println(dog1.getOwner());
+    petra.getMyAnimals();
   }
 }
