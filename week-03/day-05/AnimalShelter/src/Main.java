@@ -14,7 +14,8 @@ public class Main {
     home.getShelter();
 
     Person tom= new Person("Tom");
-    tom.adoptAn(dog1);
+    tom.adoptAnimal(dog1);
+    tom.getMyAnimals();
 
 
   }

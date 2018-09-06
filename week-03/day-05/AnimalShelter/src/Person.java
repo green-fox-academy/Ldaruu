@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Person {
+public class Person extends Shelter {
   private String name;
   public List<Animal> myanimals;
 
@@ -10,15 +10,19 @@ public class Person {
     myanimals = new ArrayList<>();
   }
 
-  public void adoptAn(String name) {
-    myanimals.add(name);
+  public void adoptAnimal(Animal animal) {
+    shelter.remove(animal);
+    myanimals.add(animal);
+    animal.setOwner(this.name);
   }
-
+  
   public String getName() {
     return name;
   }
 
-  public List<Animal> getMyanimals() {
-    return myanimals;
+  //
+  public void getMyAnimals() {
+    System.out.println(myanimals.toString());
+
   }
 }

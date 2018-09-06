@@ -11,10 +11,6 @@ public class Shelter {
     shelter.add(animal);
   }
 
-  public void adoptAnimal(Animal animal) {
-    shelter.remove(animal);
-  }
-
   public  void  getShelter() {
     System.out.println(shelter.toString());
   }
