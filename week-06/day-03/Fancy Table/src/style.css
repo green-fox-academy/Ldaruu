@@ -1,20 +1,17 @@
-table {
+table{
     padding: 0px;
     border: 1px solid rgb(190, 190, 190);
     border-spacing: 0px;
     border-radius: 4px;
 
 }
-
-th, td {
+ th, td {
     padding: 20px;
-    border-right: 1px solid rgb(190, 190, 190);
-    border-bottom: 1px solid rgb(190, 190, 190);
-    border-top: 1px solid rgb(190, 190, 190);
+    border: 1px solid rgb(190, 190, 190);
 }
 
 th {
-    /*border: 1px solid rgb(190, 190, 190);*/
+    border: 1px solid rgb(190, 190, 190);
     padding: 20px 200px 20px 20px;
     background-color: #1B1E25;
     color: #ffffff;
