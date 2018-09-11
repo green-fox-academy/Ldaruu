@@ -15,11 +15,15 @@ public class Main {
 
     Person tom = new Person("Tom");
     Person petra = new Person("Petra");
-    tom.adoptAnimal(dog1);
-    petra.adoptAnimal(dog1);
-    tom.getMyAnimals();
-    petra.getMyAnimals();
-    System.out.println(dog1.getOwner());
-    petra.getMyAnimals();
+    tom.adoptAnimal(dog1,home);
+    tom.adoptAnimal(dog3,home);
+    petra.adoptAnimal(dog1,home);
+    petra.adoptAnimal(dog2,home);
+    petra.adoptAnimal(dog5,home);
+//    tom.getMyAnimals();
+//    petra.getMyAnimals();
+    home.getShelter();
+//    System.out.println(dog1.getOwner());
+//    petra.getMyAnimals();
   }
 }

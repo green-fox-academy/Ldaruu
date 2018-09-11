@@ -12,6 +12,15 @@ public class Fox {
     this.color = color;
   }
 
+  @Override
+  public String toString() {
+    return "Fox{" +
+        "name='" + name + '\'' +
+        ", type='" + type + '\'' +
+        ", color='" + color + '\'' +
+        '}';
+  }
+
   public String getName() {
     return name;
   }

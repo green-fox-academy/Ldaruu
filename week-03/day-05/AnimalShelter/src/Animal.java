@@ -9,6 +9,9 @@ public class Animal {
     this.owner = owner;
   }
 
+  public Animal() {
+  }
+
   public String getName() {
     return name;
   }

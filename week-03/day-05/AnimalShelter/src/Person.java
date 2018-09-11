@@ -10,13 +10,14 @@ public class Person extends Shelter {
     myanimals = new ArrayList<>();
   }
 
-  public void adoptAnimal(Animal animal) {
+  public void adoptAnimal(Animal animal,Shelter shelter) {
     if (!animal.getOwner().equals("Shelter")) {
       System.out.println("The animal has owner already!");
     } else {
-      shelter.remove(animal);
-      myanimals.add(animal);
+      this.myanimals.add(animal);
       animal.setOwner(this.name);
+      shelter.removeAnimal(animal);
+
     }
   }
 
@@ -26,7 +27,11 @@ public class Person extends Shelter {
 
   //
   public void getMyAnimals() {
-    System.out.println(myanimals.toString());
+    for (int i = 0; i < myanimals.size(); i++) {
+      System.out.println(myanimals.get(i));
+
+    }
+//    System.out.println(myanimals.toString());
 
   }
 }
