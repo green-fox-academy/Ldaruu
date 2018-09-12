@@ -1,0 +1,46 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="password"]{
+    display: block;
+    padding: 10px 100px 10px 0;
+}
+button[type="login"]{
+    display: block;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 200px;
+}
+div[class="log"]{
+    /*margin-left: 500px;*/
+}
+button[class="or"] {
+    font-size: 12px;
+    color: black;
+    border-radius: 50%;
+    padding: 20px 20px;
+    font-weight: lighter;
+    box-shadow: 0 1px 1px 1px;
+    background-color: #DDDDDD;
+}
+button[class="fb"]{
+    background-color: #304A93;
+    color: #FFFFFF;
+}
+button[class="tw"]{
+background-color: #3DA9F5;
+    color: #FFFFFF;
+}
+button[class="go"]{
+    background-color: #ED381D;
+    color: #FFFFFF;
+}
+div[id="or"]{
+    /*margin-left: 350px;*/
+    margin-top: 50px;
+    width: 50px;
+}
+div{
+    float: left;
+    padding: 50px;
+}
