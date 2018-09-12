@@ -1,29 +1,47 @@
 @import url("buttons.css");
 
 body {
+    padding-top: 100px;
     text-align: center;
+    background-color: #EBEBEB;
+
 }
 
 table tr th {
     padding: 50px 50px 50px 50px;
     border: 1px solid rgb(190, 190, 190);
     border-radius: 4px;
+    font-family: "SansSerif";
+    font-weight: 100;
+    background-color: #FFFFFF;
+    color: #545454;
 }
 
 h2 {
     color: #333333;
-    margin-left: -50px;
-    tab-size: 80px;
+    margin-left: -70px;
+    tab-size: 60px;
+    font-family: "SansSerif";
+    font-weight: 100;
+    color: #545454;
 }
 p{
-    margin-bottom: 0px;
-    margin-left: -175px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-left: -200px;
 }
-a{
-    font-size: 10px;
-    margin-right: -150px;
+.pw a{
+    font-size: 12px;
+    margin-right: -180px;
     margin-top: 0px;
     padding-top: 0px;
+    color: #333333;
+    text-decoration: none;
+    opacity: 0.6;
+}
+a:hover {
+    text-decoration: none;
+    color: #74AD77;
 }
 input[type ="text"],
 input[type="password"]{

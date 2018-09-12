@@ -9,14 +9,13 @@
 <table align="center">
     <tr>
         <th>
-            <h2>ACCOUNT LOGIN</h2>
-            <div>
-                <p>USERNAME</p>
-                <label for="name"></label>
-                <input type="text" id="name" name="user_name"
-                       placeholder="User Name"/>
-            </div>
-            <div>
+            <h2 >ACCOUNT LOGIN</h2>
+                <form action="https://newsletter-ws.herokuapp.com/register" method="post">
+                    <p>USERNAME</p>
+                    <label for="name"></label>
+                    <input type="text" id="name" name="user_name" required
+                           placeholder="User Name"/>
+            <div class="pw">
                 <p>PASSWORD</p>
                 <label for="password"></label>
                 <input type="password" id="password" name="user_password"
@@ -29,6 +28,7 @@
                     <button type="login">Login</button>
                 </a>
             </div>
+            </form>
         </th>
     </tr>
 </table>
