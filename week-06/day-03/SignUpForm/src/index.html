@@ -6,39 +6,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Sign up</h2>
-<div>
-    <table align="left">
-        <tr>
-            <th>
-                <form action=https://newsletter-ws.herokuapp.com/register" method="post">
-                    <label for="name"></label>
-                    <input type="text" name="name" id="name" required placeholder="Username">
-                    <label for="email"></label>
-                    <input type="email" name="email" id="email" required placeholder="E-mail">
-                    <lable for="password"></lable>
-                    <input type="password" name="password" id="password" required placeholder="Password">
-                    <labl for="passwordConfirmation"></labl>
-                    <input type="password" name="passwordConfirmation" id="passwordConfirmation" required
-                           placeholder="Retry password">
-                    <button type="submit">SIGN ME UP</button>
-                </form>
-            </th>
-        </tr>
-    </table>
-</div>
-<div id="or">
-    <button class="or" type="button" onclick="alert('Hello world!')">OR</button>
-</div>
-<div class="log">
-    <table align="right"></table>
-    <tr>
-        <th>
-            <button class="fb" type="login">Log in with facebook</button>
-            <button class="tw" type="login">Log in with Twitter</button>
-            <button class="go" type="login">Log in with Google+</button>
-        </th>
-    </tr>
+<script src="valid.js"></script>
+<div class="main">
+    <div>
+        <h2>Sign up</h2>
+        <form action=https://newsletter-ws.herokuapp.com/register" method="post">
+            <label for="name"></label>
+            <input type="text" name="name" id="name" required placeholder="Username">
+            <label for="email"></label>
+            <input type="email" name="email" id="email" required placeholder="E-mail">
+            <lable for="password"></lable>
+            <input type="password" name="password" id="password" required placeholder="Password">
+            <labl for="passwordConfirmation"></labl>
+            <input type="password" name="passwordConfirmation" id="passwordConfirmation" required
+                   placeholder="Retry password">
+            <button type="submit" onclick="return Validate()" >SIGN ME UP</button>
+        </form>
+    </div>
+    <div id="or">
+        <button class="or" type="button" onclick="alert('--> ON YOUR RIGHT!')">OR</button>
+    </div>
+    <div class="log">
+      <a href ="https://facebook.com"><button  class="fb" type="login">Log in with facebook</button></a>
+       <a href="https://twitter.com"><button class="tw" type="login">Log in with Twitter</button></a>
+       <a href="https://google.com"><button class="go" type="login">Log in with Google+</button></a>
+    </div>
 </div>
 </body>
 </html>

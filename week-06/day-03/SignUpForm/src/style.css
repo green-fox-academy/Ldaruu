@@ -1,18 +1,44 @@
+body{
+    background-color: #DDDDDD;
+}
+div[class="main"]{
+    margin: 100px   auto;
+    border: 1px solid black;
+    margin-left: 100px;
+    background-color: #FFFFFF;
+}
+h2{
+    font-size: 30px;
+    color: #353734;
+}
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="password"]{
     display: block;
     padding: 10px 100px 10px 0;
+    margin-top: 10px;
+    border: 0;
+    border-bottom: 1px solid #DDDDDD;
+    font-size: 14px;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="password"]:focus{
+    outline: none;
+    border-bottom:  2px solid #74AD77;
 }
 button[type="login"]{
     display: block;
-    margin-top: 10px;
-    padding: 10px 10px 10px 10px;
-    width: 200px;
+    margin-top: 20px;
+    padding: 15px 15px 15px 15px;
+    width: 300px;
+    font-size: 14px;
+
 }
 div[class="log"]{
-    /*margin-left: 500px;*/
+    margin-top: 100px;
 }
 button[class="or"] {
     font-size: 12px;
@@ -22,6 +48,14 @@ button[class="or"] {
     font-weight: lighter;
     box-shadow: 0 1px 1px 1px;
     background-color: #DDDDDD;
+}
+button[type="submit"]{
+    margin-top: 30px;
+    padding: 10px 10px 10px 10px;
+    width: 100px;
+    background-color: #00A586;
+    color: #FFFFFF;
+
 }
 button[class="fb"]{
     background-color: #304A93;
@@ -37,10 +71,14 @@ button[class="go"]{
 }
 div[id="or"]{
     /*margin-left: 350px;*/
-    margin-top: 50px;
+    margin-top: 150px;
     width: 50px;
 }
 div{
     float: left;
     padding: 50px;
 }
+a{
+    text-decoration: none;
+}
+
