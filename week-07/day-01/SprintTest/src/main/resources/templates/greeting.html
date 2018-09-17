@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<h1>Hello Laszlo You are the Best!!</h1>
+<body>
+<p th:text="${greetings} +'  ' + ${content} + 'This site was loaded '+  ${id}  +' times since last server start.!'"/>
+</body>
+</html>

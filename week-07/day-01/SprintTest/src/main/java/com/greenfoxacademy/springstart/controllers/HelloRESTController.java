@@ -12,12 +12,12 @@ import java.util.List;
 @RestController
 public class HelloRESTController {
 
-//  @RequestMapping("/greeting")
-//  public List<Greeting>greetings(){
-//    return Arrays.asList(
-//        new Greeting("Hello World!\n"),
+  @RequestMapping("/greeting")
+  public List<Greeting> greetings(@RequestParam(name = "name") String name) {
+    return Arrays.asList(
+        new Greeting("Hello World! " + name)
 //        new Greeting("Good Morning!\n"),
 //        new  Greeting("Guten Morgen!\n")
-//    );
-//  }
+    );
+  }
 }
