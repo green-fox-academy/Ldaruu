@@ -1,7 +1,9 @@
 package com.greenfoxacademy.springstart;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
@@ -17,6 +19,8 @@ public class HelloController {
   public String hello() {
     String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     return "Hello World! \n" + time;
+
   }
 }
+
 
