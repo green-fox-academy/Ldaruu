@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<h1>Bank of Simba</h1>
+<body>
+<table>
+    <tr>
+        <th>Account Holder</th>
+        <th>Balance</th>
+        <th>Account Holder Type</th>
+    </tr>
+    <tr>
+        <td th:text="${content.name}"></td>
+        <td th:text="${#numbers.formatDecimal(content.getBalance(), 0, 'COMMA', 2, 'POINT')}"></td>
+        <td th:text="${content.getAnimalType()}"></td>
+    </tr>
+</table>
+</body>
+</html>
