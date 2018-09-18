@@ -14,15 +14,17 @@ public class Bank {
 
   public Bank(String name) {
     this.bankAccountList= new ArrayList<>();
-    BankAccount simba = new BankAccount("Simba", 2000, "lion");
-    BankAccount pumba = new BankAccount("Pumba", 500, "wildboar");
-    BankAccount timon = new BankAccount("Timon", 1500, "mongoose");
-    BankAccount zazu = new BankAccount("Zazu", 100, "parrot");
+    BankAccount simba = new BankAccount("Simba", 2000, "Lion","Zebra",true,false);
+    BankAccount pumba = new BankAccount("Pumba", 500, "Wildboar","Warms",false,false);
+    BankAccount timon = new BankAccount("Timon", 1500, "Mongoose","Bugs",false,false);
+    BankAccount zazu = new BankAccount("Zazu", 100, "Parrot","Fruits",false,false);
+    BankAccount zordon =new BankAccount("Scar",1200,"Lion","Zebra",false,true);
     bankAccountList.add(simba);
     bankAccountList.add(pumba);
     bankAccountList.add(timon);
     bankAccountList.add(timon);
     bankAccountList.add(zazu);
+    bankAccountList.add(zordon);
 
     this.name = name;
   }

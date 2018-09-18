@@ -14,7 +14,7 @@ public class BankAccountController {
 
   @RequestMapping("/showacc")
   public String ahowAccount(Model model) {
-    BankAccount simba = new BankAccount("Simba", 2000, "lion");
+    BankAccount simba = new BankAccount("Simba", 2000, "lion","Zebra",true,false);
     model.addAttribute("showaccount", simba);
     return "showacc";
   }
