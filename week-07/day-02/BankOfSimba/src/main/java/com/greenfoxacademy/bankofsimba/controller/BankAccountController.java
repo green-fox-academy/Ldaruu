@@ -1,22 +1,27 @@
 package com.greenfoxacademy.bankofsimba.controller;
 
+import com.greenfoxacademy.bankofsimba.model.Bank;
 import com.greenfoxacademy.bankofsimba.model.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class BankAccountController {
 
+  Bank lionKing = new Bank();
 
-  BankAccount simba = new BankAccount("Simba", 2000, "lion");
-
-
+  @RequestMapping("/showacc")
+  public String ahowAccount(Model model) {
+    BankAccount simba = new BankAccount("Simba", 2000, "lion");
+    model.addAttribute("showaccount", simba);
+    return "showacc";
+  }
 
   @RequestMapping("/show")
   public String banckAccount(Model model) {
-
-    model.addAttribute("content", simba);
+    model.addAttribute("bank", lionKing.getBank());
     return "show";
   }
 }
