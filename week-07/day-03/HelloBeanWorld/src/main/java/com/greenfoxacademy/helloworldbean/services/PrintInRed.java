@@ -3,7 +3,7 @@ package com.greenfoxacademy.helloworldbean.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class PrintInRed implements MyColor {
 
   Printer redPrint;

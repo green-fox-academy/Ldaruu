@@ -1,5 +1,6 @@
 package com.greenfoxacademy.helloworldbean;
 
+import com.greenfoxacademy.helloworldbean.services.MyColor;
 import com.greenfoxacademy.helloworldbean.services.PrintInRed;
 import com.greenfoxacademy.helloworldbean.services.Printer;
 import com.greenfoxacademy.helloworldbean.services.PrintingInBlue;
@@ -12,15 +13,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HelloworldbeanApplication implements CommandLineRunner {
 
   Printer printer;
-  PrintingInBlue blue;
-  PrintInRed red;
+  MyColor redPrint;
+  MyColor bluePrint;
+//  PrintInRed red;
 
 
   @Autowired
-  public HelloworldbeanApplication(Printer printer, PrintInRed red, PrintingInBlue blue) {
+  public HelloworldbeanApplication(Printer printer, MyColor redPrint, MyColor bluePrint) {
     this.printer = printer;
-    this.red = red;
-    this.blue = blue;
+    this.redPrint = redPrint;
+    this.bluePrint = bluePrint;
   }
 
   public static void main(String[] args) {
@@ -30,8 +32,8 @@ public class HelloworldbeanApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     printer.log("hello");
-    blue.printColor();
-    red.printColor();
+    bluePrint.printColor();
+    redPrint.printColor();
 
   }
 }
