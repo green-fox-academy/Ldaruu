@@ -5,9 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <style>
-        body{
+        body {
             background-color: aqua;
         }
+
         table {
             font-family: arial, sans-serif;
             border-collapse: separate;
@@ -16,6 +17,7 @@
             border: 2px solid black;
             width: 100%;
         }
+
         /* top-left border-radius */
         table tr:first-child th:first-child,
         table.Info tr:first-child td:first-child {
@@ -52,11 +54,11 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
         tr:nth-child(odd) {
             background-color: #ffffff;
 
     </style>
-
 
     <div class=" top">
         <h1>Bank of Simba</h1>
@@ -64,21 +66,54 @@
 
 </head>
 <body>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Account Holder</th>
-        <th>Balance / Currency</th>
-        <th>Account Holder Type</th>
-        <th>Bad Guy / Good Guy</th>
-    </tr>
-    <tr th:each="account : ${bank}" th:object="${account}">
-        <td th:text="${accountStat.index}"></td>
-        <td th:text="${account.isKing()} ? ${account.name} + ' 🦁🤴🦁' : ${account.name}" th:style="${account.isKing()} ? 'background-color: gold;'">
-        <td th:text="*{#numbers.formatDecimal(balance, 0, 'COMMA', 2, 'POINT')} +' '+ *{currency} "></td>
-        <td th:text="*{animalType}"></td>
-        <td th:text="${account.isBad()} ? 'Bad Guy' : 'Good Guy'" th:style="${account.isBad()} ? 'background-color: red' : 'background-color: green'"></td>
-    </tr>
-</table>
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Account Holder</th>
+            <th>Balance / Currency</th>
+            <th>Account Holder Type</th>
+            <th>Bad Guy / Good Guy</th>
+        </tr>
+        <tr th:each="account : ${bank}" th:object="${account}">
+            <td th:text="${accountStat.index}"></td>
+            <td th:text="${account.isKing()} ? ${account.name} + ' 🦁🤴🦁' : ${account.name}"
+                th:style="${account.isKing()} ? 'background-color: gold;'">
+            <td th:text="*{#numbers.formatDecimal(balance, 0, 'COMMA', 2, 'POINT')} +' '+ *{currency} "></td>
+            <td th:text="*{animalType}"></td>
+            <td th:text="${account.isBad()} ? 'Bad Guy' : 'Good Guy'"
+                th:style="${account.isBad()} ? 'background-color: red' : 'background-color: green'"></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <form action="/show" method="post">
+        <h2>Add Account</h2>
+        <div>
+            <lable for="name">Name:</lable>
+            <input type="text" id="name" name="name" required
+                   placeholder="Account Holder Name">
+            <lable for="currency">Balance</lable>
+            <input type="text" id="currency" name="currency" required
+                   placeholder="Opening Balance">
+            <lable for="type">Account Holder Type</lable>
+            <input type="text" id="type" name="type" required
+                   placeholder="Animal Type">
+            <lable for="isKing">Is a KING?</lable>
+            <select name="isKing" id="isKing">
+            <option value="true">True</option>
+            <option value="false">False</option>
+            </select>
+            <lable for="goodorbad">Good/Bad Guy</lable>
+            <select name="godorbad" id="isGood">
+                <option value="Good Guy">Good Guy</option>
+                <option value="Bad Guy">Bad Guy</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="ADD">
+        </div>
+    </form>
+</div>
 </body>
 </html>

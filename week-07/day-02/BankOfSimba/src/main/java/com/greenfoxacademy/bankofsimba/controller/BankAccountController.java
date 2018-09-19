@@ -20,7 +20,7 @@ public class BankAccountController {
     return "showacc";
   }
 
-  @RequestMapping("/show")
+  @RequestMapping("/")
   public String banckAccount(Model model) {
     model.addAttribute("bank", lionKing.getBank());
     return "show";
