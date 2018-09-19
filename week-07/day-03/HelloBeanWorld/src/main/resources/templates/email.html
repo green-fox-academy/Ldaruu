@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<head>
+    <title>Colored Background Color</title>
+</head>
+<body>
+<h2 th:style="${checkemail} ? 'color: green;':'color:red;'" th:text="${checkemail} ? 'Is valid: '+ ${getemail} : 'It is not valid!:'+${getemail} "></h2>
+</body>
+</html>
