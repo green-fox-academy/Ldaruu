@@ -60,8 +60,8 @@ public class Bank {
     this.bankAccountList.add(account);
   }
 
-  public void removeAccount(BankAccount account) {
-    bankAccountList.remove(account);
+  public void removeAccount(int index) {
+    bankAccountList.remove(index);
 
   }
 }

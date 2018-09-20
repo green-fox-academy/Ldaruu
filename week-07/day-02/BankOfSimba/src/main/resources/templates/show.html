@@ -74,6 +74,7 @@
             <th>Balance / Currency</th>
             <th>Account Holder Type</th>
             <th>Bad Guy / Good Guy</th>
+            <th>Remove Account</th>
         </tr>
         <tr th:each="account : ${bank}" th:object="${account}">
             <td th:text="${accountStat.index}"></td>
@@ -83,6 +84,12 @@
             <td th:text="*{animalType}"></td>
             <td th:text="${account.isGood()} ? 'Good Guy' : 'Bad Guy'"
                 th:style="${account.isGood()} ? 'background-color: green' : 'background-color: red'"></td>
+            <td>
+                <form method="post" action="/remove">
+                    <input type="submit" th:value="'Remove -' + ${account.name}">
+                    <input type="hidden" th:value="${accountStat.index}" name="RemoveAccount">
+                </form>
+            </td>
         </tr>
     </table>
 </div>

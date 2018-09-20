@@ -43,9 +43,9 @@ public class BankAccountController {
     return "redirect:/";
   }
 
-//  @PostMapping("show")
-//  public String removeAccount() {
-//
-//    return "redirect:/";
-//  }
+  @PostMapping("remove")
+  public String removeAccount(@RequestParam( value="RemoveAccount") int index) {
+    lionKing.removeAccount(index);
+    return "redirect:/";
+  }
 }
