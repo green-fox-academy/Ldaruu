@@ -81,8 +81,8 @@
                 th:style="${account.isKing()} ? 'background-color: gold;'">
             <td th:text="*{#numbers.formatDecimal(balance, 0, 'COMMA', 2, 'POINT')} +' '+ *{currency} "></td>
             <td th:text="*{animalType}"></td>
-            <td th:text="${account.isBad()} ? 'Bad Guy' : 'Good Guy'"
-                th:style="${account.isBad()} ? 'background-color: red' : 'background-color: green'"></td>
+            <td th:text="${account.isGood()} ? 'Good Guy' : 'Bad Guy'"
+                th:style="${account.isGood()} ? 'background-color: green' : 'background-color: red'"></td>
         </tr>
     </table>
 </div>

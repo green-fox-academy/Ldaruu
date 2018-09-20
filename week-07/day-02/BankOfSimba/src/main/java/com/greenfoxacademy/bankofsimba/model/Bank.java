@@ -1,24 +1,31 @@
 package com.greenfoxacademy.bankofsimba.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class Bank {
 
 
- private List<BankAccount> bankAccountList;
- private String name;
+  private BankAccount bankAccount;
+  private List<BankAccount> bankAccountList;
+  private String name;
 
   public Bank() {
     this(null);
   }
 
   public Bank(String name) {
-    this.bankAccountList= new ArrayList<>();
-    BankAccount simba = new BankAccount("Simba", 2000, "Lion","Zebra",true,false);
-    BankAccount pumba = new BankAccount("Pumba", 500, "Wildboar","Warms",false,false);
-    BankAccount timon = new BankAccount("Timon", 1500, "Mongoose","Bugs",false,false);
-    BankAccount zazu = new BankAccount("Zazu", 100, "Parrot","Fruits",false,false);
-    BankAccount zordon =new BankAccount("Scar",1200,"Lion","Zebra",false,true);
+    this.name = name;
+    this.bankAccountList = new ArrayList<>();
+    BankAccount simba = new BankAccount("Simba", 2000, "Lion", "Zebra", true, true);
+    BankAccount pumba = new BankAccount("Pumba", 500, "Wildboar", "Warms", false, true);
+    BankAccount timon = new BankAccount("Timon", 1500, "Mongoose", "Bugs", false, true);
+    BankAccount zazu = new BankAccount("Zazu", 100, "Parrot", "Fruits", false, true);
+    BankAccount zordon = new BankAccount("Scar", 1200, "Lion", "Zebra", false, false);
     bankAccountList.add(simba);
     bankAccountList.add(pumba);
     bankAccountList.add(timon);
@@ -26,7 +33,6 @@ public class Bank {
     bankAccountList.add(zazu);
     bankAccountList.add(zordon);
 
-    this.name = name;
   }
 
   public List<BankAccount> getBank() {
@@ -44,7 +50,18 @@ public class Bank {
   public void setName(String name) {
     this.name = name;
   }
+
+  public void creatAccount(String name, double balance, String animalType, String currency, boolean isKing, boolean isGoog) {
+    BankAccount bankAccount1 = new  BankAccount(name, balance, animalType, currency, isKing, isGoog);
+    addAccount(bankAccount1);
+  }
+
   public void addAccount(BankAccount account) {
     this.bankAccountList.add(account);
+  }
+
+  public void removeAccount(BankAccount account) {
+    bankAccountList.remove(account);
+
   }
 }

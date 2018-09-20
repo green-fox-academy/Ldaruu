@@ -2,9 +2,9 @@ package com.greenfoxacademy.bankofsimba.controller;
 
 import com.greenfoxacademy.bankofsimba.model.Bank;
 import com.greenfoxacademy.bankofsimba.model.BankAccount;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class BankAccountController {
 
-  Bank lionKing = new Bank();
-  BankAccount bankAccount;
+  Bank lionKing;
+
+  @Autowired
+  public BankAccountController(Bank lionKing) {
+    this.lionKing = lionKing;
+  }
 
   @RequestMapping("/showacc")
   public String ahowAccount(Model model) {
@@ -35,9 +39,13 @@ public class BankAccountController {
                            @RequestParam(value = "currency") String currency,
                            @RequestParam(value = "type") String animalType, @RequestParam(value = "isKing") boolean isKing,
                            @RequestParam(value = "isGood") boolean isBad) {
-    bankAccount= new BankAccount(name, balance,currency, animalType, isKing, isBad);
-    lionKing.addAccount(bankAccount);
+    lionKing.creatAccount(name, balance, currency, animalType, isKing, isBad);
     return "redirect:/";
   }
 
+//  @PostMapping("show")
+//  public String removeAccount() {
+//
+//    return "redirect:/";
+//  }
 }
