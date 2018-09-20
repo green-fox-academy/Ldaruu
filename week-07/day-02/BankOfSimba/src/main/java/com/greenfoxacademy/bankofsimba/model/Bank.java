@@ -52,12 +52,16 @@ public class Bank {
   }
 
   public void creatAccount(String name, double balance, String animalType, String currency, boolean isKing, boolean isGoog) {
-    BankAccount bankAccount1 = new  BankAccount(name, balance, animalType, currency, isKing, isGoog);
+    BankAccount bankAccount1 = new BankAccount(name, balance, currency, animalType, isKing, isGoog);
     addAccount(bankAccount1);
   }
 
   public void addAccount(BankAccount account) {
     this.bankAccountList.add(account);
+  }
+
+  public void addBalance(double numb, int index) {
+    bankAccountList.get(index).setBalance(bankAccountList.get(index).getBalance() + numb);
   }
 
   public void removeAccount(int index) {

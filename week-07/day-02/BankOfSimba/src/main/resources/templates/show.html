@@ -18,6 +18,125 @@
             width: 100%;
         }
 
+        input {
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .dropp {
+            width: 100px;
+            height: 30px;
+        }
+
+        select {
+            font-size: 16px;
+        }
+
+        #rem[type="submit"] {
+            background: #0066A2;
+
+            cursor: pointer;
+
+            padding: 10px;
+
+            border-radius: 6px;
+
+            color: white;
+
+            outline: none;
+
+            border-style: outset;
+
+            border-color: #0066A2;
+
+            height: 35px;
+
+            width: 150px;
+
+            font: normal 14px arial, sans-serif;
+
+            text-shadow:none;
+        }
+
+        #rem[type="submit"]:hover {background-color: #262673}
+
+        #rem[type="submit"]:active {
+            background-color: #262673;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        #balance[type="submit"] {
+            background: #0066A2;
+
+            cursor: pointer;
+
+            padding: 10px;
+
+            border-radius: 6px;
+
+            color: white;
+
+            outline: none;
+
+            border-style: outset;
+
+            border-color: #0066A2;
+
+            height: 35px;
+
+            width: 60px;
+
+            font: normal 14px arial, sans-serif;
+
+            text-shadow:none;
+        }
+
+        #balance[type="submit"]:hover {background-color: #262673}
+
+        #balance[type="submit"]:active {
+            background-color: #262673;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        #sub[type="submit"] {
+
+            background: #0066A2;
+
+            cursor: pointer;
+
+            padding: 10px;
+
+            margin-top: 10px;
+
+            border-radius: 6px;
+
+            color: white;
+
+            outline: none;
+
+            border-style: outset;
+
+            border-color: #0066A2;
+
+            height: 40px;
+
+            width: 150px;
+
+            font: bold 20px arial, sans-serif;
+
+            text-shadow:none;
+        }
+
+        #sub[type="submit"]:hover {background-color: #262673}
+
+        #sub[type="submit"]:active {
+            background-color: #262673;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
         /* top-left border-radius */
         table tr:first-child th:first-child,
         table.Info tr:first-child td:first-child {
@@ -69,11 +188,12 @@
 <div>
     <table>
         <tr>
-            <th>ID</th>
+            <th>ID / Remove Account</th>
             <th>Account Holder</th>
             <th>Balance / Currency</th>
             <th>Account Holder Type</th>
             <th>Bad Guy / Good Guy</th>
+            <th>Deposit</th>
             <th>Remove Account</th>
         </tr>
         <tr th:each="account : ${bank}" th:object="${account}">
@@ -85,18 +205,26 @@
             <td th:text="${account.isGood()} ? 'Good Guy' : 'Bad Guy'"
                 th:style="${account.isGood()} ? 'background-color: green' : 'background-color: red'"></td>
             <td>
+                <form method="post" action="/addbalance">
+                    <input type="text" th:placeholder="Amount" name="balance" required>
+                    <input type="hidden" th:value="${accountStat.index}" name="index">
+                    <input id="balance" type="submit" value="ADD">
+                </form>
+            </td>
+            <td>
                 <form method="post" action="/remove">
-                    <input type="submit" th:value="'Remove -' + ${account.name}">
+                    <input id="rem" type="submit" th:value="'Remove -' + ${account.name}">
                     <input type="hidden" th:value="${accountStat.index}" name="RemoveAccount">
                 </form>
             </td>
+
         </tr>
     </table>
 </div>
 <div>
     <form action="/show" method="post">
         <h2>Add Account</h2>
-        <div>
+        <div class="input">
             <lable for="name">Name:</lable>
             <input type="text" id="name" name="name" required
                    placeholder="Account Holder Name">
@@ -110,18 +238,18 @@
             <input type="text" id="type" name="type" required
                    placeholder="Animal Type">
             <lable for="isKing">Is a KING?</lable>
-            <select name="isKing" id="isKing">
+            <select class="dropp" name="isKing" id="isKing">
                 <option value="true">True</option>
                 <option value="false">False</option>
             </select>
             <lable for="isGood">Good Guy</lable>
-            <select name="isGood" id="isGood">
+            <select class="dropp" name="isGood" id="isGood">
                 <option value="true">True</option>
                 <option value="false">False</option>
             </select>
         </div>
         <div>
-            <input type="submit" value="ADD">
+        <input id="sub" type="submit" value="ADD Account">
         </div>
     </form>
 </div>
