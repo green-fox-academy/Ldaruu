@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -30,7 +29,6 @@ public class BankAccountController {
 
   @RequestMapping("/")
   public String banckAccount(Model model) {
-
     model.addAttribute("bank", lionKing.getBank());
     return "show";
   }
@@ -53,6 +51,12 @@ public class BankAccountController {
   @PostMapping("addbalance")
   public String addMoney(@RequestParam(value = "balance") double balance, @RequestParam(value = "index") int index) {
     lionKing.addBalance(balance, index);
+    return "redirect:/";
+  }
+
+  @PostMapping("withdraw")
+  public String withDraw(@RequestParam(value = "balance") double balance, @RequestParam(value = "index") int index) {
+    lionKing.withDrawMoney(balance, index);
     return "redirect:/";
   }
 }

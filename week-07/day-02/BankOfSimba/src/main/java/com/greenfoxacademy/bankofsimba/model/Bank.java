@@ -1,16 +1,11 @@
 package com.greenfoxacademy.bankofsimba.model;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class Bank {
 
-
-  private BankAccount bankAccount;
   private List<BankAccount> bankAccountList;
   private String name;
 
@@ -63,9 +58,11 @@ public class Bank {
   public void addBalance(double numb, int index) {
     bankAccountList.get(index).setBalance(bankAccountList.get(index).getBalance() + numb);
   }
-
   public void removeAccount(int index) {
     bankAccountList.remove(index);
 
+  }
+  public void withDrawMoney(double balance, int index) {
+    bankAccountList.get(index).setBalance(bankAccountList.get(index).getBalance()-balance);
   }
 }

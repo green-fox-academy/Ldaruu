@@ -100,6 +100,40 @@
             transform: translateY(4px);
         }
 
+        #withdraw[type="submit"] {
+            background: #0066A2;
+
+            cursor: pointer;
+
+            padding: 10px;
+
+            border-radius: 6px;
+
+            color: white;
+
+            outline: none;
+
+            border-style: outset;
+
+            border-color: #0066A2;
+
+            height: 35px;
+
+            width: 100px;
+
+            font: normal 14px arial, sans-serif;
+
+            text-shadow:none;
+        }
+
+        #withdraw[type="submit"]:hover {background-color: #262673}
+
+        #withdraw[type="submit"]:active {
+            background-color: #262673;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
         #sub[type="submit"] {
 
             background: #0066A2;
@@ -194,6 +228,7 @@
             <th>Account Holder Type</th>
             <th>Bad Guy / Good Guy</th>
             <th>Deposit</th>
+            <th>WithDraw</th>
             <th>Remove Account</th>
         </tr>
         <tr th:each="account : ${bank}" th:object="${account}">
@@ -209,6 +244,13 @@
                     <input type="text" th:placeholder="Amount" name="balance" required>
                     <input type="hidden" th:value="${accountStat.index}" name="index">
                     <input id="balance" type="submit" value="ADD">
+                </form>
+            </td>
+            <td>
+                <form method="post" action="/withdraw">
+                    <input type="text" th:placeholder="Amount" name="balance" required>
+                    <input type="hidden" th:value="${accountStat.index}" name="index">
+                    <input id="withdraw" type="submit" value="WITHDRAW">
                 </form>
             </td>
             <td>
