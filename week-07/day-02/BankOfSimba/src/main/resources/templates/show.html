@@ -23,9 +23,11 @@
             padding: 5px;
         }
 
-        .dropp {
+        #isKing,
+        #isGood {
             width: 100px;
             height: 30px;
+            padding: 30px;
         }
 
         select {
@@ -280,7 +282,7 @@
             <input type="text" th:field="*{animalType}" id="type" name="type" required
                    placeholder="Animal Type">
             <label for="isKing">Is a KING?</label>
-            <input type="checkbox" th:field="*{king}" id="isKing">
+            <input  type="checkbox" th:field="*{king}" id="isKing">
             <label for="isGood">Good Guy</label>
                 <input type="checkbox" th:field="*{good}" id="isGood">
         </div>
