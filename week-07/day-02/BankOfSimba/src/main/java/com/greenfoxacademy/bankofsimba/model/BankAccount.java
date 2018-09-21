@@ -64,7 +64,6 @@ public class BankAccount {
     return isGood;
   }
 
-
   public void setGood(boolean good) {
     isGood = good;
   }

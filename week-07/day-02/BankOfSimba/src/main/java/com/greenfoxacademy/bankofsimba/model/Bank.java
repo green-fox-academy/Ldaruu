@@ -58,11 +58,10 @@ public class Bank {
   public void addBalance(double numb, int index) {
     bankAccountList.get(index).setBalance(bankAccountList.get(index).getBalance() + numb);
   }
-  public void removeAccount(int index) {
-    bankAccountList.remove(index);
-
-  }
   public void withDrawMoney(double balance, int index) {
     bankAccountList.get(index).setBalance(bankAccountList.get(index).getBalance()-balance);
+  }
+  public void removeAccount(int index) {
+    bankAccountList.remove(index);
   }
 }

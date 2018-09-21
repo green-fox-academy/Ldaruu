@@ -233,12 +233,12 @@
         </tr>
         <tr th:each="account : ${bank}" th:object="${account}">
             <td th:text="${accountStat.index}"></td>
-            <td th:text="${account.isKing()} ? ${account.name} + ' 🦁🤴🦁' : ${account.name}"
-                th:style="${account.isKing()} ? 'background-color: gold;'">
+            <td th:text="${account.king} ? ${account.name} + ' 🦁🤴🦁' : ${account.name}"
+                th:style="${account.king} ? 'background-color: gold;'">
             <td th:text="*{#numbers.formatDecimal(balance, 0, 'COMMA', 2, 'POINT')} +' '+ *{currency} "></td>
             <td th:text="*{animalType}"></td>
-            <td th:text="${account.isGood()} ? 'Good Guy' : 'Bad Guy'"
-                th:style="${account.isGood()} ? 'background-color: green' : 'background-color: red'"></td>
+            <td th:text="${account.good} ? 'Good Guy' : 'Bad Guy'"
+                th:style="${account.good} ? 'background-color: green' : 'background-color: red'"></td>
             <td>
                 <form method="post" action="/addbalance">
                     <input type="text" th:placeholder="Amount" name="balance" required>
@@ -264,31 +264,25 @@
     </table>
 </div>
 <div>
-    <form action="/show" method="post">
+    <form action="#" th:action="@{/show}" th:object="${newacc}" method="post">
         <h2>Add Account</h2>
         <div class="input">
-            <lable for="name">Name:</lable>
-            <input type="text" id="name" name="name" required
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" id="name" name="name" required
                    placeholder="Account Holder Name">
-            <lable for="balance">Balance</lable>
-            <input type="text" id="balance" name="balance" required
+            <label for="balance">Balance</label>
+            <input type="text" th:field="*{balance}" id="balance" name="balance" required
                    placeholder="Opening Balance">
-            <lable for="currency">Currency</lable>
-            <input type="text" id="currency" name="currency" required
+            <label for="currency">Currency</label>
+            <input type="text" th:field="*{currency}" id="currency" name="currency" required
                    placeholder="Currency Type">
-            <lable for="type">Account Holder Type</lable>
-            <input type="text" id="type" name="type" required
+            <label for="type">Account Holder Type</label>
+            <input type="text" th:field="*{animalType}" id="type" name="type" required
                    placeholder="Animal Type">
-            <lable for="isKing">Is a KING?</lable>
-            <select class="dropp" name="isKing" id="isKing">
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </select>
-            <lable for="isGood">Good Guy</lable>
-            <select class="dropp" name="isGood" id="isGood">
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </select>
+            <label for="isKing">Is a KING?</label>
+            <input type="checkbox" th:field="*{king}" id="isKing">
+            <label for="isGood">Good Guy</label>
+                <input type="checkbox" th:field="*{good}" id="isGood">
         </div>
         <div>
         <input id="sub" type="submit" value="ADD Account">
