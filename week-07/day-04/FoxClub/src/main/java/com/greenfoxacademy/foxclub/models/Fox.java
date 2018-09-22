@@ -15,15 +15,15 @@ public class Fox {
 
   public Fox() {
     food = "salad";
-    drink="water";
-    tricks=new ArrayList<>();
+    drink = "water";
+    tricks = new ArrayList<>();
   }
 
   public Fox(String name) {
     this.name = name;
-    food="salad";
-    drink="water";
-    tricks= new ArrayList<>();
+    food = "salad";
+    drink = "water";
+    tricks = new ArrayList<>();
   }
 
   public String getName() {
