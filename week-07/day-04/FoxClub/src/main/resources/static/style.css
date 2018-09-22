@@ -1,0 +1,48 @@
+body {
+    padding-top: 100px;
+    text-align: center;
+    background-color: #EBEBEB;
+
+}
+
+table tr th {
+    padding: 50px 50px 50px 50px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 4px;
+    font-family: "SansSerif";
+    font-weight: 100;
+    background-color: #FFFFFF;
+    color: #545454;
+}
+
+h2 {
+    color: #333333;
+    margin-left: -70px;
+    tab-size: 60px;
+    font-family: "SansSerif";
+    font-weight: 100;
+    color: #545454;
+}
+input[type ="text"]{
+    display: block;
+    padding: 15px 100px 15px 0;
+    font-size: 16px;
+    color: #333333;
+
+}
+input[type="text"]:focus{
+    outline: none;
+    box-shadow: 0 1px 1px 1px #74AD77;
+}
+input[type="submit"] {
+    margin-left: -60px;
+    margin-top: 50px;
+    padding: 20px 40px;
+    background-color: #333333;
+    color: aliceblue;
+    border-radius: 50px;
+    font-size: 12px;
+}
+#log{
+    margin-left: 100px;
+}
