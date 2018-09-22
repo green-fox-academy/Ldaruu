@@ -6,14 +6,13 @@
 </head>
 <p><a href="login">Information</a></p>
 <img src="greenfox1.png" alt="Smiley face" height="200" width="200">
-<body>
+<body th:style="'text-align:center;'">
 
 <p th:object="${fox}" th:text="'This is ' + *{name}+' living on '+ *{food} +' and ' + *{drink} + ' . He knows '+ *{tricks.size()}+ ' tricks.'"></p>
 
 <h2>Known Tricks</h2>
-<ul>
-    <li>write HTML</li>
-    <li>code in Java</li>
+<ul th:if="${fox.getTricks().isEmpty()}">
+    <p th:text="'You know no tricks yet. Go and lear some'"></p>
 </ul>
 </body>
 </html>
