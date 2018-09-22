@@ -8,7 +8,7 @@
 <img src="greenfox1.png" alt="Smiley face" height="200" width="200">
 <body>
 
-<p th:object="${fox}" th:text="'This is ' + *{name}+' living on '+ *{food} +' and ' + *{drink} + ' . He knows '"></p>
+<p th:object="${fox}" th:text="'This is ' + *{name}+' living on '+ *{food} +' and ' + *{drink} + ' . He knows '+ *{tricks.size()}+ ' tricks.'"></p>
 
 <h2>Known Tricks</h2>
 <ul>
