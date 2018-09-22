@@ -1,4 +1,4 @@
-package com.greenfoxacademy.foxclub;
+package com.greenfoxacademy.foxclub.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
