@@ -43,4 +43,13 @@ public class FoxServices {
     return false;
 
   }
+
+  public void setFoxFood(String name, String food) {
+    getFoxFromListByName(name).setFood(food);
+  }
+
+  public void setFoxDrink(String name, String drink) {
+    getFoxFromListByName(name).setDrink(drink);
+
+  }
 }

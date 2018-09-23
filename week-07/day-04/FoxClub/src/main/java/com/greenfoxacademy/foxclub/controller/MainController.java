@@ -25,13 +25,13 @@ public class MainController {
     if (name == null) {
       return "redirect:/login";
     }
-      if (foxServices.isFoxinTheList(name)) {
-        model.addAttribute("fox", foxServices.getFoxFromListByName(name));
-        return "/index";
-      } else {
-        return "redirect:/login";
-      }
+    if (foxServices.isFoxinTheList(name)) {
+      model.addAttribute("fox", foxServices.getFoxFromListByName(name));
+      return "/index";
+    } else {
+      return "redirect:/login";
     }
+  }
 
   @PostMapping(value = "/login")
   public String postFoxName(@RequestParam(value = "name") String name) {
@@ -39,5 +39,23 @@ public class MainController {
     return "redirect:/?name=" + name;
   }
 
+  @GetMapping("/nutritionstore")
+  public String nutrationPage(@RequestParam(required = false, value = "name") String name, Model model) {
+    if (name == null) {
+      return "redirect:/login";
+    }
+    if (foxServices.isFoxinTheList(name)) {
+      model.addAttribute("fox", foxServices.getFoxFromListByName(name));
+      return "/nutritionstore";
+    }
+    return "redirect:/login";
+  }
 
+  @PostMapping(value = "/nutrition")
+  public String postDinkandFood(@RequestParam(value = "name") String name, @RequestParam(value = "food") String food, @RequestParam(value = "drink") String drink) {
+    foxServices.getFoxFromListByName(name).setFood(food);
+    foxServices.getFoxFromListByName(name).setDrink(drink);
+    return "redirect:/?name=" + name;
+
+  }
 }

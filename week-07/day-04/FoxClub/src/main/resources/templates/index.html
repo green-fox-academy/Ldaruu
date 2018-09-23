@@ -14,6 +14,7 @@
 <ul th:if="${fox.getTricks().isEmpty()}">
     <p th:text="'You know no tricks yet. Go and lear some'"></p>
 </ul>
+<a th:href="@{'nutritionstore?name=' + ${fox.name}}">Nutrition Store</a>
 </body>
 </html>
 
