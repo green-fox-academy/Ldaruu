@@ -42,7 +42,6 @@ public class FoxServices {
       }
     }
     return false;
-
   }
 
   public void setFoxFood(String name, String food) {
@@ -52,7 +51,17 @@ public class FoxServices {
   public void setFoxDrink(String name, String drink) {
     getFoxFromListByName(name).setDrink(drink);
   }
-  public  void addTrickByName(String name, String trick){
+
+  public void addTrickByName(String name, String trick) {
     getFoxFromListByName(name).getTricks().add(new Tricks(trick));
+  }
+
+  public boolean isTrickInList(String name, String trick) {
+    for (int i = 0; i < getFoxFromListByName(name).getTricks().size(); i++) {
+      if (getFoxFromListByName(name).getTricks().get(i).getTrickName().equals(trick)) {
+        return true;
+      }
+    }
+    return false;
   }
 }

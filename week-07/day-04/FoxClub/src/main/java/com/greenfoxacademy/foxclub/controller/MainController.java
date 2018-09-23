@@ -79,9 +79,12 @@ public class MainController {
 
   @PostMapping(value = "/trick")
   public String postTricks(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trick) {
-    foxServices.addTrickByName(name,trick);
-    return "redirect:/?name=" + name;
+    if (!foxServices.isTrickInList(name, trick)) {
+      foxServices.addTrickByName(name, trick);
+    }
+      return "redirect:/?name=" + name;
   }
+
 
   @GetMapping("/allfoxes")
   public String getAllFoxes(Model model) {
