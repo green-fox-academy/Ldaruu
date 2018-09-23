@@ -1,6 +1,7 @@
 package com.greenfoxacademy.foxclub.services;
 
 import com.greenfoxacademy.foxclub.models.Fox;
+import com.greenfoxacademy.foxclub.models.Tricks;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,6 +51,8 @@ public class FoxServices {
 
   public void setFoxDrink(String name, String drink) {
     getFoxFromListByName(name).setDrink(drink);
-
+  }
+  public  void addTrickByName(String name, String trick){
+    getFoxFromListByName(name).getTricks().add(new Tricks(trick));
   }
 }

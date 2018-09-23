@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AllFoxes</title>
+    <h1>You Can see all your Foxes</h1>
+</head>
+
+<body>
+<ul  th:each="fox: ${foxes.getFoxes()}">
+    <a th:href="'/?name=' +${fox.getName()}">
+        <li th:text="${fox.getName()}"></li>
+    </a>
+</ul>
+</body>
+</html>

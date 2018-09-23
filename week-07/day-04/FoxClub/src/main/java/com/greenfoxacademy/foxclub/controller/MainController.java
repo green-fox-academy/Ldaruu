@@ -35,8 +35,14 @@ public class MainController {
 
   @PostMapping(value = "/login")
   public String postFoxName(@RequestParam(value = "name") String name) {
-    foxServices.createFoxandAddToList(name);
-    return "redirect:/?name=" + name;
+    if (!foxServices.isFoxinTheList(name)) {
+      foxServices.createFoxandAddToList(name);
+      return "redirect:/?name=" + name;
+    }
+    if (foxServices.isFoxinTheList(name)) {
+      return "redirect:/?name=" + name;
+    }
+    return "redirect:/login";
   }
 
   @GetMapping("/nutritionstore")
@@ -57,5 +63,33 @@ public class MainController {
     foxServices.getFoxFromListByName(name).setDrink(drink);
     return "redirect:/?name=" + name;
 
+  }
+
+  @GetMapping("/trickcenter")
+  public String trickPage(@RequestParam(required = false, value = "name") String name, Model model) {
+    if (name == null) {
+      return "redirect:/login";
+    }
+    if (foxServices.isFoxinTheList(name)) {
+      model.addAttribute("fox", foxServices.getFoxFromListByName(name));
+      return "/trickcenter";
+    }
+    return "redirect:/login";
+  }
+
+  @PostMapping(value = "/trick")
+  public String postTricks(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trick) {
+    foxServices.addTrickByName(name,trick);
+    return "redirect:/?name=" + name;
+  }
+
+  @GetMapping("/allfoxes")
+  public String getAllFoxes(Model model) {
+    if (foxServices.getFoxes().isEmpty()) {
+      return "redirect:/login";
+    } else {
+      model.addAttribute("foxes", foxServices);
+    }
+    return "allfoxes";
   }
 }
