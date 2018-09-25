@@ -15,13 +15,19 @@ public class Todo {
   private boolean urgent;
   private boolean done;
 
-  public Todo(){
+  public Todo() {
+  }
+
+  public Todo(String title) {
+    this.title = title;
+    urgent = false;
+    done = false;
   }
 
   public Todo(String title, boolean urgent, boolean done) {
     this.title = title;
-    this.urgent = false;
-    this.done = false;
+    this.urgent = urgent;
+    this.done = done;
   }
 
   public long getId() {

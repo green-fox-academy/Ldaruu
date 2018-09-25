@@ -1,3 +1,9 @@
+#link {
+    margin-left: 600px;
+}
+a{
+    margin-right: 20px;
+}
 table {
     font-family: arial, sans-serif;
     border-collapse: separate;
@@ -10,6 +16,7 @@ table {
     color: white;
     background-color: black;
 }
+
 
 /* top-left border-radius */
 table tr:first-child th:first-child,
