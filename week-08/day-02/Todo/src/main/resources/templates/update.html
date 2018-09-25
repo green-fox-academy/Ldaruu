@@ -7,17 +7,17 @@
 </head>
 <body>
 <h1>Update TODO</h1>
-<form method="post" action="/todo/{id}/update">
+<form method="post">
     <lable>Update</lable>
     <input type="text" name="title">
     <br><br><br>
     <label>Urgent</label>
     <input type="checkbox" name="urgent">
+    <br><br><br>
     <lable>Done</lable>
     <input type="checkbox" name="done">
-    <br><br>
-    <input id="sub" type="submit" value="ADD TODO">
-
+    <br><br><br>
+    <input type="submit" th:value="'UPDATE'">
 </form>
 
 

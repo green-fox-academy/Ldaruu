@@ -17,16 +17,16 @@
     <tr id="top">
         <th>ID</th>
         <th>ACTION</th>
-        <th>DONE</th>
         <th>URGENT</th>
+        <th>DONE</th>
         <th>REMOVE</th>
         <th>UPDATE</th>
     </tr>
     <tr th:each="todos : ${todolist}" th:object="${todos}">
         <td th:text="*{id}"></td>
         <td th:text="*{title}"></td>
-        <td th:text="*{done}"></td>
-        <td th:text="*{urgent}"></td>
+        <td th:text="*{isUrgent()}"></td>
+        <td th:text="*{isDone()}"></td>
         <td>
             <form method="post" action="/todo/remove">
                 <input id="rem" type="submit" th:value="'Remove'">
@@ -34,7 +34,7 @@
             </form>
         </td>
         <td>
-          <button><a th:href="'/todo/'+ *{id} + '/update'" class="btn-primary btn-sm">UpDate</a></button>
+          <button><a th:href="'/todo/'+ *{id} + '/update'" class="btn-primary btn-m">UpDate</a></button>
         </td>
     </tr>
 </table>
