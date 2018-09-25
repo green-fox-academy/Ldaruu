@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/style.css}">
 <head>
     <meta charset="UTF-8">
     <title>Todo</title>
 </head>
 <body>
 <h1>Todos for today: </h1>
-<ul th:each="todos : ${todolist}" th:object="${todos}">
-    <li type="disc" th:text="*{title}">
-    </li>
+<table>
+    <tr id="top">
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>DONE</th>
+        <th>URGENT</th>
+    </tr>
+    <tr th:each="todos : ${todolist}" th:object="${todos}">
+        <th th:text="*{id}"></th>
+        <th th:text="*{title}"></th>
+        <th th:text="*{done}"></th>
+        <th th:text="*{urgent}"></th>
+    </tr>
+</table>
 </ul>
 
 </body>
