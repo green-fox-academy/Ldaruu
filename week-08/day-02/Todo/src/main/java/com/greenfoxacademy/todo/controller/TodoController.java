@@ -55,7 +55,7 @@ public class TodoController {
   @PostMapping("/{id}/update")
   public String postUpdate(@ModelAttribute(value = "id") Long id, @ModelAttribute(value = "title") String title,
                            @RequestParam(value = "urgent", required = false) boolean urgent,
-                           @RequestParam(value = "done",required = false) boolean done) {
+                           @RequestParam(value = "done", required = false) boolean done) {
     todoRepository.save(new Todo(id, title, urgent, done));
     return "redirect:/todo/";
   }

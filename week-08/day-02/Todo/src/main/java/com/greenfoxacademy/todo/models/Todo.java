@@ -49,7 +49,7 @@ public class Todo {
     this.title = title;
   }
 
-  public boolean isUrgent() {
+  public boolean getIsUrgent() {
     return urgent;
   }
 
@@ -57,7 +57,7 @@ public class Todo {
     this.urgent = urgent;
   }
 
-  public boolean isDone() {
+  public boolean getIsDone() {
     return done;
   }
 
