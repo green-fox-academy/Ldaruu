@@ -9,3 +9,12 @@ label{
     font-size: 30px;
     font-weight: bold;
 }
+#update{
+    margin: auto;
+    width: 550px;
+}
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

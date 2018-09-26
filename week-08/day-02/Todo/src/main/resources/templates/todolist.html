@@ -4,19 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <title>Todo</title>
 </head>
 <body>
 <div id="h1">
-<h1>Todos for today! </h1>
+    <h1>Todos for today! </h1>
 </div>
-<div id="link">
-    <a th:href="@{/todo/}"><button type="button" class="btn btn-primary">HOME</button></a>
-    <a th:href="@{?isActive=true}"><button type="button" class="btn btn-primary">Done Todos</button></a>
-    <a th:href="@{?isActive=false}"><button type="button" class="btn btn-primary">Active Todos</button></a>
-    <a th:href="@{/todo/add}"><button type="button" class="btn btn-primary">ADD Todo</button></a>
+<div class="container" id="link">
+    <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a th:href="@{/todo/}">Home</a></li>
+        <li role="presentation"><a  th:href="@{?isActive=true}">Done Todos</a></li>
+        <li role="presentation"><a th:href="@{?isActive=false}">Active Todos</a></li>
+        <li role="presentation"><a th:href="@{/todo/add}">Add Todo</a></li>
+    </ul>
+
+    <!--<a th:href="@{/todo/}"><button type="button" class="btn btn-primary">HOME</button></a>-->
+    <!--<a th:href="@{?isActive=true}"><button type="button" class="btn btn-primary">Done Todos</button></a>-->
+    <!--<a th:href="@{?isActive=false}"><button type="button" class="btn btn-primary">Active Todos</button></a>-->
+    <!--<a th:href="@{/todo/add}"><button type="button" class="btn btn-primary">ADD Todo</button></a>-->
 </div>
 
 <table class="table table-bordered">
@@ -32,10 +40,10 @@
         <td th:text="*{id}"></td>
         <td th:text="*{title}"></td>
         <div th:switch="*{urgent}">
-        <td th:case="true"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+            <td th:case="true"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
             <td th:case="false"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
         </div>
-        <div th:switch="*{urgent}">
+        <div th:switch="*{done}">
             <td th:case="true"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
             <td th:case="false"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
         </div>
@@ -46,16 +54,31 @@
             </form>
         </td>
         <td>
-          <a th:href="'/todo/'+ *{id} + '/update'" class="btn-primary btn-m">
-              <button type="button" class="btn btn-primary">Update</button>
-          </a>
+            <a th:href="'/todo/'+ *{id} + '/update'" class="btn-primary btn-m">
+                <button type="button" class="btn btn-primary">Update</button>
+            </a>
 
         </td>
     </tr>
 </table>
 </ul>
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script >
+    $('#myTabs a').onclick(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    });
+
+    $(".nav li").on("click",function () {
+        $(".nav li").removeClass("active");
+        $(this).addClass("active");
+
+    });
+
+</script>
 </body>
 </html>

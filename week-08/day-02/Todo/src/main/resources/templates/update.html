@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" th:href="@{/style.css}">
 <head>
     <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Update Todo</title>
 </head>
-<body>
-<h1>Update TODO</h1>
+<body >
+<div id="h1">
+<h1 style="margin-left: 600px">Update TODO</h1>
+</div>
+
+<div class="container">
 <form method="post" th:object="${todo}">
-    <lable>Update</lable>
-    <input type="text" th:field="*{title}">
-    <br><br><br>
-    <label>Urgent</label>
-    <input type="checkbox" th:field="*{urgent}">
-    <br><br><br>
-    <lable>Done</lable>
-    <input type="checkbox" th:field="*{done}">
-    <br><br><br>
-    <input type="submit" th:value="'UPDATE'">
+    <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon1">Update</span>
+        <input type="text" th:field="*{title}" class="form-control" placeholder="Task" aria-describedby="sizing-addon1" >
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" th:field="*{urgent}" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Urgent</label>
+    </div>
+
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" th:field="*{done}" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Done</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">UPDATE</button>
 </form>
+</div>
 
-
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
