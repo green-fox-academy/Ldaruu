@@ -47,16 +47,29 @@ public class TodoController {
     return "redirect:/todo/";
   }
 
+//  @GetMapping("/{id}/update")
+//  public String update() {
+//    return "update";
+//  }
+
   @GetMapping("/{id}/update")
-  public String Update() {
+  public String updatePage(@PathVariable(value = "id") Long id, Model model) {
+    model.addAttribute(todoRepository.findById(id).orElse(null));
     return "update";
   }
 
   @PostMapping("/{id}/update")
-  public String postUpdate(@ModelAttribute(value = "id") Long id, @ModelAttribute(value = "title") String title,
-                           @RequestParam(value = "urgent", required = false) boolean urgent,
-                           @RequestParam(value = "done", required = false) boolean done) {
-    todoRepository.save(new Todo(id, title, urgent, done));
+  public String postUpdate(@ModelAttribute(value = "todo") Todo todo) {
+    todoRepository.save(todo);
     return "redirect:/todo/";
+
   }
+
+//  @PostMapping("/{id}/update")
+//  public String postUpdate(@PathVariable(value = "id") Long id, @ModelAttribute(value = "title") String title,
+//                           @RequestParam(value = "urgent", required = false) boolean urgent,
+//                           @RequestParam(value = "done", required = false) boolean done) {
+//    todoRepository.save(new Todo(id, title, urgent, done));
+//    return "redirect:/todo/";
+//  }
 }

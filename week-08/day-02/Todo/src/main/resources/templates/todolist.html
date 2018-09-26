@@ -25,8 +25,8 @@
     <tr th:each="todos : ${todolist}" th:object="${todos}">
         <td th:text="*{id}"></td>
         <td th:text="*{title}"></td>
-        <td th:text="*{getIsUrgent()}"></td>
-        <td th:text="*{getIsDone()}"></td>
+        <td th:text="*{urgent}"></td>
+        <td th:text="*{done}"></td>
         <td>
             <form method="post" action="/todo/remove">
                 <input id="rem" type="submit" th:value="'Remove'">
