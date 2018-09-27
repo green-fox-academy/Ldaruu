@@ -23,13 +23,13 @@ public class TodoServicesImp implements TodoServices {
   }
 
   @Override
-  public Todo findById(Long id) {
-    return todoRepository.findById(id);
+  public Todo findById(long id) {
+    return todoRepository.findAllById(id);
   }
 
 
   @Override
-  public void deleteById(Long id) {
+  public void deleteById(long id) {
     todoRepository.deleteById(id);
   }
 

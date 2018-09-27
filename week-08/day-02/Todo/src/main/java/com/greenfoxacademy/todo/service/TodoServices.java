@@ -8,7 +8,7 @@ public interface TodoServices  {
 
   void save (Todo todo);
 
-  Todo findById(Long id);
+  Todo findById(long id);
 
- void deleteById(Long id);
+ void deleteById(long id);
 }
