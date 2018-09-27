@@ -1,8 +1,11 @@
 package com.greenfoxacademy.todo.controller;
 
+import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.models.Todo;
+import com.greenfoxacademy.todo.repository.AssigneeRepository;
 import com.greenfoxacademy.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.ast.Assign;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +15,12 @@ import org.springframework.web.bind.annotation.*;
 public class TodoController {
 
   private TodoRepository todoRepository;
+  private AssigneeRepository assigneeRepository;
 
   @Autowired
-  public TodoController(TodoRepository todoRepository) {
+  public TodoController(TodoRepository todoRepository, AssigneeRepository assigneeRepository) {
     this.todoRepository = todoRepository;
+    this.assigneeRepository = assigneeRepository;
   }
 
   @GetMapping(value = {"/", "list"})
@@ -59,8 +64,12 @@ public class TodoController {
   }
 
   @PostMapping("/{id}/update")
-  public String postUpdate(@ModelAttribute(value = "todo") Todo todo) {
+  public String postUpdate(@ModelAttribute(value = "todo") Todo todo, @ModelAttribute(value = "assignee") Assignee assignee) {
+    assignee.setTodo(todo);
+    todo.setAssignee(assignee);
+    assigneeRepository.save(assignee);
     todoRepository.save(todo);
+
     return "redirect:/todo/";
 
   }
@@ -72,4 +81,19 @@ public class TodoController {
 //    todoRepository.save(new Todo(id, title, urgent, done));
 //    return "redirect:/todo/";
 //  }
+
+
+  @GetMapping("/search")
+  public String findByTitle(Model model, @RequestParam(value = "title") String title) {
+    if (title != null) {
+      model.addAttribute("todolist", todoRepository.findByTitleContaining(title));
+    }
+    return "todolist";
+  }
+
+  @GetMapping("/assignee")
+  public String showAssigne(Model model) {
+      model.addAttribute("assigneelist", assigneeRepository.findAllBy());
+    return "assignee";
+  }
 }

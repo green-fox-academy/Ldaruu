@@ -15,8 +15,18 @@
 <form method="post" th:object="${todo}">
     <div class="input-group input-group-lg">
         <span class="input-group-addon" id="sizing-addon1">Update</span>
-        <input type="text" th:field="*{title}" class="form-control" placeholder="Task" aria-describedby="sizing-addon1" >
+        <input style="cursor: text" type="text" th:field="*{title}" class="form-control" placeholder="Task" aria-describedby="sizing-addon1" >
     </div>
+
+    <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon1">Update</span>
+        <input style="cursor: text" type="text" th:field="*{assignee.name}" name="assignee" class="form-control" placeholder="Assignee-Name" aria-describedby="sizing-addon1" >
+    </div>
+    <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon1">Update</span>
+        <input style="cursor: text" type="text" th:field="*{assignee.email}" name="assignee" class="form-control" placeholder="something@something.com" aria-describedby="sizing-addon1" >
+    </div>
+
     <div class="custom-control custom-checkbox">
         <input type="checkbox" th:field="*{urgent}" class="custom-control-input" id="customCheck1">
         <label class="custom-control-label" for="customCheck1">Urgent</label>

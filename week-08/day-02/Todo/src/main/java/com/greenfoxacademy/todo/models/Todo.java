@@ -1,19 +1,20 @@
 package com.greenfoxacademy.todo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String title;
   private boolean urgent;
   private boolean done;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "assignee_id")
+  private Assignee assignee;
 
   public Todo() {
   }
@@ -67,6 +68,14 @@ public class Todo {
 
   public void setDone(boolean done) {
     this.done = done;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }
 
