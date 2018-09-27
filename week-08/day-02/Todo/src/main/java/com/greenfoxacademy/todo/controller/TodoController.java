@@ -90,10 +90,4 @@ public class TodoController {
     }
     return "todolist";
   }
-
-  @GetMapping("/assignee")
-  public String showAssigne(Model model) {
-      model.addAttribute("assigneelist", assigneeRepository.findAllBy());
-    return "assignee";
-  }
 }
