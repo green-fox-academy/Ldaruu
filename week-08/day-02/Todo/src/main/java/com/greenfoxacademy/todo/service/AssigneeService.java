@@ -19,4 +19,6 @@ public interface AssigneeService {
 
   void saveAssigne(Assignee assignee);
 
+  void update(Long id, Model model);
+
 }

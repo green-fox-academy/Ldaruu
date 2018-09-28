@@ -42,6 +42,12 @@ public class AssigneeServiceImp implements AssigneeService {
 
   @Override
   public void saveAssigne(Assignee assignee) {
+    assigneeRepository.save(assignee);
 
+  }
+
+  @Override
+  public void update(Long id, Model model) {
+    model.addAttribute(assigneeRepository.findById(id).orElse(null));
   }
 }
