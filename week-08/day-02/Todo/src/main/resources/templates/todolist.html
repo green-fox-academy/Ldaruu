@@ -48,6 +48,7 @@
         <th>ACTION</th>
         <th>URGENT</th>
         <th>DONE</th>
+        <th>CREATED</th>
         <th>REMOVE</th>
         <th>UPDATE</th>
     </tr>
@@ -62,6 +63,7 @@
             <td th:case="true"><span class="glyphicon glyphicon-ok"style="color: green" aria-hidden="true"></span></td>
             <td th:case="false"><span class="glyphicon glyphicon-remove" style="color: red" aria-hidden="true"></span></td>
         </div>
+        <td th:text="*{createAt}"></td>
         <td>
             <form method="post" action="/todo/remove">
                 <input type="hidden" th:value="*{id}" name="removetodo">

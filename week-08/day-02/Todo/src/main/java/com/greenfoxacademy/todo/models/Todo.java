@@ -1,6 +1,11 @@
 package com.greenfoxacademy.todo.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
+
 
 @Entity
 public class Todo {
@@ -11,6 +16,13 @@ public class Todo {
   private String title;
   private boolean urgent;
   private boolean done;
+
+  @CreationTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
+  @Column(name = "CREATEAT")
+  private Date createAt;
+
 
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "assignee_id")
@@ -36,6 +48,13 @@ public class Todo {
     this.title = title;
     this.urgent = urgent;
     this.done = done;
+  }
+
+  public Todo(String title, boolean urgent, boolean done, Date createAt) {
+    this.title = title;
+    this.urgent = urgent;
+    this.done = done;
+    this.createAt = createAt;
   }
 
   public Long getId() {
@@ -76,6 +95,14 @@ public class Todo {
 
   public void setAssignee(Assignee assignee) {
     this.assignee = assignee;
+  }
+
+  public Date getCreateAt() {
+    return createAt;
+  }
+
+  public void setCreateAt(Date createAt) {
+    this.createAt = createAt;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.greenfoxacademy.todo.controller;
 
-import com.greenfoxacademy.todo.repository.AssigneeRepository;
-import com.greenfoxacademy.todo.repository.TodoRepository;
+import com.greenfoxacademy.todo.service.AssigneeService;
+import com.greenfoxacademy.todo.service.TodoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("todo")
 public class AssigneeController {
 
-  private AssigneeRepository assigneeRepository;
-  private TodoRepository todoRepository;
+  private AssigneeService assigneeService;
+  private TodoServices todoServices;
 
   @Autowired
-  public AssigneeController(AssigneeRepository assigneeRepository, TodoRepository todoRepository) {
-    this.assigneeRepository = assigneeRepository;
-    this.todoRepository = todoRepository;
+  public AssigneeController(AssigneeService assigneeService, TodoServices todoServices) {
+    this.assigneeService = assigneeService;
+    this.todoServices = todoServices;
   }
 
   @GetMapping("/assignee")
   public String showAssigne(Model model) {
-    model.addAttribute("assigneelist", assigneeRepository.findAllBy());
+    assigneeService.findAllBy(model);
     return "assignee";
   }
 }
