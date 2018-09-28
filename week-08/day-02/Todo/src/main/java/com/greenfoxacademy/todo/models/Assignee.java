@@ -1,7 +1,9 @@
 package com.greenfoxacademy.todo.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -13,15 +15,18 @@ public class Assignee {
   private String name;
   private String email;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "todo_id")
-  private Todo todo;
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = ("assignee"))
+//  @JoinColumn(name = "todo_id")
+  private List<Todo> todoList;
+
 
   public Assignee() {
+
   }
 
   public Assignee(String name) {
     this.name = name;
+    todoList = new ArrayList<>();
   }
 
   public Assignee(String name, String email) {
@@ -53,11 +58,16 @@ public class Assignee {
     this.email = email;
   }
 
-  public void setTodo(Todo todo) {
-    this.todo = todo;
+  public List<Todo> getTodo() {
+    return todoList;
   }
 
-  public Todo getTodo() {
-    return todo;
+  public void setTodo(List<Todo> todoList) {
+    this.todoList = todoList;
+  }
+
+  public void giveTodo(Todo todo) {
+    todoList.add(todo);
+    todo.setAssignee(this);
   }
 }

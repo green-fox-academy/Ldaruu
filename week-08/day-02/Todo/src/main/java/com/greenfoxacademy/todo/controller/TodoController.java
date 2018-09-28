@@ -4,6 +4,7 @@ import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.repository.AssigneeRepository;
 import com.greenfoxacademy.todo.repository.TodoRepository;
+import com.greenfoxacademy.todo.service.AssigneeService;
 import com.greenfoxacademy.todo.service.TodoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.spel.ast.Assign;
@@ -17,10 +18,16 @@ public class TodoController {
 
 
   private TodoServices todoServices;
+  private AssigneeService assigneeService;
+  private AssigneeRepository assigneeRepository;
+  private TodoRepository todoRepository;
 
   @Autowired
-  public TodoController(TodoServices todoServices) {
+  public TodoController(TodoServices todoServices, AssigneeService assigneeService, AssigneeRepository assigneeRepository, TodoRepository todoRepository) {
     this.todoServices = todoServices;
+    this.assigneeService = assigneeService;
+    this.assigneeRepository = assigneeRepository;
+    this.todoRepository = todoRepository;
   }
   //  private TodoRepository todoRepository;
 //  private AssigneeRepository assigneeRepository;
@@ -65,9 +72,16 @@ public class TodoController {
     return "update";
   }
 
+//  @PostMapping("/{id}/update")
+//  public String postUpdate(@ModelAttribute(value = "todo") Todo todo) {
+//    todoServices.save(todo);
+//    return "redirect:/todo/";
+
   @PostMapping("/{id}/update")
-  public String postUpdate(@ModelAttribute(value = "todo") Todo todo) {
-    todoServices.save(todo);
+  public String postUpdate(@ModelAttribute(value = "todo") Todo todo, @ModelAttribute(value = "assignee") Assignee assignee) {
+    todo.setAssignee(assignee);
+    assigneeRepository.save(assignee);
+    todoRepository.save(todo);
     return "redirect:/todo/";
 
   }
@@ -79,7 +93,6 @@ public class TodoController {
 //    todoRepository.save(new Todo(id, title, urgent, done));
 //    return "redirect:/todo/";
 //  }
-
 
   @GetMapping("/search")
   public String findByTitle(Model model, @RequestParam(value = "title") String title) {

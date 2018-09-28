@@ -24,8 +24,9 @@ public class Todo {
   private Date createAt;
 
 
-  @OneToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "assignee_id")
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+//  @JoinColumn(name = "assignee_id")
+
   private Assignee assignee;
 
   public Todo() {

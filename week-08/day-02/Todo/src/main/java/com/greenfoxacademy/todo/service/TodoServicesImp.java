@@ -53,7 +53,6 @@ public class TodoServicesImp implements TodoServices {
       model.addAttribute("todolist", todoRepository.findByTitleContaining(title));
     }
   }
-
   public void add(String todo, Model model) {
     model.addAttribute("addtodo", todoRepository.save(new Todo(todo)));
   }
