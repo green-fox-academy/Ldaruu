@@ -44,4 +44,15 @@ public class AssigneeController {
 
   }
 
+  @GetMapping("assignee/addAssignee")
+  public String addAssignee() {
+    return "addAssignee";
+  }
+
+//  @PostMapping("/addTodo")
+//  public String addTodo(Model model, @ModelAttribute(value = "todo") String todo) {
+//    todoServices.add(todo, model);
+//    return "redirect:/todo/";
+//  }
+
 }
