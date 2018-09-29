@@ -49,10 +49,10 @@ public class AssigneeController {
     return "addAssignee";
   }
 
-//  @PostMapping("/addTodo")
-//  public String addTodo(Model model, @ModelAttribute(value = "todo") String todo) {
-//    todoServices.add(todo, model);
-//    return "redirect:/todo/";
-//  }
+  @PostMapping("/assignee/addAssignee")
+  public String addTodo(@RequestParam(value = "name") String name,@RequestParam(value = "email")String email) {
+    assigneeService.addNewAssignee(name, email);
+    return "redirect:/todo/assignee";
+  }
 
 }
