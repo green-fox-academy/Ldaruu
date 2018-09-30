@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
     <title>Reddit Hot Topics!</title>
 </head>
 <body>
@@ -14,9 +14,9 @@
         <tbody>
         <tr th:each="topic: ${topics}" th:object="${topic}">
             <td th:text="*{likes}"></td>
-            <td><a href="'/addlike/'+ *{id}"></a></td>
-            <td><a href="'/dislike/'+ *{id}"></a></td>
-            <td><a href="/http://' + *{link}"><p th:text="*{title}"></p></a></td>
+            <td><a th:href="'/addlike/'+ *{id}"></a></td>
+            <td><a th:href="'/dislike/'+ *{id}"></a></td>
+            <td><a th:href="'http://' + *{link}"><p th:text="*{title}"></p></a></td>
         </tr>
         </tbody>
     </table>

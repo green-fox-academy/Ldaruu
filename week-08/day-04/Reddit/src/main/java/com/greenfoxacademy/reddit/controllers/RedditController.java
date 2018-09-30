@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -23,6 +25,16 @@ public class RedditController {
     List<Topic> topics= topicsService.getTopics();
     model.addAttribute("topics",topics);
     return "reddit";
+  }
+  @GetMapping("/submit")
+  public String submitPage(){
+    return "submit";
+  }
+
+  @PostMapping("/submit")
+  public String submitTopic(@ModelAttribute(value = "title") String title, @ModelAttribute(value = "link") String link){
+    topicsService.addTopic(title,link);
+    return "redirect:/";
   }
 
 }
