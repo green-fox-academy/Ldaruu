@@ -15,8 +15,8 @@
         <tr th:each="topic: ${topics}" th:object="${topic}">
             <td th:text="*{likes}"></td>
             <td><a th:href="'/addlike/'+ *{id}">+</a></td>
-            <td><a th:href="'/dislike/'+ *{id}">-</a></td>
-            <td><a th:href="'http://' + *{link}"><p th:text="*{title}"></p></a></td>
+            <td><a th:href="'/disslike/'+ *{id}">-</a></td>
+            <td><a th:href="'http://' + *{link}" target="_blank"><p th:text="*{title}"></p></a></td>
             <td th:text="*{createAt}"></td>
             <td>
                 <form method="post" action="/remove/{id}">
