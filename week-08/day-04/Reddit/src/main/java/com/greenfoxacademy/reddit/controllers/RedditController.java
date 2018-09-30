@@ -21,31 +21,42 @@ public class RedditController {
   public RedditController(TopicsService topicsService) {
     this.topicsService = topicsService;
   }
+
   @GetMapping("/")
-  public String showAllTopics(Model model){
-    List<Topic> topics= topicsService.getTopics();
-    model.addAttribute("topics",topics);
+  public String showAllTopics(Model model) {
+    List<Topic> topics = topicsService.getTopics();
+    model.addAttribute("topics", topics);
     return "reddit";
   }
+
   @GetMapping("/submit")
-  public String submitPage(){
+  public String submitPage() {
     return "submit";
   }
 
   @PostMapping("/submit")
-  public String submitTopic(@ModelAttribute(value = "title") String title, @ModelAttribute(value = "link") String link){
-    topicsService.addTopic(title,link);
+  public String submitTopic(@ModelAttribute(value = "title") String title, @ModelAttribute(value = "link") String link) {
+    topicsService.addTopic(title, link);
     return "redirect:/";
   }
+
   @GetMapping("addlike/{id}")
-  public String addLike(@PathVariable(value = "id")Long id){
+  public String addLike(@PathVariable(value = "id") Long id) {
     topicsService.addLikes(id);
     return "redirect:/";
   }
+
   @GetMapping("disslike/{id}")
-  public String disslike(@PathVariable(value = "id")Long id){
+  public String disslike(@PathVariable(value = "id") Long id) {
     topicsService.dissLike(id);
     return "redirect:/";
   }
+
+  @PostMapping("/remove/{id}")
+  public String removeTopic(@ModelAttribute(value = "removetopic") Long id) {
+    topicsService.removeTopic(id);
+    return "redirect:/";
+  }
+
 
 }
