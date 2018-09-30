@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Update Assignee</title>
+</head>
+<body >
+<div id="h1">
+    <h1 style="margin-left: 600px">Update TODO</h1>
+</div>
+
+<div class="container">
+    <form method="post" th:object="${user}">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <input style="cursor: text" type="text" th:field="*{name}" name="id" class="form-control" placeholder="NAME" aria-describedby="sizing-addon1" >
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <input style="cursor: text" type="text" th:field="*{email}" name="id" class="form-control" placeholder="Assignee-Email-Address" aria-describedby="sizing-addon1" >
+        </div>
+        <button type="submit" class="btn btn-primary">UPDATE</button>
+    </form>
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
