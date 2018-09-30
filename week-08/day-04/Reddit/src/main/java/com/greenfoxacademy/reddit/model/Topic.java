@@ -1,9 +1,10 @@
 package com.greenfoxacademy.reddit.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Topic {
@@ -14,17 +15,24 @@ public class Topic {
   private String link;
   private int likes;
 
+  @CreationTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
+  @Column(name = "CREATEAT")
+  private Date createAt;
+
+
   public Topic() {
     likes = 0;
-  }
-
-  public Long getId() {
-    return id;
   }
 
   public Topic(String title, String link) {
     this.title = title;
     this.link = link;
+  }
+
+  public Long getId() {
+    return id;
   }
 
   public void setId(Long id) {
@@ -53,5 +61,13 @@ public class Topic {
 
   public void setLikes(int likes) {
     this.likes = likes;
+  }
+
+  public Date getCreateAt() {
+    return createAt;
+  }
+
+  public void setCreateAt(Date createAt) {
+    this.createAt = createAt;
   }
 }
