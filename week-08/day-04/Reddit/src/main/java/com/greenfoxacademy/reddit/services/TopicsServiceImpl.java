@@ -53,7 +53,11 @@ public class TopicsServiceImpl implements TopicsService {
 
   @Override
   public void dissLike(Long id) {
-    topicsReposiroty.findById(id).get().setLikes(topicsReposiroty.findById(id).get().getLikes() - 1);
+    if (topicsReposiroty.findById(id).get().getLikes()!=0) {
+      topicsReposiroty.findById(id).get().setLikes(topicsReposiroty.findById(id).get().getLikes() - 1);
+    }else {
+      topicsReposiroty.findById(id).get().setLikes(0);
+    }
     topicsReposiroty.save(topicsReposiroty.findById(id).get());
   }
 }
