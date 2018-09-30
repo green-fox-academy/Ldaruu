@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todos.services;
 
+import com.greenfoxacademy.todos.model.Todo;
 import com.greenfoxacademy.todos.model.User;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,7 @@ public interface UserService {
   void removeUser(Long id);
 
   void saveUser(User user);
+
+  User addTodo(Long userId, Todo newTodo);
 
 }

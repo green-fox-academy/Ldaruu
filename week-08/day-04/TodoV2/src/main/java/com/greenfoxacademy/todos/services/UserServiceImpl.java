@@ -1,10 +1,12 @@
 package com.greenfoxacademy.todos.services;
 
+import com.greenfoxacademy.todos.model.Todo;
 import com.greenfoxacademy.todos.model.User;
 import com.greenfoxacademy.todos.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -42,5 +44,14 @@ public class UserServiceImpl implements UserService {
   @Override
   public void saveUser(User user) {
     userRepository.save(user);
+  }
+
+  @Override
+  @Transactional
+  public User addTodo(Long userId, Todo newTodo) {
+    User user = userRepository.findById(userId).get();
+    user.addTodo(newTodo);
+    userRepository.save(user);
+    return user;
   }
 }

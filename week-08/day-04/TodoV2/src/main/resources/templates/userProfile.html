@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title th:text="${user.name} + '\'s profile'"></title>
 </head>
 <body>
@@ -20,29 +20,48 @@
         </thead>
         <tbody>
         <tr th:each="todo : ${user.todos}" th:object="${todo}">
-            <td th:text="*{todoid}"></td>
+            <td th:text="*{id}"></td>
             <td th:text="*{title}"></td>
             <div th:switch="*{urgent}">
                 <td th:case="true"><span class="glyphicon glyphicon-ok " style="color: green" aria-hidden="true"></span>
                 </td>
-                <td th:case="false"><span class="glyphicon glyphicon-remove" style="color: red" aria-hidden="true"></span>
+                <td th:case="false"><span class="glyphicon glyphicon-remove" style="color: red"
+                                          aria-hidden="true"></span>
                 </td>
             </div>
             <div th:switch="*{done}">
-                <td th:case="true"><span class="glyphicon glyphicon-ok" style="color: green" aria-hidden="true"></span></td>
-                <td th:case="false"><span class="glyphicon glyphicon-remove" style="color: red" aria-hidden="true"></span>
+                <td th:case="true"><span class="glyphicon glyphicon-ok" style="color: green" aria-hidden="true"></span>
+                </td>
+                <td th:case="false"><span class="glyphicon glyphicon-remove" style="color: red"
+                                          aria-hidden="true"></span>
                 </td>
             </div>
             <td th:text="*{createAt}"></td>
-            <td>
-                <form method="post" action="/todo/remove">
-                    <input type="hidden" th:value="*{todoid}" name="removetodo">
-                    <button type="submit" class="btn btn-primary">Remove</button>
-                </form>
-            </td>
+            <div>
+                <td>
+                    <form method="post" action="/todo/remove">
+                        <input type="hidden" th:value="*{id}" name="removetodo">
+                        <button type="submit" class="btn btn-primary">Remove</button>
+                    </form>
+                </td>
+            </div>
+            <div>
+                <td>
+                    <a th:href="'/todo/'+ *{id} + '/update'" class="btn-primary btn-m">
+                        <button type="button" class="btn btn-primary">Update</button>
+                    </a>
+                </td>
+            </div>
         </tr>
         </tbody>
     </table>
+    <div id="form">
+        <form th:object="${newTodo}" action="#" th:action="@{'/users/' + ${user.id}}" method="post">
+            <label for="todo-title">New Todo</label>
+            <input type="text" id="todo-title" name="todo" th:field="*{title}">
+            <button type="submit" class="btn btn-primary">ADD TODO</button>
+        </form>
+    </div>
 </div>
 <div>
 </div>

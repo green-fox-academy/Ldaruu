@@ -1,7 +1,7 @@
 package com.greenfoxacademy.todos.controller;
 
+import com.greenfoxacademy.todos.model.Todo;
 import com.greenfoxacademy.todos.model.User;
-import com.greenfoxacademy.todos.repositories.UserRepository;
 import com.greenfoxacademy.todos.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,8 +42,8 @@ public class UserController {
 
   @GetMapping("users/{id}/updateuser")
   public String updatePage(@PathVariable(value = "id") Long id, Model model) {
-    User user= userService.getUserById(id);
-    model.addAttribute("user",user);
+    User user = userService.getUserById(id);
+    model.addAttribute("user", user);
     return "updateUser";
   }
 
@@ -58,6 +58,13 @@ public class UserController {
   public String showUserPage(@PathVariable(value = "id") Long id, Model model) {
     User user = userService.getUserById(id);
     model.addAttribute("user", user);
+    model.addAttribute("newTodo", new Todo());
     return "userProfile";
+  }
+
+  @PostMapping("/users/{id}")
+  public String addNewTodo(@PathVariable(value = "id") Long userId, @ModelAttribute Todo todo) {
+    userService.addTodo(userId, todo);
+    return "redirect:/users/" + userId;
   }
 }
