@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Topics {
+public class Topic {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -14,12 +14,17 @@ public class Topics {
   private String link;
   private int likes;
 
-  public Topics() {
+  public Topic() {
     likes = 0;
   }
 
   public Long getId() {
     return id;
+  }
+
+  public Topic(String title, String link) {
+    this.title = title;
+    this.link = link;
   }
 
   public void setId(Long id) {

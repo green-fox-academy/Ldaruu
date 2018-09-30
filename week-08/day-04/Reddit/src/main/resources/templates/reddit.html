@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Reddit Hot Topics!</title>
+</head>
+<body>
+<h3><a href="/submit">Subbmit New Posts</a></h3>
+<div>
+    <h1>Trending Posts</h1>
+</div>
+<div>
+    <table>
+        <tbody>
+        <tr th:each="topic: ${topics}" th:object="${topic}">
+            <td th:text="*{likes}"></td>
+            <td><a href="'/addlike/'+ *{id}"></a></td>
+            <td><a href="'/dislike/'+ *{id}"></a></td>
+            <td><a href="/http://' + *{link}"><p th:text="*{title}"></p></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
