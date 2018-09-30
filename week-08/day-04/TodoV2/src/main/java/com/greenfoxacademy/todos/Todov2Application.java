@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Todov2Application {
 
   public static void main(String[] args) {
-    SpringApplication.run(Todov2Application.class, args);
+      SpringApplication.run(Todov2Application.class, args);
   }
 }
