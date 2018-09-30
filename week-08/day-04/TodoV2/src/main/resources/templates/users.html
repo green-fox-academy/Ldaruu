@@ -50,10 +50,10 @@
     </tr>
     <tr th:each="user : ${users}" th:object="${user}">
         <td th:text="*{id}"></td>
-        <td><a th:href="@{'/user/' + ${user.id}}" th:text="*{name}"></a></td>
+        <td><a th:href="@{'users/' + ${user.id}}" th:text="*{name}"></a></td>
         <td th:text="*{email}"></td>
         <td>
-            <form method="post" action="/users">
+            <form method="post" action="/removeuser">
                 <input type="hidden" th:value="${user.id}" name="removeuser">
                 <button type="submit" class="btn btn-primary">Remove</button>
             </form>

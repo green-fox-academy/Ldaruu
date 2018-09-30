@@ -1,10 +1,7 @@
 package com.greenfoxacademy.todos.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +15,18 @@ public class User {
     private String name;
     private String email;
 
-//    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-//    private List<Todo> todos;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public List<Todo> todos;
 
 
     public User() {
+      this(null);
 
     }
 
     public User(String name) {
       this.name = name;
-//      todos = new ArrayList<>();
+      todos = new ArrayList<>();
     }
 
     public User(String name, String email) {
@@ -60,18 +58,17 @@ public class User {
       this.email = email;
     }
 
-//    public List<Todo> getTodo() {
-//      return todos;
-//    }
+    public List<Todo> getTodo() {
+      return todos;
+    }
 
-//    public void setTodo(List<Todo> todoList) {
-//      this.todos = todoList;
-//    }
+    public void setTodo(List<Todo> todoList) {
+      this.todos = todoList;
+    }
 
-//    public void addTodo(Todo todo) {
-//      this.todos.add(todo);
+    public void addTodo(Todo todo) {
+      this.todos.add(todo);
 //    todo.setAssignee(this);
-//    }
-//  }
+    }
+  }
 
-}

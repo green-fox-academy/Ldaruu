@@ -28,4 +28,14 @@ public class UserServiceImpl implements UserService {
   public List<User> getUsers() {
     return userRepository.findAll();
   }
+
+  @Override
+  public User getUserById(Long id) {
+    return userRepository.findById(id).orElse(null);
+  }
+
+  @Override
+  public void removeUser(Long id) {
+    userRepository.deleteById(id);
+  }
 }
