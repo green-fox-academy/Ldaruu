@@ -18,4 +18,8 @@ public interface TopicsService {
 
   void saveTopic(Topic topic);
 
+  void addLikes(Long id);
+
+  void dissLike(Long id);
+
 }

@@ -44,4 +44,16 @@ public class TopicsServiceImpl implements TopicsService {
     topicsReposiroty.save(topic);
 
   }
+
+  @Override
+  public void addLikes(Long id) {
+    topicsReposiroty.findById(id).get().setLikes(topicsReposiroty.findById(id).get().getLikes() + 1);
+    topicsReposiroty.save(topicsReposiroty.findById(id).get());
+  }
+
+  @Override
+  public void dissLike(Long id) {
+    topicsReposiroty.findById(id).get().setLikes(topicsReposiroty.findById(id).get().getLikes() - 1);
+    topicsReposiroty.save(topicsReposiroty.findById(id).get());
+  }
 }
