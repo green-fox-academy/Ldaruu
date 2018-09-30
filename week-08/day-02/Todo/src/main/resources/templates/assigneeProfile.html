@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <title th:text="${assignee.name} + '\'s profile'"></title>
 </head>
 <body>
-$END$
+<h1 th:text="${assignee.name} + '\'s profile'"></h1>
+<div>
+    <h2>Todos:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Urgent</th>
+            <th>Done</th>
+            <th>Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="todo : ${assignee.todos}" th:object="${todo}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{title}"></td>
+            <div th:switch="*{urgent}">
+                <td th:case="true"><span class="glyphicon glyphicon-ok " style="color: green" aria-hidden="true"></span>
+                </td>
+                <td th:case="false"><span class="glyphicon glyphicon-remove" style="color: red" aria-hidden="true"></span>
+                </td>
+            </div>
+            <div th:switch="*{done}">
+                <td th:case="true"><span class="glyphicon glyphicon-ok" style="color: green" aria-hidden="true"></span></td>
+                <td th:case="false"><span class="glyphicon glyphicon-remove" style="color: red" aria-hidden="true"></span>
+                </td>
+            </div>
+            <td th:text="*{createAt}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+</div>
 </body>
 </html>

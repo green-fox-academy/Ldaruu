@@ -10,6 +10,7 @@ public interface AssigneeService {
 
 
   List<Assignee> findAll();
+  List<Assignee> findAllByid(Long id);
 
   void addNewAssignee(String name, String email);
 
@@ -21,4 +22,7 @@ public interface AssigneeService {
 
   void update(Long id, Model model);
 
+  void addTodo(Long id, Todo todo);
+
+  Assignee getassigneeById(Long id);
 }

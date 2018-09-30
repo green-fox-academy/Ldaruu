@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 
 @Service
 public class TodoServicesImp implements TodoServices {
@@ -15,6 +17,11 @@ public class TodoServicesImp implements TodoServices {
   @Autowired
   public TodoServicesImp(TodoRepository todoRepository) {
     this.todoRepository = todoRepository;
+  }
+
+  @Override
+  public List<Todo> findAll() {
+    return todoRepository.findAll();
   }
 
   @Override

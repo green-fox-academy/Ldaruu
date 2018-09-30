@@ -11,9 +11,6 @@
     <title>Todo</title>
 </head>
 <body>
-<div id="h1">
-    <h1>Todos for today! </h1>
-</div>
 <div class="container" id="link">
     <ul class="nav nav-pills">
         <li role="presentation" class="tab active"><a th:href="@{/todo/}">Home</a></li>
@@ -28,6 +25,9 @@
     <!--<a th:href="@{?isActive=true}"><button type="button" class="btn btn-primary">Done Todos</button></a>-->
     <!--<a th:href="@{?isActive=false}"><button type="button" class="btn btn-primary">Active Todos</button></a>-->
     <!--<a th:href="@{/todo/add}"><button type="button" class="btn btn-primary">ADD Todo</button></a>-->
+</div>
+<div id="h1">
+    <h1>Todos for today! </h1>
 </div>
 <br><br>
 <div class="col-sm-3">
@@ -77,7 +77,6 @@
             <a th:href="'/todo/'+ *{id} + '/update'" class="btn-primary btn-m">
                 <button type="button" class="btn btn-primary">Update</button>
             </a>
-
         </td>
     </tr>
 </table>

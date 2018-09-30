@@ -24,10 +24,8 @@ public class Todo {
   private Date createAt;
 
 
-  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-//  @JoinColumn(name = "assignee_id")
-
-  private Assignee assignee;
+//  @ManyToOne(fetch = FetchType.EAGER)
+//  private Assignee assignee;
 
   public Todo() {
   }
@@ -90,13 +88,13 @@ public class Todo {
     this.done = done;
   }
 
-  public Assignee getAssignee() {
-    return assignee;
-  }
+//  public Assignee getAssignee() {
+//    return assignee;
+//  }
 
-  public void setAssignee(Assignee assignee) {
-    this.assignee = assignee;
-  }
+//  public void setAssignee(Assignee assignee) {
+//    this.assignee = assignee;
+//  }
 
   public Date getCreateAt() {
     return createAt;

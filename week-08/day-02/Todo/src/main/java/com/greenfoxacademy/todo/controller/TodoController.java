@@ -7,7 +7,6 @@ import com.greenfoxacademy.todo.repository.TodoRepository;
 import com.greenfoxacademy.todo.service.AssigneeService;
 import com.greenfoxacademy.todo.service.TodoServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.Assign;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,6 +68,7 @@ public class TodoController {
   @GetMapping("/{id}/update")
   public String updatePage(@PathVariable(value = "id") Long id, Model model) {
     todoServices.update(id, model);
+    model.addAttribute("assigneelist", assigneeService.findAll());
     return "update";
   }
 
@@ -78,10 +78,10 @@ public class TodoController {
 //    return "redirect:/todo/";
 
   @PostMapping("/{id}/update")
-  public String postUpdate(@ModelAttribute(value = "todo") Todo todo, @ModelAttribute(value = "assignee") Assignee assignee) {
-    todo.setAssignee(assignee);
-    assigneeRepository.save(assignee);
-    todoRepository.save(todo);
+  public String postUpdate(@PathVariable(value = "id")Long id,
+                           @ModelAttribute(value = "todo") Todo todo,
+                           @ModelAttribute(value = "assignee") Assignee assignee) {
+    assigneeService.addTodo(id,todo);
     return "redirect:/todo/";
 
   }

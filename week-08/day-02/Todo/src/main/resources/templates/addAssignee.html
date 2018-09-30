@@ -7,15 +7,29 @@
     <title>New Todo</title>
 </head>
 <body>
+<div class="container" id="link">
+    <ul class="nav nav-pills">
+        <li role="presentation" class="tab active"><a th:href="@{/todo/}">Home</a></li>
+        <li role="presentation" class="tab"><a name="title" th:href="@{/todo/?isActive=true}">Done Todos</a></li>
+        <li role="presentation" class="tab"><a name="title" th:href="@{/todo/?isActive=false}">Active Todos</a></li>
+        <li role="presentation" class="tab"><a th:href="@{/todo/add}">Add Todo</a></li>
+        <li role="presentation" class="tab"><a th:href="@{/todo/assignee}">Assignee</a></li>
+        <li role="presentation" class="tab"><a th:href="@{/todo/assignee/addAssignee}">Add Assignee</a></li>
+    </ul>
 
+    <!--<a th:href="@{/todo/}"><button type="button" class="btn btn-primary">HOME</button></a>-->
+    <!--<a th:href="@{?isActive=true}"><button type="button" class="btn btn-primary">Done Todos</button></a>-->
+    <!--<a th:href="@{?isActive=false}"><button type="button" class="btn btn-primary">Active Todos</button></a>-->
+    <!--<a th:href="@{/todo/add}"><button type="button" class="btn btn-primary">ADD Todo</button></a>-->
+</div>
 <div id="h1">
     <h1>ADD NEW ASSIGNEE</h1>
 </div>
 <div id="form">
     <form method="post" action="/todo/assignee/addAssignee">
-        <label>New Assignee</label>
-       Name  <input type="text" name="name"><br>
-      email  <input type="text" name="email">
+        <label>New Assignee</label><br><br>
+       Name  <input type="text" name="name"><br><br>
+      email  <input type="text" name="email"><br><br>
         <button type="submit" class="btn btn-primary">ADD TODO</button>
     </form>
 </div>
