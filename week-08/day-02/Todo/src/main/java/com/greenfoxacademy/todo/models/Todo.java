@@ -24,8 +24,8 @@ public class Todo {
   private Date createAt;
 
 
-//  @ManyToOne(fetch = FetchType.EAGER)
-//  private Assignee assignee;
+  @ManyToOne(fetch = FetchType.EAGER)
+  private Assignee assignee;
 
   public Todo() {
   }
