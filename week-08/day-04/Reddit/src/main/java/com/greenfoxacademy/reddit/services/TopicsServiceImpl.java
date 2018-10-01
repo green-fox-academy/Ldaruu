@@ -60,4 +60,9 @@ public class TopicsServiceImpl implements TopicsService {
     }
     topicsReposiroty.save(topicsReposiroty.findById(id).get());
   }
+
+  @Override
+  public Topic createTopics(Topic topic) {
+    return topicsReposiroty.save(topic);
+  }
 }

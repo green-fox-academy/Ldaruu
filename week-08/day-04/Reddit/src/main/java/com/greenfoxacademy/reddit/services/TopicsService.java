@@ -22,5 +22,9 @@ public interface TopicsService {
 
   void dissLike(Long id);
 
+  Topic createTopics(Topic topic);
+
+
+
 
 }
