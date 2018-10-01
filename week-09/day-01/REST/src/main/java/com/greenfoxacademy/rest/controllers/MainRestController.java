@@ -1,15 +1,14 @@
 package com.greenfoxacademy.rest.controllers;
 
+import com.greenfoxacademy.rest.services.ActionServices;
+import com.greenfoxacademy.rest.model.Until;
 import com.greenfoxacademy.rest.services.AppendaServices;
 import com.greenfoxacademy.rest.services.ErrorServices;
 import com.greenfoxacademy.rest.services.InputServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MainRestController {
@@ -17,12 +16,14 @@ public class MainRestController {
   InputServices inputServices;
   ErrorServices errorServices;
   AppendaServices appendaServices;
+  ActionServices actionServices;
 
   @Autowired
-  public MainRestController(InputServices inputServices, ErrorServices errorServices, AppendaServices appendaServices) {
+  public MainRestController(InputServices inputServices, ErrorServices errorServices, AppendaServices appendaServices, ActionServices actionServices) {
     this.inputServices = inputServices;
     this.errorServices = errorServices;
     this.appendaServices = appendaServices;
+    this.actionServices = actionServices;
   }
 
   @GetMapping("/doubling")
@@ -44,5 +45,14 @@ public class MainRestController {
       appendaServices.appenda(word);
       return ResponseEntity.ok(appendaServices.getAppenda());
     }
+  }
+
+  @PostMapping("/dountil/{action}")
+  public Object actionCenter(@PathVariable(value = "action", required = false)String action, @RequestBody( required = false) Until until) {
+    if (action==null){
+      return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Action heee??");
+    }
+    actionServices.doAction(action,until);
+    return actionServices.getResult();
   }
 }
