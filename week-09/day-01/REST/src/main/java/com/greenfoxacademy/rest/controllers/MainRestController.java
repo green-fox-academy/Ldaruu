@@ -1,5 +1,5 @@
 package com.greenfoxacademy.rest.controllers;
-                        
+
 import com.greenfoxacademy.rest.services.InputServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
