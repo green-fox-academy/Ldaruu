@@ -18,8 +18,17 @@
     <tr th:each="planet : ${planets}" th:object="${planet}">
         <td th:text="*{name}"></td>
         <td th:text="*{population}"></td>
-        <td></td>
-        <td th:text="${ship.utilization}"></td>
+        <td th:if="${ship.planet} == *{name}">
+            <a href="">←to plenet</a>
+            <a href="">to ship→</a>
+        </td>
+        <td th:unless="${ship.planet} == *{name}">
+            <form action="post">
+                <input type="submit" value="Move Here">
+            </form>
+        </td>
+        <td th:if="${ship.planet} == *{name}" th:text="${ship.utilization}"></td>
+        <td th:unless="${ship.planet} == *{name}">-</td>
     </tr>
     </tbody>
 
