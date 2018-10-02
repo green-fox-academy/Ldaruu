@@ -48,11 +48,14 @@ public class MainRestController {
   }
 
   @PostMapping("/dountil/{action}")
-  public Object actionCenter(@PathVariable(value = "action", required = false)String action, @RequestBody( required = false) Until until) {
-    if (action==null){
-      return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Action heee??");
+  public Object actionCenter(@PathVariable(value = "action", required = false) String action, @RequestBody(required = false) Until until) {
+    if (action == null) {
+      return errorServices.setMessage("Gimme Some Action");
     }
-    actionServices.doAction(action,until);
+    if (until == null) {
+      return errorServices.setMessage("No Number No Fun");
+    }
+    actionServices.doAction(action, until);
     return actionServices.getResult();
   }
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 public class Todo {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String title;
   private boolean urgent;
@@ -22,9 +22,8 @@ public class Todo {
   @Column(name = "CREATEAT")
   private Date createAt;
 
-
-//  @ManyToOne
-//  private User user;
+  @ManyToOne
+  private User user;
 
   public Todo() {
   }
@@ -87,13 +86,13 @@ public class Todo {
     this.done = done;
   }
 
-//  public User getUser() {
-//    return user;
-//  }
+  public User getUser() {
+    return user;
+  }
 
-//  public void setUser(User user) {
-//    this.user = user;
-//  }
+  public void setUser(User user) {
+    this.user = user;
+  }
 
   public Date getCreateAt() {
     return createAt;

@@ -15,7 +15,7 @@ public class User {
   private String name;
   private String email;
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
   public List<Todo> todos;
 
 
@@ -68,7 +68,7 @@ public class User {
 
   public void addTodo(Todo todo) {
     this.todos.add(todo);
-//    todo.setUser(this);
+    todo.setUser(this);
   }
 }
 

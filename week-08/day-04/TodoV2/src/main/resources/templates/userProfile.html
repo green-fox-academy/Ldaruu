@@ -64,6 +64,7 @@
     <div id="form">
         <form th:object="${newTodo}" action="#" th:action="@{'/users/' + ${user.id}}" method="post">
             <label for="todo-title">New Todo</label>
+            <!--<input type="hidden" th:field="*{id}" th:value="*{id}">-->
             <input type="text" id="todo-title" name="todo" th:field="*{title}">
             <button type="submit" class="btn btn-primary">ADD TODO</button>
         </form>
