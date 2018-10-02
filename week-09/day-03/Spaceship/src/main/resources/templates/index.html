@@ -15,12 +15,12 @@
     <th>People on Ship</th>
     </thead>
     <tbody>
-    <tr th:each="planet : ${planets}" th:object="${planet}"></tr>
-    <td th:text="*{name}"></td>
-    <td th:text="*{population}"></td>
-    <td></td>
-    <td th:text="${spaceship.utilization}"></td>
-    </th>
+    <tr th:each="planet : ${planets}" th:object="${planet}">
+        <td th:text="*{name}"></td>
+        <td th:text="*{population}"></td>
+        <td></td>
+        <td th:text="${ship.utilization}"></td>
+    </tr>
     </tbody>
 
 </table>
