@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Travel</title>
+</head>
+<body>
+<h1>Space Transporter</h1>
+
+<table>
+    <thead>
+    <th>Planet</th>
+    <th>Population</th>
+    <th>Spaceship location</th>
+    <th>People on Ship</th>
+    </thead>
+    <tbody>
+    <tr th:each="planet : ${planets}" th:object="${planet}"></tr>
+    <td th:text="*{name}"></td>
+    <td th:text="*{population}"></td>
+    <td></td>
+    <td th:text="${spaceship.utilization}"></td>
+    </th>
+    </tbody>
+
+</table>
+
+</body>
+</html>
