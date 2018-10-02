@@ -12,5 +12,7 @@ public interface SpaceService {
 
   List<Planet> getPlanets();
 
-  Spaceship getShip(Long id);
+  Spaceship getShip(long id);
+
+  void moveHere(long shipId,long planetId);
 }

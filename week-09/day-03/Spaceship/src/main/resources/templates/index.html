@@ -23,7 +23,7 @@
             <a href="">to ship→</a>
         </td>
         <td th:unless="${ship.planet} == *{name}">
-            <form action="post">
+            <form action="#" th:action="@{'/movehere/' + *{id}}" method="post">
                 <input type="submit" value="Move Here">
             </form>
         </td>
