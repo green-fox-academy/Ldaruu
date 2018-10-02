@@ -56,7 +56,7 @@
     <tr th:each="todos : ${todolist}" th:object="${todos}">
         <td th:text="*{id}"></td>
         <td th:text="*{title}"></td>
-        <td th:text="*{assignee}"></td>
+        <td th:text="${todos.assignee}"></td>
         <div th:switch="*{urgent}">
             <td th:case="true"><span class="glyphicon glyphicon-ok " style="color: green" aria-hidden="true"></span>
             </td>

@@ -24,7 +24,7 @@ public class Todo {
   private Date createAt;
 
 
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @ManyToOne
   private Assignee assignee;
 
   public Todo() {
