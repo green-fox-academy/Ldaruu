@@ -24,7 +24,7 @@ public class Assignee {
 
   public Assignee(String name) {
     this.name = name;
-    todos = new ArrayList<>();
+//    todos = new ArrayList<>();
   }
 
   public Assignee(String name, String email) {
@@ -56,16 +56,16 @@ public class Assignee {
     this.email = email;
   }
 
-  public List<Todo> getTodo() {
-    return todos;
-  }
-
-  public void setTodo(List<Todo> todoList) {
-    this.todos = todoList;
-  }
-
-  public void addTodo(Todo todo) {
-    this.todos.add(todo);
+//  public List<Todo> getTodo() {
+//    return todos;
+//  }
+//
+//  public void setTodo(List<Todo> todoList) {
+//    this.todos = todoList;
+//  }
+//
+//  public void addTodo(Todo todo) {
+//    this.todos.add(todo);
 //    todo.setAssignee(this);
-  }
+//  }
 }

@@ -22,5 +22,7 @@ public interface TodoServices {
 
   void search(String title, Model model);
 
-  void  add(String todo, Model model);
+  void add(String todo, Model model);
+
+  Todo addAssignee(Assignee assignee, Long id);
 }

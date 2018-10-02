@@ -22,7 +22,7 @@ public interface AssigneeService {
 
   void update(Long id, Model model);
 
-  void addTodo(Long id, Todo todo);
+//  void addTodo(Long id, Todo todo);
 
   Assignee getassigneeById(Long id);
 }

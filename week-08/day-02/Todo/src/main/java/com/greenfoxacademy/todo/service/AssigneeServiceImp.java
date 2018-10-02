@@ -61,14 +61,14 @@ public class AssigneeServiceImp implements AssigneeService {
     model.addAttribute(assigneeRepository.findById(id).orElse(null));
   }
 
-  @Override
-  @Transactional
-  public void addTodo(Long id, Todo todo) {
-    Assignee assignee = assigneeRepository.findById(id).get();
-    assignee.addTodo(todo);
-    assigneeRepository.save(assignee);
-
-  }
+//  @Override
+//  @Transactional
+//  public void addTodo(Long id, Todo todo) {
+//    Assignee assignee = assigneeRepository.findById(id).get();
+//    assignee.addTodo(todo);
+//    assigneeRepository.save(assignee);
+//
+//  }
 
   @Override
   public Assignee getassigneeById(Long id) {

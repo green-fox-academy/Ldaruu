@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todo.service;
 
+import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,12 @@ public class TodoServicesImp implements TodoServices {
   }
   public void add(String todo, Model model) {
     model.addAttribute("addtodo", todoRepository.save(new Todo(todo)));
+  }
+
+  @Override
+  public Todo addAssignee(Assignee assignee, Long id) {
+    Todo todo= todoRepository.findById(id).get();
+    todo.setAssignee(assignee);
+    return todo;
   }
 }

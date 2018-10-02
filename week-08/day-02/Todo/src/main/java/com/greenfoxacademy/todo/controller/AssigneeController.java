@@ -22,6 +22,7 @@ public class AssigneeController {
   public AssigneeController(AssigneeService assigneeService,TodoServices todoServices, AssigneeRepository assigneeRepository) {
     this.assigneeService = assigneeService;
     this.assigneeRepository = assigneeRepository;
+    this.todoServices=todoServices;
   }
 
   @GetMapping("todo/assignee")
@@ -69,7 +70,7 @@ public class AssigneeController {
   public String showAssigneePage(@PathVariable(value = "id") Long id,@ModelAttribute(value = "assignee")Assignee assignee, Model model) {
     assigneeService.getassigneeById(id);
     model.addAttribute("assignee", assignee);
-//    model.addAttribute("newTodo", new Todo());
+    model.addAttribute("newTodo", new Todo());
     return "assigneeProfile";
   }
 

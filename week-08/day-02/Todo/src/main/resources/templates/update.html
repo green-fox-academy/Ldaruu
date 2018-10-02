@@ -20,7 +20,7 @@
 
     <td >
         <select >
-            <option th:each="assignee:${assigneelist}" th:object="${assignee}" th:value="${assignee.id}" th:text="*{name}"></option>
+            <option  th:each="assignee : ${assigneelist}" th:text="${assignee.name}" th:value="${assignee}"></option>
         </select>
 
     </td>
