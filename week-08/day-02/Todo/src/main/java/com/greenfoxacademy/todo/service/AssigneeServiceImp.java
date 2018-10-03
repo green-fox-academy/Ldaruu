@@ -61,6 +61,11 @@ public class AssigneeServiceImp implements AssigneeService {
     model.addAttribute(assigneeRepository.findById(id).orElse(null));
   }
 
+  @Override
+  public Assignee findById(Long id) {
+    return assigneeRepository.findById(id).get();
+  }
+
 //  @Override
 //  @Transactional
 //  public void addTodo(Long id, Todo todo) {
@@ -70,9 +75,5 @@ public class AssigneeServiceImp implements AssigneeService {
 //
 //  }
 
-  @Override
-  public Assignee getassigneeById(Long id) {
-    return assigneeRepository.findById(id).orElse(null);
-  }
 
 }

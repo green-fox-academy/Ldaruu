@@ -68,7 +68,7 @@ public class AssigneeController {
 
   @GetMapping("todo/assignee/{id}/assigneeProfile")
   public String showAssigneePage(@PathVariable(value = "id") Long id,@ModelAttribute(value = "assignee")Assignee assignee, Model model) {
-    assigneeService.getassigneeById(id);
+    assigneeService.findById(id);
     model.addAttribute("assignee", assignee);
     model.addAttribute("newTodo", new Todo());
     return "assigneeProfile";

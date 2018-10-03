@@ -24,5 +24,5 @@ public interface AssigneeService {
 
 //  void addTodo(Long id, Todo todo);
 
-  Assignee getassigneeById(Long id);
+  Assignee findById(Long id);
 }

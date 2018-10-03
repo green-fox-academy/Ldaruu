@@ -14,8 +14,8 @@ public class Assignee {
   private String name;
   private String email;
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "assignee")
-  private List<Todo> todos;
+//  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "assignee")
+//  private List<Todo> todos;
 
 
   public Assignee() {
@@ -24,7 +24,7 @@ public class Assignee {
 
   public Assignee(String name) {
     this.name = name;
-    todos = new ArrayList<>();
+//    todos = new ArrayList<>();
   }
 
   public Assignee(String name, String email) {
@@ -56,16 +56,21 @@ public class Assignee {
     this.email = email;
   }
 
-  public List<Todo> getTodo() {
-    return todos;
-  }
+//  public List<Todo> getTodo() {
+//    return todos;
+//  }
+//
+//  public void setTodo(List<Todo> todoList) {
+//    this.todos = todoList;
+//  }
+//
+//  public void addTodo(Todo todo) {
+//    this.todos.add(todo);
+//    todo.setAssignee(this);
+//  }
 
-  public void setTodo(List<Todo> todoList) {
-    this.todos = todoList;
-  }
-
-  public void addTodo(Todo todo) {
-    this.todos.add(todo);
-    todo.setAssignee(this);
+  @Override
+  public String toString() {
+    return this.name ;
   }
 }
