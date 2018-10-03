@@ -5,47 +5,59 @@ import com.grenfoxacademy.bank.services.Bankservices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class BankController {
 
   private Bankservices bankservices;
 
+
   @Autowired
   public BankController(Bankservices bankservices) {
     this.bankservices = bankservices;
   }
 
-  @GetMapping("/login")
+  @GetMapping("/")
   public String loginPage() {
-    return "login";
+    return "redirect:/register";
   }
 
-  @GetMapping(value = "/")
-  public String showMainPage(@RequestParam(required = false, value = "name") String name, Model model) {
-    if (name == null) {
-      return "redirect:/login";
-    }
-    if (bankservices.isUserExistAlready(name)) {
-      model.addAttribute("account", bankservices.getAccByName(name));
-      return "/index";
+  @GetMapping("/{id}")
+  public String getMain(Model model, @PathVariable(value = "id") long id) {
+    model.addAttribute("bankaccount", bankservices.getUernameById(id));
+    return "index";
+  }
+
+  @GetMapping("/register")
+  public String registerPage(@ModelAttribute String warning, Model model) {
+    model.addAttribute("warning",warning);
+    model.addAttribute("bankaccount", new BankAccount());
+    return "register";
+  }
+
+  @PostMapping("/register")
+  public String addAccount(@RequestParam(value = "username") String username,
+                           @RequestParam(value = "password") String password, Model model) {
+    if (bankservices.getAccByName(username) == null) {
+      BankAccount bankAccount = bankservices.createBankAccount(username, password);
+      long userId = bankAccount.getId();
+      return "redirect:/" + userId;
     } else {
-      return "redirect:/login";
+      model.addAttribute("warning", "Name exists Already, choose a new One!");
+      return "redirect:/register";
     }
   }
 
   @PostMapping("/login")
   public String sendLoginName(@ModelAttribute(value = "username") String username) {
-    if (bankservices.isUserExistAlready(username)) {
+    if (bankservices.getAccByName(username) != null) {
+
       return "redirect:/?name=" + username;
     } else {
-      bankservices.createBankAccount(username);
+//      bankservices.createBankAccount(username);
     }
     return "redirect:/login";
   }
-
 }
+

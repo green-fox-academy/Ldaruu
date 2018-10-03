@@ -10,31 +10,14 @@
 </head>
 <body>
 <h1>Register to Bank of Simba!</h1>
+<h2 th:text="${warning}"></h2>
 
-<form action="/register" th:action="@{/register}" method="post">
+<form action="/register" th:object="${bankaccount}" method="post">
     <label for="username">Username:</label>
-    <input type="text" required th:field="*{bankaccount.username}" id="username" placeholder="USER NAME">
+    <input type="text" required  id="username" name="username" placeholder="USER NAME">
     <label for="password">Password</label>
-    <input type="text" required th:field="*{bankaccout.password}" id="password" placeholder="PASSWORD">
-
-    <p class="checkbox-inline">
-        <input id="checkbox" type="checkbox" onclick="myFunction()">
-        Show password
-    </p>
-    <script>
-        function myFunction() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
-    <p></p>
-    <p>
+    <input type="text" required id="password" name="password" placeholder="PASSWORD">
         <input type="submit" value="SignUp">
-    </p>
 </form>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"

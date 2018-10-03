@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface BankReposiroty extends CrudRepository<BankAccount, Long> {
   List<BankAccount>findAll();
-
   BankAccount findByUsername(String username);
+  BankAccount findByPassword(String password);
 }

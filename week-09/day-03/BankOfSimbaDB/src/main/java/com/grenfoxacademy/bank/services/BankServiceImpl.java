@@ -20,6 +20,7 @@ public class BankServiceImpl implements Bankservices {
     return bankReposiroty.findById(id).get();
   }
 
+
   @Override
   public boolean isUsernameNull(BankAccount bankAccount) {
     return (bankAccount.getUsername().isEmpty());
@@ -32,14 +33,26 @@ public class BankServiceImpl implements Bankservices {
   }
 
   @Override
+  public BankAccount getUserAccByPassword(String password) {
+    return bankReposiroty.findByPassword(password);
+  }
+
+  @Override
   public BankAccount getAccByName(String username) {
     return bankReposiroty.findByUsername(username);
   }
 
   @Override
-  public BankAccount createBankAccount(String username) {
-    BankAccount bankAccount= new BankAccount(username);
+  public BankAccount createBankAccount(String username, String password) {
+    BankAccount bankAccount= new BankAccount(username,password);
+    bankReposiroty.save(bankAccount);
     return bankAccount;
+
+  }
+
+  @Override
+  public void addNewAccount(BankAccount bankAccount) {
+    bankReposiroty.save(bankAccount);
   }
 
 
