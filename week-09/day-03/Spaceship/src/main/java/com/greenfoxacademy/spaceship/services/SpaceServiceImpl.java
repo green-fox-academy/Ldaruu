@@ -73,7 +73,8 @@ public class SpaceServiceImpl implements SpaceService {
     if (spaceship.getUtilization() == 0) {
       return;
     } else {
-      planet.changePopulation(pplOnShip);
+//      planet.changePopulation(pplOnShip);
+      planet.setPopulation(planet.getPopulation()+spaceship.getUtilization());
       spaceship.setUtilization(0);
     }
     planetRepository.save(planet);
