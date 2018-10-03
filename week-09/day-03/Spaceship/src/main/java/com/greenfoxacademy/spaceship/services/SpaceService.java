@@ -13,5 +13,9 @@ public interface SpaceService {
 
   Spaceship getShip(long id);
 
-  void moveHere(long shipId,long planetId);
+  void moveHere(long shipId, long planetId);
+
+  void movePplToSip(long shipId, long planetId);
+
+  void movePplToPlanet(long shipId, long planetId);
 }

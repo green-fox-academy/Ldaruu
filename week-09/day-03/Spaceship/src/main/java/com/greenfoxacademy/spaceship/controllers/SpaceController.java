@@ -28,7 +28,18 @@ public class SpaceController {
 
   @PostMapping("/movehere/{id}")
   public String moveToOtherPlanet(@PathVariable(value = "id") Long id) {
-    spaceService.moveHere(shipId,id);
+    spaceService.moveHere(shipId, id);
+    return "redirect:/";
+  }
+
+  @GetMapping("/toship/{id}")
+  public String movePplToShip(@PathVariable(value = "id") Long planetId) {
+    spaceService.movePplToSip(shipId,planetId);
+    return "redirect:/";
+  }
+  @GetMapping("/toplanet/{id}")
+  public String movePplToPlanet(@PathVariable(value = "id")Long planetId){
+    spaceService.movePplToPlanet(shipId,planetId);
     return "redirect:/";
   }
 }

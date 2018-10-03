@@ -19,8 +19,8 @@
         <td th:text="*{name}"></td>
         <td th:text="*{population}"></td>
         <td th:if="${ship.planet} == *{name}">
-            <a href="">←to plenet</a>
-            <a href="">to ship→</a>
+            <a th:href="@{'/toplanet/' + *{id}}">←to plenet</a>
+            <a th:href=" @{'/toship/' + *{id}}">to ship→</a>
         </td>
         <td th:unless="${ship.planet} == *{name}">
             <form action="#" th:action="@{'/movehere/' + *{id}}" method="post">

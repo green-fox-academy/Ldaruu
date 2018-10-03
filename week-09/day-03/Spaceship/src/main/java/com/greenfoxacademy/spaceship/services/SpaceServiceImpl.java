@@ -42,4 +42,41 @@ public class SpaceServiceImpl implements SpaceService {
     spaceship.setPlanet(planetName);
     spaceshipRepository.save(spaceship);
   }
+
+  @Override
+  public void movePplToSip(long shipId, long planetId) {
+    Planet planet = planetRepository.findById(planetId).get();
+    Spaceship spaceship = spaceshipRepository.findById(shipId).get();
+
+    int freeCapacity = spaceship.getMaxCapacity() - spaceship.getUtilization();
+    if (freeCapacity == 0) {
+      return;
+    }
+    int planetPopulation = (int) planet.getPopulation();
+
+    if (planetPopulation <= freeCapacity) {
+      spaceship.setUtilization(spaceship.getUtilization() + planetPopulation);
+      planet.setPopulation(0);
+    } else {
+      spaceship.changeUtilization(freeCapacity);
+      planet.changePopulation(-freeCapacity);
+    }
+    planetRepository.save(planet);
+    spaceshipRepository.save(spaceship);
+  }
+
+  @Override
+  public void movePplToPlanet(long shipId, long planetId) {
+    Planet planet = planetRepository.findById(planetId).get();
+    Spaceship spaceship = spaceshipRepository.findById(shipId).get();
+    int pplOnShip = spaceship.getUtilization();
+    if (spaceship.getUtilization() == 0) {
+      return;
+    } else {
+      planet.changePopulation(pplOnShip);
+      spaceship.setUtilization(0);
+    }
+    planetRepository.save(planet);
+    spaceshipRepository.save(spaceship);
+  }
 }

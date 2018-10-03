@@ -11,7 +11,7 @@ public class Planet {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
-  private Long population;
+  private long population;
 
   public Planet() {
   }
@@ -32,11 +32,15 @@ public class Planet {
     this.name = name;
   }
 
-  public Long getPopulation() {
+  public long getPopulation() {
     return population;
   }
 
-  public void setPopulation(Long population) {
+  public void setPopulation(long population) {
     this.population = population;
+  }
+
+  public void changePopulation(int populationChanges) {
+    population += populationChanges;
   }
 }
