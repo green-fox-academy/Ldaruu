@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <title>Register To Bank of Simba</title>
+</head>
+<body>
+<h1>Register to Bank of Simba!</h1>
+
+<form action="/register" th:action="@{/register}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" required th:field="*{bankaccount.username}" id="username" placeholder="USER NAME">
+    <label for="password">Password</label>
+    <input type="text" required th:field="*{bankaccout.password}" id="password" placeholder="PASSWORD">
+
+    <p class="checkbox-inline">
+        <input id="checkbox" type="checkbox" onclick="myFunction()">
+        Show password
+    </p>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+    <p></p>
+    <p>
+        <input type="submit" value="SignUp">
+    </p>
+</form>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
