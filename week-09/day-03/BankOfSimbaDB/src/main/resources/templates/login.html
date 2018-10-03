@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login To Bank of Simba</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<table align="center">
+    <tr>
+        <th>
+            <h1>Welcome to Bank of Simba!</h1>
+            <form method="POST" action="/login">
+                <h2>User Name</h2>
+                <div id="log">
+                    <label for="username"></label>
+                    <input type="text" id="username" name="username" required
+                           placeholder="USERNAME"/>
+                </div>
+                <div class="button">
+                    <input type="submit" id="sub" value="LogIn">
+                </div>
+            </form>
+        </th>
+    </tr>
+</table>
+</body>
+
+</html>

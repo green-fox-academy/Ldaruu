@@ -9,7 +9,8 @@ import javax.persistence.Id;
 public class BankAccount {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private  long id;
+  private long id;
+  private String username;
   private String name;
   private long balance;
   private String userType;
@@ -17,11 +18,12 @@ public class BankAccount {
   public BankAccount() {
   }
 
-  public BankAccount(String name) {
-    this.name = name;
+  public BankAccount(String username) {
+    this.username = username;
   }
 
-  public BankAccount(String name, long balance, String userType) {
+  public BankAccount(String username, String name, long balance, String userType) {
+    this.username = username;
     this.name = name;
     this.balance = balance;
     this.userType = userType;
@@ -57,5 +59,13 @@ public class BankAccount {
 
   public void setUserType(String userType) {
     this.userType = userType;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
   }
 }
