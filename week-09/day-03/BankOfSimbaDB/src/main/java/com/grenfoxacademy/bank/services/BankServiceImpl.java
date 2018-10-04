@@ -5,6 +5,8 @@ import com.grenfoxacademy.bank.repositories.BankReposiroty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BankServiceImpl implements Bankservices {
 
@@ -53,6 +55,11 @@ public class BankServiceImpl implements Bankservices {
   @Override
   public void addNewAccount(BankAccount bankAccount) {
     bankReposiroty.save(bankAccount);
+  }
+
+  @Override
+  public List<BankAccount> findAll() {
+    return bankReposiroty.findAll();
   }
 
 

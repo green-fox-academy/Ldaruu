@@ -7,30 +7,35 @@
     <title>Update Assignee</title>
 </head>
 <body >
+
 <div id="h1">
-    <h1 style="margin-left: 600px">Update TODO</h1>
+    <h1 style="margin-left: 600px" th:text="'Update '+ ${bankaccount.name} + '\'s Account'"></h1>
 </div>
 
 <div class="container">
     <form method="post" th:object="${bankaccount}">
         <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <span class="input-group-addon" id="sizing-addon1">Name</span>
             <input style="cursor: text" type="text" th:field="*{name}" name="id" class="form-control" placeholder="NAME" aria-describedby="sizing-addon1" >
             <input type="hidden" th:field="*{username}">
             <input type="hidden" th:field="*{password}">
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <span class="input-group-addon" id="sizing-addon1">User Type</span>
             <input style="cursor: text" type="text" th:field="*{userType}" name="id" class="form-control" placeholder="TYPE" aria-describedby="sizing-addon1" >
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <span class="input-group-addon" id="sizing-addon1">Deposit</span>
             <input style="cursor: text" type="text" th:field="*{balance}" name="id" class="form-control" placeholder="Balance" aria-describedby="sizing-addon1" >
         </div>
         <button type="submit" class="btn btn-primary">UPDATE</button>
+        <div>
+        <button><a th:href="@{'/index/' + ${bankaccount.id}}">Cancel</a></button>
+        </div>
     </form>
+
 </div>
 
 <!-- Latest compiled and minified JavaScript -->

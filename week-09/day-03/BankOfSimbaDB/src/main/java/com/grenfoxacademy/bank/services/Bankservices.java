@@ -3,6 +3,8 @@ package com.grenfoxacademy.bank.services;
 import com.grenfoxacademy.bank.models.BankAccount;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface Bankservices {
 
@@ -19,6 +21,8 @@ public interface Bankservices {
   BankAccount createBankAccount(String username,String password);
 
   void addNewAccount(BankAccount bankAccount);
+
+  List<BankAccount> findAll();
 
 
 }

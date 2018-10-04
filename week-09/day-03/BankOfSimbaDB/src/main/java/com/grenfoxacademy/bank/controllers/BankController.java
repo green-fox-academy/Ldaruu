@@ -79,4 +79,10 @@ public class BankController {
     return "redirect:/index/{id}";
   }
 
+  @GetMapping("/users")
+  public String allusers(Model model) {
+    model.addAttribute("bankaccount", bankservices.findAll());
+    return "users";
+  }
+
 }

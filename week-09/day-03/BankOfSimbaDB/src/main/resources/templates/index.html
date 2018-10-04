@@ -2,11 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${bankaccount.username}+ '\'s profile'"></title>
+    <title th:text="${bankaccount.username}+ '\'s Account'"></title>
 </head>
 <body>
+<div>
+    <a th:href="@{/login}">LOGIN</a>
+    <a th:href="@{/register}">REGISTER</a>
+    <a th:href="@{/users}">USERS</a>
+</div>
 <h1>Bank Of Simba!</h1>
-<h2 th:text="${bankaccount.username} + '\'s profile'"></h2>
+<h2 th:text="${bankaccount.username} + '\'s Account'"></h2>
 <table>
     <thead>
     <tr>

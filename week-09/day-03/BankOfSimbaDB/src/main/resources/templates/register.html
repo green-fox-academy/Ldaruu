@@ -12,6 +12,8 @@
 <h1>Register to Bank of Simba!</h1>
 <h2 th:text="${warning}"></h2>
 
+<a href="/login">Login</a>
+
 <form action="/register" th:object="${bankaccount}" method="post">
     <label for="username">Username:</label>
     <input type="text" required  id="username" name="username" placeholder="USER NAME">
