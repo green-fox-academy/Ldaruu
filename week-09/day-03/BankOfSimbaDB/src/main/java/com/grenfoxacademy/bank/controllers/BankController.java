@@ -18,12 +18,12 @@ public class BankController {
     this.bankservices = bankservices;
   }
 
-  @GetMapping("/")
+  @GetMapping("")
   public String loginPage() {
     return "redirect:/register";
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("index/{id}")
   public String getMain(Model model, @PathVariable(value = "id") long id) {
     model.addAttribute("bankaccount", bankservices.getUernameById(id));
     return "index";
@@ -31,7 +31,7 @@ public class BankController {
 
   @GetMapping("/register")
   public String registerPage(@ModelAttribute String warning, Model model) {
-    model.addAttribute("warning",warning);
+    model.addAttribute("warning", warning);
     model.addAttribute("bankaccount", new BankAccount());
     return "register";
   }
@@ -42,22 +42,27 @@ public class BankController {
     if (bankservices.getAccByName(username) == null) {
       BankAccount bankAccount = bankservices.createBankAccount(username, password);
       long userId = bankAccount.getId();
-      return "redirect:/" + userId;
+      return "redirect:/login";
     } else {
       model.addAttribute("warning", "Name exists Already, choose a new One!");
       return "redirect:/register";
     }
   }
+  @GetMapping("/login")
+  String loginPage(Model model) {
+    model.addAttribute("bankaccount", new BankAccount());
+    return "login";
+  }
 
   @PostMapping("/login")
-  public String sendLoginName(@ModelAttribute(value = "username") String username) {
-    if (bankservices.getAccByName(username) != null) {
-
-      return "redirect:/?name=" + username;
+  public String sendLoginName(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
+    if (username!=null && password!=null) {
+      BankAccount bankAccount = bankservices.getUserAccByPassword(password);
+      long userId = bankAccount.getId();
+      return "redirect:/index/" +userId;
     } else {
-//      bankservices.createBankAccount(username);
+      return "redirect:/login";
     }
-    return "redirect:/login";
   }
-}
 
+}
