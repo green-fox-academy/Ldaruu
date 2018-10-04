@@ -12,7 +12,7 @@
 <h1>Register to Bank of Simba!</h1>
 <h2 th:text="${warning}"></h2>
 
-<a href="/login">Login</a>
+<button type="button"><a href="/login">Login</a></button>
 
 <form action="/register" th:object="${bankaccount}" method="post">
     <label for="username">Username:</label>
