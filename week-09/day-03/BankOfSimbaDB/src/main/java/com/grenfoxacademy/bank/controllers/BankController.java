@@ -48,6 +48,7 @@ public class BankController {
       return "redirect:/register";
     }
   }
+
   @GetMapping("/login")
   String loginPage(Model model) {
     model.addAttribute("bankaccount", new BankAccount());
@@ -56,13 +57,26 @@ public class BankController {
 
   @PostMapping("/login")
   public String sendLoginName(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
-    if (username!=null && password!=null) {
-      BankAccount bankAccount = bankservices.getUserAccByPassword(password);
+    if (username != null && password != null) {
+      BankAccount bankAccount = bankservices.getAccByName(username);
       long userId = bankAccount.getId();
-      return "redirect:/index/" +userId;
+      return "redirect:/index/" + userId;
     } else {
       return "redirect:/login";
     }
+  }
+
+  @GetMapping("/index/{id}/update")
+  public String updatePage(@PathVariable(value = "id") Long id, Model model) {
+    BankAccount bankAccount = bankservices.getUernameById(id);
+    model.addAttribute("bankaccount", bankAccount);
+    return "update";
+  }
+
+  @PostMapping("/index/{id}/update")
+  public String updateAccount(@ModelAttribute(value = "bankaccount") BankAccount bankAccount) {
+    bankservices.addNewAccount(bankAccount);
+    return "redirect:/index/{id}";
   }
 
 }

@@ -7,6 +7,31 @@
 <body>
 <h1>Bank Of Simba!</h1>
 <h2 th:text="${bankaccount.username} + '\'s profile'"></h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>User Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${bankaccount.id}"></td>
+        <td th:text="${bankaccount.name}"></td>
+        <td th:text="${bankaccount.balance}"></td>
+        <td th:text="${bankaccount.userType}"></td>
+        <div>
+        <td>
+            <a th:href="'/index/'+ ${bankaccount.id} + '/update'" class="btn-primary btn-m">
+                <button type="button" class="btn btn-primary">Update</button>
+            </a>
+        </td>
+        </div>
+    </tr>
+    </tbody>
 
+</table>
 </body>
 </html>
