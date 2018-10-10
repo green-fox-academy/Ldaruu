@@ -14,12 +14,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable().authorizeRequests()
-        .antMatchers("/api/todos").permitAll()
-        .antMatchers(HttpMethod.POST, "/api/add").permitAll()
+        .antMatchers("/","/login").permitAll()
+        .antMatchers(HttpMethod.POST, "/login").permitAll()
         .anyRequest().authenticated()
         .and()
         // We filter the api/login requests
-        .addFilterBefore(new JWTLoginFilter("/api/add", authenticationManager()),
+        .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
                 UsernamePasswordAuthenticationFilter.class)
         // And filter other requests to check the presence of JWT in header
         .addFilterBefore(new JWTAuthenticationFilter(),
