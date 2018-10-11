@@ -14,6 +14,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
 
 group = 'com.greenfoxacademy'
 version = '0.0.1-SNAPSHOT'
@@ -25,21 +26,33 @@ repositories {
 
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
-    implementation('org.springframework.boot:spring-boot-starter-web')
-    runtimeOnly('org.springframework.boot:spring-boot-devtools')
-    runtimeOnly('mysql:mysql-connector-java')
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation('org.springframework.security:spring-security-test')
 
-    compile ('io.jsonwebtoken:jjwt-api:0.10.5')
-    runtime ('io.jsonwebtoken:jjwt-impl:0.10.5','io.jsonwebtoken:jjwt-jackson:0.10.5')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile('org.modelmapper:modelmapper:2.3.0')
+    runtime('org.springframework.boot:spring-boot-devtools')
+    runtime('mysql:mysql-connector-java')
+    runtime('org.postgresql:postgresql')
+    compileOnly('org.projectlombok:lombok')
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
 
-    implementation('org.springframework.boot:spring-boot-starter-security')
-    compile (group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0')
 
-    runtime ('org.bouncycastle:bcprov-jdk15on:1.60')
+    compile group: 'com.auth0', name: 'java-jwt', version: '2.0.1'
+
+
+
+//    compile ('io.jsonwebtoken:jjwt-api:0.10.5')
+//    runtime ('io.jsonwebtoken:jjwt-impl:0.10.5','io.jsonwebtoken:jjwt-jackson:0.10.5')
+
+//    implementation('org.springframework.boot:spring-boot-starter-security')
+//    compile (group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0')
+
+//    runtime ('org.bouncycastle:bcprov-jdk15on:1.60')
 
 
     api 'io.jsonwebtoken:jjwt-api:0.7.0'

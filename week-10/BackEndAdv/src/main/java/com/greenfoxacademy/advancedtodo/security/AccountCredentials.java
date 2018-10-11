@@ -6,13 +6,17 @@ public class AccountCredentials {
   private String password;
   // getters & setters
 
-  public String getUsername() {
-    return username;
+
+  public AccountCredentials() {
   }
 
   public AccountCredentials(String username, String password) {
     this.username = username;
     this.password = password;
+  }
+
+  public String getUsername() {
+    return username;
   }
 
   public void setUsername(String username) {
