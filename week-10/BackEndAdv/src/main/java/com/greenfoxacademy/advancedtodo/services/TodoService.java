@@ -12,4 +12,6 @@ public interface TodoService {
 
   List<Todo>findAll();
 
+  List<Todo> getAlltodos();
+
 }
