@@ -14,20 +14,18 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.when;
-import static org.modelmapper.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 
 @RunWith(SpringRunner.class)
 @WebMvcTest({TodoRestController.class, TodoRepository.class})
@@ -70,16 +68,15 @@ public class AuthenticationTest {
     List<Todo> todos = new ArrayList<>();
     todos.add(newTodo);
 
-    List<Todo> todos1 = todoRepository.findAll();
-    when(todoService.getAlltodos()).thenReturn(todos1);
+    when(todoService.findAll()).thenReturn(todos);
 
-    mockMvc.perform(MockMvcRequestBuilders.get("/api/list")
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/todos")
         .accept(MediaType.ALL))
         .andExpect(status().isOk())
         .andExpect(content().contentType(contentType))
-        .andExpect((ResultMatcher) jsonPath("$.title", is(title)))
-        .andDo(print());
+        .andExpect(jsonPath("$[0].title", is(title)))
 
+        .andDo(print());
 
   }
 
