@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login To My Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<table align="center">
+    <tr>
+        <th>
+            <h2>REGISTRATION</h2>
+            <form action="/register" th:object="${bankaccount}" method="post">
+                <p>USERNAME</p>
+                <label for="name"></label>
+                <input type="text" id="name" name="username" required
+                       placeholder="User Name"/>
+                <div class="pw">
+                    <p>PASSWORD</p>
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password"
+                           minlength="5" required
+                           placeholder="5 characters minimum"/>
+                    <a href="password.html">Forgot password?</a>
+                </div>
+                <div class="button">
+                    <a href="loggedIn.html">
+                        <button type="login">SignUp</button>
+                    </a>
+                </div>
+            </form>
+        </th>
+    </tr>
+</table>
+</body>
+
