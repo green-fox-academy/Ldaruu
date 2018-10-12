@@ -19,11 +19,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     auth
         .inMemoryAuthentication()
           .withUser("daruu")
-          .password("12345")
+          .password("{noop}12345")
           .roles("USER")
         .and()
           .withUser("admin")
-          .password("12345")
+          .password("{noop}12345")
           .roles("ADMIN");
   }
   protected void configure(HttpSecurity httpSec) throws Exception{
