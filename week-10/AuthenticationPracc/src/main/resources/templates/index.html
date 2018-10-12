@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${bankaccount.username}+ '\'s Account'"></title>
+</head>
+<body>
+<div>
+    <a th:href="@{/login}">LOGIN</a>
+    <a th:href="@{/register}">REGISTER</a>
+    <a th:href="@{/users}">USERS</a>
+</div>
+<h1>Bank Of Simba!</h1>
+<h2 th:text="${bankaccount.username} + '\'s Account'"></h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>User email</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${bankaccount.id}"></td>
+        <td th:text="${bankaccount.name}"></td>
+        <td th:text="${bankaccount.balance}"></td>
+        <td th:text="${bankaccount.email}"></td>
+        <td th:text="${bankaccount.address}"></td>
+        <div>
+            <td>
+                <a th:href="'/index/'+ ${bankaccount.id} + '/update'" class="btn-primary btn-m">
+                    <button type="button" class="btn btn-primary">Update</button>
+                </a>
+            </td>
+        </div>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>
