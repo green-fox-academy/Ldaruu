@@ -1,0 +1,74 @@
+
+body {
+    padding-top: 100px;
+    text-align: center;
+    background-color: #EBEBEB;
+
+}
+
+table tr th {
+    padding: 50px 50px 50px 50px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 4px;
+    font-family: "SansSerif";
+    font-weight: 100;
+    background-color: #FFFFFF;
+    color: #545454;
+}
+
+h2 {
+    color: #333333;
+    margin-left: -70px;
+    tab-size: 60px;
+    font-family: "SansSerif";
+    font-weight: 100;
+    color: #545454;
+}
+p{
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-left: -200px;
+}
+.pw a{
+    font-size: 12px;
+    margin-right: -180px;
+    margin-top: 0px;
+    padding-top: 0px;
+    color: #333333;
+    text-decoration: none;
+    opacity: 0.6;
+}
+a:hover {
+    text-decoration: none;
+    color: #74AD77;
+}
+input[type ="text"],
+input[type="password"]{
+    display: block;
+    padding: 15px 100px 15px 0;
+    font-size: 16px;
+    color: #333333;
+
+}
+input[type="password"]{
+    background: url("eye.png") no-repeat;
+    background-size: 20px;
+    background-position: 98% 18px ;
+}
+input[type="text"]:focus{
+    outline: none;
+    box-shadow: 0 1px 1px 1px #74AD77;
+}
+input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 1px 1px 1px #74AD77;
+}
+button {
+    margin-left: -150px;
+    margin-top: 50px;
+    padding: 20px 40px;
+    background-color: #333333;
+    color: aliceblue;
+    border-radius: 50px;
+    font-size: 12px;
+}
