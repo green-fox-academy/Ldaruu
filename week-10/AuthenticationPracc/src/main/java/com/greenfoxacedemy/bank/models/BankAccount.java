@@ -1,10 +1,9 @@
 package com.greenfoxacedemy.bank.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class BankAccount {
@@ -12,11 +11,22 @@ public class BankAccount {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String username;
+  @Column( unique=true, nullable=false )
   private String password;
-  private String name;
+  private String fullName;
   private long balance;
+  @Column( unique=true, nullable=false )
   private String email;
   private String address;
+
+
+  @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+  @JoinTable(
+      name = "users_roles",
+      joinColumns = {@JoinColumn(name="bankaccount_id")},
+      inverseJoinColumns = {@JoinColumn(name="role_id")}
+  )
+  private Set<Role> roles = new HashSet<Role>();
 
   public BankAccount() {
   }
@@ -50,12 +60,12 @@ public class BankAccount {
     this.password = password;
   }
 
-  public String getName() {
-    return name;
+  public String getFullName() {
+    return fullName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
   }
 
   public long getBalance() {
@@ -80,5 +90,18 @@ public class BankAccount {
 
   public void setAddress(String address) {
     this.address = address;
+  }
+
+  public Set<Role> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(Set<Role> roles) {
+    this.roles = roles;
+  }
+
+  @Override
+  public String toString() {
+    return "BankAccount [id=" + id + ", email=" + email + ", password=" + password + "]";
   }
 }
