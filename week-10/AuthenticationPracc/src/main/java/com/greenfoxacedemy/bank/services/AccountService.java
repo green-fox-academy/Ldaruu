@@ -1,6 +1,6 @@
 package com.greenfoxacedemy.bank.services;
 
-import com.greenfoxacedemy.bank.models.BankAccount;
+import com.greenfoxacedemy.bank.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,19 +8,21 @@ import java.util.List;
 @Service
 public interface AccountService {
 
-  BankAccount getUernameById(long id);
+  User getUernameById(long id);
 
-  boolean isUsernameNull(BankAccount bankAccount);
+  boolean isUsernameNull(User user);
 
   boolean isUserExistAlready(String name);
 
-  BankAccount getUserAccByPassword(String password);
+  User getUserAccByPassword(String password);
 
-  BankAccount getAccByName(String username);
+  User getAccByName(String username);
 
-  BankAccount createBankAccount(String username,String password);
+  User getUserByEmail(String email);
 
-  void addNewAccount(BankAccount bankAccount);
+  User createBankAccount(String username, String password, String email);
 
-  List<BankAccount> findAll();
+  void addNewAccount(User user);
+
+  List<User> findAll();
 }

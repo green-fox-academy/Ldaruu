@@ -1,18 +1,20 @@
 package com.greenfoxacedemy.bank.repositories;
 
-import com.greenfoxacedemy.bank.models.BankAccount;
+import com.greenfoxacedemy.bank.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BankRepository extends CrudRepository<BankAccount, Long> {
+public interface BankRepository extends CrudRepository<User, Long> {
 
-  List<BankAccount> findAll();
+  List<User> findAll();
 
-  BankAccount findByUsername(String username);
+  User findByUsername(String username);
 
-  BankAccount findByPassword(String password);
+  User findByPassword(String password);
+
+  User findByEmail(String email);
 
 }

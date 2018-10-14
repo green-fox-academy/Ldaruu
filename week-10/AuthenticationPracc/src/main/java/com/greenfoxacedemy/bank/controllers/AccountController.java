@@ -1,6 +1,6 @@
 package com.greenfoxacedemy.bank.controllers;
 
-import com.greenfoxacedemy.bank.models.BankAccount;
+import com.greenfoxacedemy.bank.models.User;
 import com.greenfoxacedemy.bank.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,17 +31,18 @@ public class AccountController {
   @GetMapping("/register")
   public String registerPage(@ModelAttribute String warning, Model model) {
     model.addAttribute("warning", warning);
-    model.addAttribute("bankaccount", new BankAccount());
+    model.addAttribute("bankaccount", new User());
     return "register";
   }
 
   @PostMapping("/register")
   public String addAccount(@RequestParam(value = "username") String username,
-                           @RequestParam(value = "password") String password, Model model) {
+                           @RequestParam(value = "password") String password,
+                           @RequestParam(value = "email") String email, Model model) {
     if (accountService.getAccByName(username) == null) {
-      BankAccount bankAccount = accountService.createBankAccount(username, password);
-      long userId = bankAccount.getId();
-      return "redirect:/login";
+      User user = accountService.createBankAccount(username, password, email);
+      long userId = user.getId();
+      return "redirect:/auth/login";
     } else {
       model.addAttribute("warning", "Name exists Already, choose a new One!");
       return "redirect:/register";
@@ -50,31 +51,31 @@ public class AccountController {
 
   @GetMapping("/login")
   String loginPage(Model model) {
-    model.addAttribute("bankaccount", new BankAccount());
+    model.addAttribute("bankaccount", new User());
     return "login";
   }
 
   @PostMapping("/login")
   public String sendLoginName(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
     if (username != null && password != null) {
-      BankAccount bankAccount = accountService.getAccByName(username);
-      long userId = bankAccount.getId();
+      User user = accountService.getAccByName(username);
+      long userId = user.getId();
       return "redirect:/index/" + userId;
     } else {
-      return "redirect:/login";
+      return "redirect:/auth/login";
     }
   }
 
   @GetMapping("/index/{id}/update")
   public String updatePage(@PathVariable(value = "id") Long id, Model model) {
-    BankAccount bankAccount = accountService.getUernameById(id);
-    model.addAttribute("bankaccount", bankAccount);
+    User user = accountService.getUernameById(id);
+    model.addAttribute("bankaccount", user);
     return "update";
   }
 
   @PostMapping("/index/{id}/update")
-  public String updateAccount(@ModelAttribute(value = "bankaccount") BankAccount bankAccount) {
-    accountService.addNewAccount(bankAccount);
+  public String updateAccount(@ModelAttribute(value = "bankaccount") User user) {
+    accountService.addNewAccount(user);
     return "redirect:/index/{id}";
   }
 

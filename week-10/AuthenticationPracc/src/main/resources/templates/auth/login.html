@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Login To My Page</title>
-    <link rel="stylesheet" th:href="@{style.css}">
+    <link rel="stylesheet" th:href="@{/static/style.css}">
 </head>
 <body>
 <table align="center">
     <tr>
         <th>
             <h2 >ACCOUNT LOGIN</h2>
-            <form action="/login" method="post">
+            <form th:action="@{/login}" name="login" method="post">
                 <p>USERNAME</p>
                 <label for="username"></label>
-                <input type="text" id="username" fullName="username" required
+                <input type="text" id="username" name="username" required
                        placeholder="User Name"/>
                 <div class="pw">
                     <p>PASSWORD</p>
                     <label for="password"></label>
-                    <input type="password" id="password" fullName="password"
+                    <input type="password" id="password" name="password"
                            minlength="5" required
                            placeholder="5 characters minimum"/>
                     <a href="password.html">Forgot password?</a>

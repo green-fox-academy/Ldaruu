@@ -6,12 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class BankAccount {
+@Table(name = "users")
+public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String username;
-  @Column( unique=true, nullable=false )
+  @Column( nullable=false )
   private String password;
   private String fullName;
   private long balance;
@@ -28,12 +29,18 @@ public class BankAccount {
   )
   private Set<Role> roles = new HashSet<Role>();
 
-  public BankAccount() {
+  public User() {
   }
 
-  public BankAccount(String username, String password) {
+  public User(String username, String password) {
     this.username = username;
     this.password = password;
+  }
+
+  public User(String username, String password, String email) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
   }
 
   public long getId() {
@@ -102,6 +109,6 @@ public class BankAccount {
 
   @Override
   public String toString() {
-    return "BankAccount [id=" + id + ", email=" + email + ", password=" + password + "]";
+    return "User [id=" + id + ", email=" + email + ", password=" + password + "]";
   }
 }

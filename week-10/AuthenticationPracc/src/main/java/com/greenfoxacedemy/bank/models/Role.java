@@ -2,24 +2,20 @@ package com.greenfoxacedemy.bank.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-  @Entity
+@Entity
   @Table( name = "roles" )
   public class Role {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String role;
 
     @ManyToMany( mappedBy = "roles")
-    private Set<BankAccount> accounts = new HashSet<BankAccount>();
+    private Set<User> accounts = new HashSet<User>();
 
     private Role() {
     }
@@ -40,11 +36,11 @@ import javax.persistence.Table;
       this.role = role;
     }
 
-    public Set<BankAccount> getAccounts() {
+    public Set<User> getAccounts() {
       return accounts;
     }
 
-    public void setAccounts(Set<BankAccount> accounts) {
+    public void setAccounts(Set<User> accounts) {
       this.accounts = accounts;
     }
 
