@@ -36,11 +36,9 @@ public class AccountController {
   }
 
   @PostMapping("/register")
-  public String addAccount(@RequestParam(value = "username") String username,
-                           @RequestParam(value = "password") String password,
-                           @RequestParam(value = "email") String email, Model model) {
-    if (accountService.getAccByName(username) == null) {
-      User user = accountService.createBankAccount(username, password, email);
+  public String addAccount(@ModelAttribute User user, Model model) {
+    if (accountService.getAccByName(user.getUsername()) == null) {
+       accountService.createBankAccount(user);
       long userId = user.getId();
       return "redirect:/auth/login";
     } else {

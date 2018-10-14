@@ -107,6 +107,12 @@ public class User {
     this.roles = roles;
   }
 
+  public void addRoles(String roleName) {
+    if (this.roles == null || this.roles.isEmpty())
+      this.roles = new HashSet<>();
+    this.roles.add(new Role(roleName));
+  }
+
   @Override
   public String toString() {
     return "User [id=" + id + ", email=" + email + ", password=" + password + "]";

@@ -20,7 +20,7 @@ public interface AccountService {
 
   User getUserByEmail(String email);
 
-  User createBankAccount(String username, String password, String email);
+  public String createBankAccount(User user);
 
   void addNewAccount(User user);
 

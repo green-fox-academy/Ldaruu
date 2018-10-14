@@ -1,7 +1,9 @@
 package com.greenfoxacedemy.bank.services;
 
+import com.greenfoxacedemy.bank.models.Role;
 import com.greenfoxacedemy.bank.models.User;
 import com.greenfoxacedemy.bank.repositories.BankRepository;
+import com.greenfoxacedemy.bank.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,9 +16,13 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService, UserDetailsService {
 
   private BankRepository bankRepository;
+  private RoleRepository roleRepository;
+
+  private final String USER_ROLE = "USER";
 
   @Autowired
-  public AccountServiceImpl(BankRepository bankRepository) {
+  public AccountServiceImpl(BankRepository bankRepository, RoleRepository roleRepository) {
+    this.roleRepository = roleRepository;
     this.bankRepository = bankRepository;
   }
 
@@ -53,11 +59,19 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
   }
 
   @Override
-  public User createBankAccount(String username, String password,String email) {
-    User user = new User(username, password, email);
-    bankRepository.save(user);
-    return user;
+  public String createBankAccount(User userToRegister) {
+    User userCheck = bankRepository.findByEmail(userToRegister.getEmail());
+    if (userCheck != null)
+      return "alreadyExists";
+    Role userRole = roleRepository.findByRole(USER_ROLE);
+    if (userRole != null) {
+      userToRegister.getRoles().add(userRole);
+    } else {
+      userToRegister.addRoles(USER_ROLE);
+    }
 
+    bankRepository.save(userToRegister);
+    return "ok";
   }
 
   @Override
