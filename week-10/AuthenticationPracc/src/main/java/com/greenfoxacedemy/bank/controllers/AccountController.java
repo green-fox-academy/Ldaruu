@@ -19,7 +19,7 @@ public class AccountController {
 
   @GetMapping("")
   public String loginPage() {
-    return "redirect:/register";
+    return "redirect:/index";
   }
 
   @GetMapping("index/{id}")
