@@ -8,10 +8,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
-@Data
 @Entity
+@Data
 public class Client {
 
+  @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "client_id")
   private long id;
