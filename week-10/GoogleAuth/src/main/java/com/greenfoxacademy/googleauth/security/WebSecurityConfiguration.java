@@ -60,11 +60,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   }
 
   @Bean
-  public AuthoritiesExtractor authoritiesExtractor(
+  public GoogleAuthoritiesExtractor authoritiesExtractor(
       @Value("#{'${ALLOWED_DOMAIN}'.split(',')}")
       final List<String> allowedDomains) {
 
-    return new AuthoritiesExtractor() {
+    return new GoogleAuthoritiesExtractor() {
       @Override
       public List<GrantedAuthority> extractAuthorities(final Map<String, Object> map) {
         if (map != null && map.containsKey(GOOGLE_PLUS_DOMAIN_ATTRIBUTE)) {

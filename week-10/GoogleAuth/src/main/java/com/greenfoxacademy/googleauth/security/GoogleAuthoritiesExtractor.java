@@ -13,18 +13,18 @@ public class GoogleAuthoritiesExtractor implements AuthoritiesExtractor {
 
   List<GrantedAuthority> GOOGLE_FREE_AUTHORITIES
       = AuthorityUtils.commaSeparatedStringToAuthorityList(
-      "GOOGLE_USER,GITHUB_USER_FREE");
-  List<GrantedAuthority> GOOGLE_SUBSCRIBED_AUTHORITIES
+      "GOOGLE_USER,USER_ROLL");
+  List<GrantedAuthority> NOT_GOOGLE_ACCOUNT
       = AuthorityUtils.commaSeparatedStringToAuthorityList(
-      "GOOGLE_USER,GITHUB_USER_SUBSCRIBED");
+      "Not a gmail account!");
 
   @Override
   public List<GrantedAuthority> extractAuthorities(Map<String, Object> map) {
-    if (Objects.nonNull(map.get("plan"))) {
-      if (!((LinkedHashMap) map.get("plan"))
+    if (Objects.nonNull(map.get("authority"))) {
+      if (!((LinkedHashMap) map.get("authority"))
           .get("email")
           .equals("gmail.com")) {
-        return GOOGLE_SUBSCRIBED_AUTHORITIES;
+        return NOT_GOOGLE_ACCOUNT;
       }
     }
     return GOOGLE_FREE_AUTHORITIES;
