@@ -40,20 +40,20 @@ public class LoginController {
   }
 
   @PostMapping("/registration")
-  public ModelAndView createNewUser(@Valid Client client, BindingResult bindingResult) {
+  public ModelAndView createNewClient(@Valid Client client, BindingResult bindingResult) {
     ModelAndView modelAndView = new ModelAndView();
     Client clientExists = clientService.findByEmail(client.getEmail());
-    if (client != null) {
+    if (clientExists != null) {
       bindingResult
-          .rejectValue("email", "error.user",
-              "There is already a user registered with the email provided");
+          .rejectValue("email", "error.client",
+              "There is already a client registered with the email provided");
     }
     if (bindingResult.hasErrors()) {
       modelAndView.setViewName("registration");
     } else {
       clientService.saveClient(client);
-      modelAndView.addObject("successMessage", "User has been registered successfully");
-      modelAndView.addObject("user", new Client());
+      modelAndView.addObject("successMessage", "Client has been registered successfully");
+      modelAndView.addObject("client", new Client());
       modelAndView.setViewName("registration");
 
     }
@@ -66,8 +66,8 @@ public class LoginController {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Client client = clientService.findByEmail(authentication.getName());
     modelAndView.addObject("clietName", "Welcome " + client.getName() + " " + client.getLastName() + " (" + client.getEmail() + ")");
-    modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
-    modelAndView.setViewName("admin/home");
+    modelAndView.addObject("adminMessage", "Content Available Only for Clients   with Admin Role");
+    modelAndView.setViewName("/admin/home");
     return modelAndView;
   }
 
