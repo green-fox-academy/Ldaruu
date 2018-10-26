@@ -30,6 +30,11 @@ public class LoginController {
     return modelAndView;
   }
 
+  @GetMapping("/index")
+  public String indexPage() {
+    return "index";
+  }
+
   @GetMapping("/registration")
   public ModelAndView registration() {
     ModelAndView modelAndView = new ModelAndView();
@@ -68,6 +73,16 @@ public class LoginController {
     modelAndView.addObject("clietName", "Welcome " + client.getName() + " " + client.getLastName() + " (" + client.getEmail() + ")");
     modelAndView.addObject("adminMessage", "Content Available Only for Clients   with Admin Role");
     modelAndView.setViewName("/admin/home");
+    return modelAndView;
+  }
+
+  @GetMapping("access-denied")
+  public ModelAndView denied() {
+
+    ModelAndView modelAndView = new ModelAndView();
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    Client client = clientService.findByEmail(authentication.getName());
+    modelAndView.setViewName("/access-denied");
     return modelAndView;
   }
 

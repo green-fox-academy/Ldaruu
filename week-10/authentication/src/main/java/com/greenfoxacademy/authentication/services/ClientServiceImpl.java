@@ -31,12 +31,12 @@ public class ClientServiceImpl implements ClientService {
   }
 
   @Override
-  public void saveClient(Client client) {
+  public Client saveClient(Client client) {
     client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
     client.setActive(1);
-    Role clientRole= roleRepository.findByRole("ADMIN");
+    Role clientRole= roleRepository.findByRole("USER");
     client.setRoles(new HashSet<Role>(Arrays.asList(clientRole)));
-    clientRepository.save(client);
+    return clientRepository.save(client);
 
   }
 }

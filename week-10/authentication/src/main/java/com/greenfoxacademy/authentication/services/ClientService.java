@@ -8,5 +8,5 @@ public interface ClientService {
 
   public Client findByEmail(String email);
 
-  public void saveClient(Client client);
+  public Client saveClient(Client client);
 }

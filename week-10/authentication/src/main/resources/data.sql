@@ -1,2 +1,2 @@
 REPLACE INTO `role` VALUES (1,'ADMIN');
--- REPLACE INTO `role` VALUE  (2,'USER');
+REPLACE INTO `role` VALUE  (2,'USER');
