@@ -82,6 +82,8 @@ public class LoginController {
     ModelAndView modelAndView = new ModelAndView();
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Client client = clientService.findByEmail(authentication.getName());
+    modelAndView.addObject("clientName", "Dear " +client.getName() + " "+ client.getLastName()
+        + " unfortunately you have no rights to check this page!");
     modelAndView.setViewName("/access-denied");
     return modelAndView;
   }
