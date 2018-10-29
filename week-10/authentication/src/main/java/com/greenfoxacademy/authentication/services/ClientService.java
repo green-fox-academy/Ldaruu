@@ -1,9 +1,11 @@
 package com.greenfoxacademy.authentication.services;
 
 import com.greenfoxacademy.authentication.models.Client;
+import com.greenfoxacademy.authentication.models.Role;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public interface ClientService {

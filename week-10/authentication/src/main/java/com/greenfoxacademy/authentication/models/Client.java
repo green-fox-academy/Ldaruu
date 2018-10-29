@@ -45,6 +45,10 @@ public class Client {
   public Client() {
   }
 
+  public Client(Set<Role> roles) {
+    this.roles = roles;
+  }
+
   public long getId() {
     return id;
   }
@@ -96,7 +100,6 @@ public class Client {
   public Set<Role> getRoles() {
     return roles;
   }
-
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }

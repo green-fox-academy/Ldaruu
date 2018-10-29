@@ -1,6 +1,7 @@
 package com.greenfoxacademy.authentication.controllers;
 
 import com.greenfoxacademy.authentication.models.Client;
+import com.greenfoxacademy.authentication.models.Role;
 import com.greenfoxacademy.authentication.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class LoginController {
