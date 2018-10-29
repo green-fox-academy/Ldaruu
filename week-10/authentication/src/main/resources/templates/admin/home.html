@@ -41,6 +41,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -49,6 +50,10 @@
             <td th:text="*{name}"></td>
             <td th:text="*{email}"></td>
             <td th:text="*{roles}"></td>
+            <td>
+                <a th:href="'/client/'+ *{id} + '/update'" class="btn-primary btn-m">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
         </tr>
         </tbody>
 

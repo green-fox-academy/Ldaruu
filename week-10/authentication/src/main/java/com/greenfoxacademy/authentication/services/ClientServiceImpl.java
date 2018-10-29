@@ -44,4 +44,14 @@ public class ClientServiceImpl implements ClientService {
   public List<Client> getClients() {
     return clientRepository.findAll();
   }
+
+  @Override
+  public Client getClientById(Long id) {
+    return clientRepository.findById(id).orElse(null);
+  }
+
+  @Override
+  public Client updateClient(Client client) {
+    return clientRepository.save(client);
+  }
 }

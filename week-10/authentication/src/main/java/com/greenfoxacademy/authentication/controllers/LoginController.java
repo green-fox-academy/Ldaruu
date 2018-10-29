@@ -8,10 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -92,4 +89,17 @@ public class LoginController {
     modelAndView.setViewName("/access-denied");
     return modelAndView;
   }
+  @GetMapping("client/{id}/update")
+  public String updatePage(@PathVariable(value = "id") Long id, Model model) {
+    Client client = clientService.getClientById(id);
+    model.addAttribute("client", client);
+    return "/admin/updateClient";
+  }
+  @PostMapping("client/{id}/update")
+  public String postUpdate(@ModelAttribute Client client) {
+    clientService.updateClient(client);
+    return "redirect:/admin/home";
+
+  }
+
 }
