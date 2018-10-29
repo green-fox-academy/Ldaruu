@@ -14,22 +14,27 @@
 <div class="container">
     <form method="post" th:object="${client}">
         <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <span class="input-group-addon" id="sizing-addon1">Update - Name</span>
             <input style="cursor: text" type="text" th:field="*{name}" name="id" class="form-control" placeholder="NAME" aria-describedby="sizing-addon1" >
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Update</span>
-            <input style="cursor: text" type="text" th:field="*{email}" name="id" class="form-control" placeholder="Client-Email-Address" aria-describedby="sizing-addon1" >
-        </div>
-
-        <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <span class="input-group-addon" id="sizing-addon1">Update - Last Name</span>
             <input style="cursor: text" type="text" th:field="*{lastName}" name="id" class="form-control" placeholder="LAST-NAME" aria-describedby="sizing-addon1" >
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Update</span>
+            <span class="input-group-addon" id="sizing-addon1">Update - Email</span>
+            <input style="cursor: text" type="text" th:field="*{email}" name="id" class="form-control" placeholder="Client-Email-Address" aria-describedby="sizing-addon1" >
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="sizing-addon1">Update - Password</span>
+            <input style="cursor: text" type="text" th:field="*{password}" name="id" class="form-control" placeholder="PASSWORD" aria-describedby="sizing-addon1" >
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="sizing-addon1">Update - Role</span>
             <input style="cursor: text" type="text" th:field="*{roles}" name="id" class="form-control" placeholder="ROLE" aria-describedby="sizing-addon1" >
         </div>
 

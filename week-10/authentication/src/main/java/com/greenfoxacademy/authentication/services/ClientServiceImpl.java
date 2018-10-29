@@ -52,6 +52,8 @@ public class ClientServiceImpl implements ClientService {
 
   @Override
   public Client updateClient(Client client) {
+    client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
+    client.setActive(1);
     return clientRepository.save(client);
   }
 }
