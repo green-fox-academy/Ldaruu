@@ -31,7 +31,28 @@
             <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
         </div>
     </div>
+</div>
+<div>
+    <h2>Clients :</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}" th:object="${client}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{email}"></td>
+            <td th:text="*{roles}"></td>
+        </tr>
+        </tbody>
 
+    </table>
 </div>
 </body>
 </html>

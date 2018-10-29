@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -34,9 +35,13 @@ public class ClientServiceImpl implements ClientService {
   public Client saveClient(Client client) {
     client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
     client.setActive(1);
-    Role clientRole= roleRepository.findByRole("USER");
+    Role clientRole = roleRepository.findByRole("ADMIN");
     client.setRoles(new HashSet<Role>(Arrays.asList(clientRole)));
     return clientRepository.save(client);
 
+  }
+
+  public List<Client> getClients() {
+    return clientRepository.findAll();
   }
 }

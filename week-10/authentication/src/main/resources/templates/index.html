@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>My Fancy Website!</title>
@@ -7,6 +8,6 @@
 <body>
 <h1>Welcome on my Page!</h1>
 
-<p><a href="/admin/home">HomePage</a></p>
+<p><a th:href="@{/admin/home}" th:action="@{/admin/home}">HomePage</a></p>
 </body>
 </html>

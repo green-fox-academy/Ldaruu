@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -60,32 +64,32 @@ public class LoginController {
       modelAndView.addObject("successMessage", "Client has been registered successfully");
       modelAndView.addObject("client", new Client());
       modelAndView.setViewName("registration");
-
     }
     return modelAndView;
   }
 
-  @GetMapping("/admin/home")
-  public ModelAndView home() {
+
+  @RequestMapping(value="/admin/home", method = RequestMethod.GET)
+  public ModelAndView home(Model model) {
     ModelAndView modelAndView = new ModelAndView();
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Client client = clientService.findByEmail(authentication.getName());
     modelAndView.addObject("clietName", "Welcome " + client.getName() + " " + client.getLastName() + " (" + client.getEmail() + ")");
     modelAndView.addObject("adminMessage", "Content Available Only for Clients   with Admin Role");
+    List<Client> clients = clientService.getClients();
+    model.addAttribute("clients", clients);
     modelAndView.setViewName("/admin/home");
     return modelAndView;
   }
 
-  @GetMapping("access-denied")
+  @GetMapping("/access-denied")
   public ModelAndView denied() {
-
     ModelAndView modelAndView = new ModelAndView();
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Client client = clientService.findByEmail(authentication.getName());
-    modelAndView.addObject("clientName", "Dear " +client.getName() + " "+ client.getLastName()
+    modelAndView.addObject("client", "Dear " + client.getName() + " " + client.getLastName()
         + " unfortunately you have no rights to check this page!");
     modelAndView.setViewName("/access-denied");
     return modelAndView;
   }
-
 }
